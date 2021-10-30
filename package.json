@@ -1,0 +1,30 @@
+{
+  "name": "uactracker3000",
+  "version": "1.0.0",
+  "description": "uac tracker for data management of emergency influx case management",
+  "main": "index.js",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "bulma": "^0.9.3",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "handlebars": "^4.7.7",
+    "mysql2": "^2.3.2",
+    "sequelize": "^6.8.0",
+    "sessions": "0.0.2-7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MariachiMES/UACTracker3000.git"
+  },
+  "author": "David Ortiz, Ben Townsend, Frank Almaraz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MariachiMES/UACTracker3000/issues"
+  },
+  "homepage": "https://github.com/MariachiMES/UACTracker3000#readme"
+}
