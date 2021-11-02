@@ -36,6 +36,7 @@ User.init(
       },
     },
   },
+
   {
     hooks: {
       // Use the beforeCreate hook to work with data before a new instance is created
