@@ -1,7 +1,9 @@
-let cityEl = document.getElementById("city");
-let streetEl = document.getElementById("street");
-let stateEl = docuement.getElementById("state");
-let street;
+var city = document.getElementById("#city");
+var street = document.getElementById("#street");
+var state = document.getElementById("#state");
+let addressButton = document.querySelector("#addressButton");
+console.log(city, street, state);
+
 var formatStreet = function (streetEl) {
   let streetArray = streetEl.split(" ");
 
@@ -14,8 +16,20 @@ var formatStreet = function (streetEl) {
   return street;
 };
 
-var fetchWeather = function (street, city, state) {
-  formatStreet();
+var formatCity = function (cityEl) {
+  let cityArray = cityEl.split(" ");
+
+  for (let i = 0; i < cityArray.length; i++) {
+    if (i % 2 === 1) {
+      cityArray.splice(i, 0, "+");
+    }
+    let city = streetArray.join("").toLowerCase();
+  }
+  return city;
+};
+
+var fetchSmartyStreets = function (street, city, state) {
+  console.log("hi there");
   fetch(
     `${process.env.ADRESS_AUTH_TOKEN}&${street}&${city}&${state}&canditates=10`
   )
@@ -31,6 +45,8 @@ var initMap = function (data) {
 
   map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: latitude, lng: longitude },
-    zoom: 10,
+    zoom: 20,
   });
 };
+
+addressButton.addEventListener("click", fetchSmartyStreets);
