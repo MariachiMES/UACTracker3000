@@ -1,8 +1,9 @@
-var city = document.getElementById("#city");
-var street = document.getElementById("#street");
-var state = document.getElementById("#state");
+var cityEl = document.getElementById("#city");
+var streetEl = document.getElementById("#street");
+var stateEl = document.getElementById("#state");
 let addressButton = document.querySelector("#addressButton");
-console.log(city, street, state);
+
+console.log(cityEl, streetEl, stateEl);
 
 var formatStreet = function (streetEl) {
   let streetArray = streetEl.split(" ");
