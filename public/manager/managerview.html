@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>UAC Tracker 3000</title>
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
+  </head>
+  <body>
+    <section class="hero is-info is-small">
+      <div class="hero-head">
+        <nav class="navbar">
+          <div class="container has-text-centerd">
+            <div class="navbar-brand">
+              <span class="navbar-burger" data-target="navbarMenuHeroB"> </span>
+            </div>
+            <div id="navbarMenuHeroB" class="navbar-menu"></div>
+          </div>
+        </nav>
+      </div>
+
+      <div class="hero-body">
+        <div class="container has-text-centered">
+          <p class="title">{{case manager}}</p>
+          <p class="subtitle"></p>
+        </div>
+      </div>
+    </section>
+    <div class="tile is-ancestor">
+        <div class="tile is-parent">
+          <article class="tile is-child box is-6">
+            <p class="title">Caseload</p>
+            <p class="subtitle">{{#Each UAC}}</p>
+          </article>
+        </div>
+        <div class="tile is-parent">
+          <article class="tile is-child box">
+            <p class="title">UAC</p>
+            <p class="subtitle">{{UAC info}}</p>
+            <div class="container field is-grouped">
+                <p class="control">
+                  <button class="button is-success" id="address-route">Address Verification</button>
+                </p>
+                <p class="control">
+                  <button class="button is-info" id="release-request">Release Request</button>
+                </p>
+                <p class="control">
+                    <button class="button is-danger" id="fingerprints">Fingerprints</button>
+                  </p>
+              </div>
+              <div class = "uac-info">
+                  <p></p>
+              </div>
+          </article>
+          
+        </div>
+        <div class="tile is-parent">
+          <article class="tile is-child box">
+            <p class="title">Tasks</p>
+            <p class="subtitle">{{#Each Task}}</p>
+            <div class="content">
+                <span>FRP</span>
+                <span>Date:</span> <br>
+                <span>ARI</span>
+                <span>Date:</span> <br>
+                <span>UAC Birth Certificate</span>
+                <span>Date:</span> <br>
+                <span>Trail of Birth Certificates</span>
+                <span>Date:</span> <br>
+                <span>FRP</span>
+                <span>Date:</span> <br>
+                <span>FRP</span>
+                <span>Date:</span> <br>
+                <span>FRP</span>
+                <span>Date:</span> <br>
+                <span>FRP</span>
+                <span>Date:</span> <br>
+                <span>FRP</span>
+                <span>Date:</span> <br>
+                <span>FRP</span>
+                <span>Date:</span> <br>
+
+            </div>
+          </article>
+        </div>
+      </div>
+      
+     
+        <div class="tile is-parent">
+          <article class="tile is-child box">
+            <div class="content">
+              <p class="title">Sponsor</p>
+              <p class="subtitle">{{Sponsor}}</p>
+              <div class="content">
+                <p>Address 1:</p>
+                <p>Address 2:</p>
+                <p>City:</p>
+                <p>State:</p>
+                <p>Zip:</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+      
+      
+    </div>
+  </body>
+</html>
