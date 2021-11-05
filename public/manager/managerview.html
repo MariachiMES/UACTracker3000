@@ -22,92 +22,98 @@
           </div>
         </nav>
       </div>
-
-      <div class="hero-body">
-        <div class="container has-text-centered">
-          <p class="title">{{case manager}}</p>
-          <p class="subtitle"></p>
-        </div>
-      </div>
     </section>
-    <div class="tile is-ancestor">
-        <div class="tile is-parent">
-          <article class="tile is-child box is-6">
-            <p class="title">Caseload</p>
-            <p class="subtitle">{{#Each UAC}}</p>
-          </article>
-        </div>
-        <div class="tile is-parent">
-          <article class="tile is-child box">
-            <p class="title">UAC</p>
-            <p class="subtitle">{{UAC info}}</p>
-            <div class="container field is-grouped">
-                <p class="control">
-                  <button class="button is-success" id="address-route">Address Verification</button>
-                </p>
-                <p class="control">
-                  <button class="button is-info" id="release-request">Release Request</button>
-                </p>
-                <p class="control">
-                    <button class="button is-danger" id="fingerprints">Fingerprints</button>
-                  </p>
-              </div>
-              <div class = "uac-info">
-                  <p></p>
-              </div>
-          </article>
-          
-        </div>
-        <div class="tile is-parent">
-          <article class="tile is-child box">
-            <p class="title">Tasks</p>
-            <p class="subtitle">{{#Each Task}}</p>
-            <div class="content">
-                <span>FRP</span>
-                <span>Date:</span> <br>
-                <span>ARI</span>
-                <span>Date:</span> <br>
-                <span>UAC Birth Certificate</span>
-                <span>Date:</span> <br>
-                <span>Trail of Birth Certificates</span>
-                <span>Date:</span> <br>
-                <span>FRP</span>
-                <span>Date:</span> <br>
-                <span>FRP</span>
-                <span>Date:</span> <br>
-                <span>FRP</span>
-                <span>Date:</span> <br>
-                <span>FRP</span>
-                <span>Date:</span> <br>
-                <span>FRP</span>
-                <span>Date:</span> <br>
-                <span>FRP</span>
-                <span>Date:</span> <br>
 
-            </div>
-          </article>
-        </div>
-      </div>
-      
-     
-        <div class="tile is-parent">
-          <article class="tile is-child box">
-            <div class="content">
-              <p class="title">Sponsor</p>
-              <p class="subtitle">{{Sponsor}}</p>
-              <div class="content">
-                <p>Address 1:</p>
-                <p>Address 2:</p>
-                <p>City:</p>
-                <p>State:</p>
-                <p>Zip:</p>
+    <div class="tile is-ancestor">
+      <div class="tile is-vertical is-8">
+        <div class="tile">
+          <div class="tile is-parent is-vertical">
+            <article class="tile is-child notification is-primary">
+              <p class="title">Caseload</p>
+              <p class="subtitle">{{#Each UAC_name and A_number}}</p>
+            </article>
+            <article class="tile is-child notification is-warning">
+              <p class="title">something here</p>
+              <p class="subtitle">something here</p>
+            </article>
+          </div>
+          <div class="tile is-parent">
+            <article class="tile is-child notification is-link">
+              <p class="title">{{UAC_Name}}</p>
+              <p class="subtitle">{{UAC_info}}</p>
+              <div class="container field is-grouped">
+                <p class="control">
+                  <button class="button is-warning" id="release-request">
+                    Release Request
+                  </button>
+                </p>
+                <p class="control">
+                  <button class="button is-danger" id="fingerprints">
+                    Fingerprints
+                  </button>
+                </p>
               </div>
+              <div class="uac-info">
+                <p>DOB:</p>
+                <p>COO:</p>
+                <p>LOS:</p>
+                <p>Age:</p>
+                <p>Category:</p>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="tile is-parent">
+          <article class="tile is-child notification is-danger">
+            <p class="title">{{Sponsor_name}}</p>
+            <p class="subtitle">{{Sponsor_info}}</p>
+            <div class="content">
+              <div class="contain field">
+                <p class="control">
+                  <button class="button is-success" id="address-route">
+                    Address Verification
+                  </button>
+                </p>
+              </div>
+              <p>Address 1:</p>
+              <p>Address 2:</p>
+              <p>City:</p>
+              <p>State:</p>
+              <p>Zip:</p>
             </div>
           </article>
         </div>
       </div>
-      
-      
+      <div class="tile is-parent">
+        <article class="tile is-child notification is-success">
+          <div class="content">
+            <p class="title">Tasks</p>
+            <p class="subtitle">{{#Each_task}}</p>
+            <div class="content">
+              <span>FRP</span>
+              <span>Date:</span> <br />
+              <span>ARI</span>
+              <span>Date:</span> <br />
+              <span>UAC Birth Certificate</span>
+              <span>Date:</span> <br />
+              <span>Trail of Birth Certificates</span>
+              <span>Date:</span> <br />
+              <span>FRP</span>
+              <span>Date:</span> <br />
+              <span>FRP</span>
+              <span>Date:</span> <br />
+              <span>FRP</span>
+              <span>Date:</span> <br />
+              <span>FRP</span>
+              <span>Date:</span> <br />
+              <span>FRP</span>
+              <span>Date:</span> <br />
+              <span>FRP</span>
+              <span>Date:</span> <br />
+            </div>
+          </div>
+        </article>
+      </div>
     </div>
   </body>
 </html>
