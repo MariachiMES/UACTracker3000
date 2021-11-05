@@ -1,4 +1,5 @@
 const { Model, DataTypes } = require("sequelize");
+const bcrypt = require("bcrypt");
 const sequelize = require("../config/connection");
 
 class User extends Model {
@@ -8,7 +9,6 @@ class User extends Model {
 }
 
 User.init(
-  //
   {
     id: {
       type: DataTypes.INTEGER,
@@ -16,7 +16,7 @@ User.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    username: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -32,12 +32,11 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [8, 24],
+        len: [8],
       },
     },
   },
   {
-    // When adding hooks via the init() method, they go below ----
     hooks: {
       // Use the beforeCreate hook to work with data before a new instance is created
       beforeCreate: async (newUserData) => {
@@ -45,14 +44,21 @@ User.init(
         newUserData.email = await newUserData.email.toLowerCase();
         return newUserData;
       },
-      // Here, we use the beforeUpdate hook to make all of the characters lower case in an updated email address, before updating the database.
+      // BeforeUpdate hook to make all of the characters lower case in an updated email address, before updating the database.
       beforeUpdate: async (updatedUserData) => {
         updatedUserData.email = await updatedUserData.email.toLowerCase();
         return updatedUserData;
       },
       beforeCreate: async (newUserData) => {
-        newUserData.password = await bcrypt.hash(newUserData.password, 11);
+        newUserData.password = await bcrypt.hash(newUserData.password, 10);
         return newUserData;
+      },
+      beforeUpdate: async (updatedUserData) => {
+        updatedUserData.password = await bcrypt.hash(
+          updatedUserData.password,
+          10
+        );
+        return updatedUserData;
       },
     },
     sequelize,
