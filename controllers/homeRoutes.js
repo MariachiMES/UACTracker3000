@@ -27,6 +27,10 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/new-user", async (req, res) => {
+  res.render("signUp");
+});
+
 router.get("/project/:id", async (req, res) => {
   try {
     const projectData = await Project.findByPk(req.params.id, {
