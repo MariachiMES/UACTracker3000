@@ -9,12 +9,6 @@ const editSponsorBgEl = document.querySelector("#edit-sponsor-BG");
 const editSponsorX = document.querySelector("#edit-sponsor-close-x");
 const editSponsorCancel = document.querySelector("#cancel-edit-sponsor-modal");
 
-const newCMBtnEl = document.querySelector("#cmModalBtn");
-const cmModalEl = document.querySelector("#cm-modal");
-const cancelCmModalEl = document.querySelector("#cancel-cm-modal");
-const cmBgModalEl = document.querySelector("#cm-BG");
-const cmXcloseEl = document.querySelector("#cm-close-x");
-
 const closeUACModal = function () {
   editUACModal.classList.remove("is-active");
 };
