@@ -3,11 +3,20 @@ const { Casemanager } = require("../models");
 const caseManagerData = [
   {
     name: "David Ortiz",
-    caseload: 
-    
+    username: "email",
+    password: "password",
+    user_id: 1,
   },
 ];
 
-const seedUACs = () => UAC.bulkCreate(UACData);
+const seedCaseManager = () => Casemanager.bulkCreate(caseManagerData);
 
-module.exports = seedUACs;
+module.exports = seedCaseManager;
+// const { Sponsor } = require("../models");
+
+// const sponsorData = [
+// ];
+
+// const seedSponsors = () => Sponsor.bulkCreate(sponsorData);
+
+// module.exports = seedSponsors;
