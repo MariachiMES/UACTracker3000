@@ -19,7 +19,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "npm test"
+    "test": "npm test",
+    "seed": "node seeds/seeds.js"
   },
   "repository": {
     "type": "git",

@@ -2,15 +2,15 @@ const { Model, DataTypes } = require("sequelize");
 const bcrypt = require("bcrypt");
 const sequelize = require("../config/connection");
 
-class User extends Model {
+class CaseManager extends Model {
   checkPassword(loginPw) {
     return bcrypt.compareSync(loginPw, this.password);
   }
 }
 
-User.init(
+CaseManager.init(
   {
-    id: {
+    user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
@@ -20,7 +20,7 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    email: {
+    username: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
@@ -65,8 +65,8 @@ User.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "user",
+    modelName: "casemanager",
   }
 );
 
-module.exports = User;
+module.exports = CaseManager;
