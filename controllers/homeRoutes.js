@@ -2,7 +2,7 @@ const router = require("express").Router();
 const { Project, User } = require("../models");
 const withAuth = require("../utils/auth");
 
-router.get("/", async (req, res) => {
+router.get("/dashboard", async (req, res) => {
   try {
     // Get all projects and JOIN with user data
     const projectData = await Project.findAll({
@@ -83,4 +83,7 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
+router.get("/", (req, res) => {
+  res.render("signup");
+});
 module.exports = router;
