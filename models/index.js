@@ -1,3 +1,3 @@
-const User = require("./user");
+const User = require("./casemanager");
 
 module.exports = { User };
