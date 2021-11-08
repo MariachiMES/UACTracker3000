@@ -9,11 +9,13 @@ async function signupFormHandler(event) {
       body: JSON.stringify({
         username,
         password,
+        email,
       }),
       headers: {
         "Content-Type": "application/json",
       },
     });
+    console.log("res", response);
     if (response.ok) {
       document.location.replace("/dashboard");
     } else {

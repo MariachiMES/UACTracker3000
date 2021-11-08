@@ -10,7 +10,8 @@ USE UAC_db;
 -- );
 
 CREATE TABLE users (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,    
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+    name_ VARCHAR (50) NOT NULL,   
     email VARCHAR (50) NOT NULL,
     password_ VARCHAR(50) NOT NULL,
     FOREIGN KEY (user_id)
