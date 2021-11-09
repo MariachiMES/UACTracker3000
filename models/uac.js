@@ -1,5 +1,4 @@
 const { Model, DataTypes } = require("sequelize");
-const bcrypt = require("bcrypt");
 const sequelize = require("../config/connection");
 
 class UAC extends Model {}
@@ -12,13 +11,13 @@ UAC.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
+    uacname: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     sponsor_name: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     a_number: {
       type: DataTypes.INTEGER,
@@ -29,7 +28,7 @@ UAC.init(
     },
     dob: {
       type: DataTypes.DATE,
-      allowNull: true,
+      allowNull: false,
     },
     age: {
       type: DataTypes.INTEGER,
@@ -37,15 +36,15 @@ UAC.init(
     },
     coo: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
     },
     intake: {
       type: DataTypes.DATE,
-      allowNull: true,
+      allowNull: false,
     },
     gender: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
     },
     category: {
       type: DataTypes.STRING,

@@ -21,7 +21,8 @@ Sponsor.init(
     },
     sponsor_name: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
+      defaultValue: "No Sponsor Selected",
     },
     address1: {
       type: DataTypes.STRING,

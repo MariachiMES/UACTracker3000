@@ -1,3 +1,5 @@
-const User = require("./casemanager");
+const caseManager = require("./casemanager");
+const UAC = require("./uac");
+const sponsor = require("./sponsor");
 
-module.exports = { User };
+module.exports = { caseManager, UAC, sponsor };
