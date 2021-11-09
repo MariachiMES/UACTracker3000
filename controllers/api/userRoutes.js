@@ -2,7 +2,7 @@ const router = require("express").Router();
 const { CaseManager } = require("../../models");
 
 router.post("/", async (req, res) => {
-  console.log("Create new user", req.body);
+  console.log("Create new user");
   try {
     const userData = await CaseManager.create(req.body);
     console.log("Userdata - ", userData);
