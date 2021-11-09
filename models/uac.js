@@ -18,6 +18,7 @@ UAC.init(
     sponsor_name: {
       type: DataTypes.STRING,
       allowNull: true,
+      defaultValue: "No Sponsor Selected",
     },
     a_number: {
       type: DataTypes.INTEGER,

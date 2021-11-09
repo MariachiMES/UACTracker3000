@@ -1,82 +1,100 @@
 const router = require("express").Router();
-const { Project, User } = require("../models");
+const { CaseManager, UAC, Sponsor } = require("../models");
 const withAuth = require("../utils/auth");
 
-router.get("/dashboard", async (req, res) => {
-  try {
-    // Get all projects and JOIN with user data
-    const projectData = await Project.findAll({
-      include: [
-        {
-          model: User,
-          attributes: ["name"],
-        },
-      ],
-    });
+// router.get("/dashboard", async (req, res) => {
+//   res.render("dashboard");
+// });
 
-    // Serialize data so the template can read it
-    const projects = projectData.map((project) => project.get({ plain: true }));
+// router.get("/dashboard", async (req, res) => {
+//   try {
+//     // Get all projects and JOIN with user data
+//     const projectData = await CaseManager.findAll({
+//       include: [
+//         {
+//           model: CaseManager,
+//           attributes: ["name"],
+//         },
+//       ],
+//     });
 
-    // Pass serialized data and session flag into template
-    res.render("dashboard", {
-      projects,
-      logged_in: req.session.logged_in,
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+//     // Serialize data so the template can read it
+//     const projects = projectData.map((project) => project.get({ plain: true }));
+
+//     // Pass serialized data and session flag into template
+//     res.render("dashboard", {
+//       projects,
+//       logged_in: req.session.logged_in,
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 router.get("/new-user", async (req, res) => {
   res.render("signUp");
 });
 
-router.get("/project/:id", async (req, res) => {
+//GET ONE UAC
+
+router.get("/dashboard/:id", async (req, res) => {
   try {
-    const projectData = await Project.findByPk(req.params.id, {
-      include: [
-        {
-          model: User,
-          attributes: ["name"],
-        },
-      ],
-    });
+    const singleUACinfo = await UAC.findByPk(req.params.id);
 
-    const project = projectData.get({ plain: true });
+    const uac = singleUACinfo.get({ plain: true });
 
-    res.render("project", {
-      ...project,
-      logged_in: req.session.logged_in,
-    });
+    res.render("dashboard", { uac });
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
+
+// router.get("/dashboard/:id", async (req, res) => {
+//   try {
+//     const singleUACData = await UAC.findByPk(req.params.id, {
+//       include: [{ all: true, nested: true }],
+//     });
+
+//     const singleUAC = singleUACData.get({ plain: true });
+
+//     res.render("dashboard", {
+//       singleUAC,
+//     });
+//     console.log(singleUAC);
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json(err);
+//   }
+// });
 
 // Use withAuth middleware to prevent access to route
-router.get("/profile", withAuth, async (req, res) => {
-  try {
-    // Find the logged in user based on the session ID
-    const userData = await User.findByPk(req.session.user_id, {
-      attributes: { exclude: ["password"] },
-      include: [{ model: Project }],
-    });
+// router.get("/profile", withAuth, async (req, res) => {
+//   try {
+//     // Find the logged in user based on the session ID
+//     const userData = await CaseManager.findByPk(req.session.user_id, {
+//       attributes: { exclude: ["password"] },
+//       include: [{ model: CaseManager }],
+//     });
 
-    const user = userData.get({ plain: true });
+//     const user = userData.get({ plain: true });
 
-    res.render("profile", {
-      ...user,
-      logged_in: true,
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-router.get("/table", (req, res) => {
-  // if (req.session.logged_in) {
-  res.render("table");
-  // }
-});
+//     res.render("profile", {
+//       ...user,
+//       logged_in: true,
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
+// router.get("/table", (req, res) => {
+//   // if (req.session.logged_in) {
+//   res.render("table", {
+//     model: UAC,
+//     attributes: ["a_number", "case_manager"],
+//   });
+//   // }
+// });
 
 router.get("/login", (req, res) => {
   // If the user is already logged in, redirect the request to another route
@@ -91,4 +109,46 @@ router.get("/login", (req, res) => {
 router.get("/", (req, res) => {
   res.render("signup");
 });
+
+// GET all UAC's and CM's for table
+router.get("/table", async (req, res) => {
+  try {
+    const dbUACdata = await UAC.findAll({
+      include: [{ all: true, nested: true }],
+    });
+    const cmDbData = await CaseManager.findAll({
+      include: [{ all: true, nested: true }],
+    });
+
+    const uacTable = dbUACdata.map((uacData) => uacData.get({ plain: true }));
+    const cmSelector = cmDbData.map((cmData) => cmData.get({ plain: true }));
+    res.render("table", {
+      uacTable,
+      cmSelector,
+    });
+    console.log(uacTable, cmSelector);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+// //GET all CM names for assignment
+// router.get("/table", async (req, res) => {
+//   try {
+//     const cmDbData = await CaseManager.findAll({
+//       include: [{ all: true, nested: true }],
+//     });
+
+//     const cmDropDown = cmDbData.map((cmData) => cmData.get({ plain: true }));
+
+//     res.render("table", {
+//       cmDropDown,
+//     });
+//     console.log(cmDropDown);
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json(err);
+//   }
+// });
+
 module.exports = router;

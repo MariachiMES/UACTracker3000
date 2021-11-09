@@ -1,1 +1,222 @@
-asd;flkja;slkfja;lsdkjfa;lsdkj
+
+    <div class="tile is-ancestor">
+      <div class="tile is-vertical is-8">
+        <div class="tile">
+          <div class="tile is-parent is-vertical">
+            <article class="tile is-child notification is-primary">
+              <p class="title">Caseload</p>
+              <p class="subtitle">stuff</p>
+            </article>
+          </div>
+          <div class="tile is-parent">
+            <article class="tile is-child notification is-link">
+              <p class="title">{{{uac.uacname}}}</p>
+              <p class="subtitle">{{uac.a_number}}</p>
+              <div class="container field is-grouped">
+                <p class="control">
+                  <button class="button is-warning" id="release-request">
+                    Release Request 
+                  </button>
+                </p>
+                <p class="control">
+                  <button class="button is-danger" id="fingerprints">
+                    Fingerprints
+                  </button>
+                </p>
+              </div>
+              <div class="uac-info">
+                <p>DOB:{{uac.dob}}</p>
+                <p>COO:{{uac.coo}}</p>
+                <p>LOS:{{uac.intake}}</p>
+                <p>Age:{{uac.age}}</p>
+                <p>Category:{{uac.category}}</p>
+              </div>
+              <button class="button is-success" id="edit-uac">Edit</button>
+            </article>
+          </div>
+        </div>
+        <div class="tile is-parent">
+          <article class="tile is-child notification is-danger">
+            <p class="title">Sponsor</p>
+            <p class="subtitle">info</p>
+            <div class="content">
+              <div class="contain field">
+                <p class="control">
+                  <button class="button is-success" id="address-route">
+                    Address Verification
+                  </button>
+                </p>
+              </div>
+              <p>Address 1:</p>
+              <p>Address 2:</p>
+              <p>City:</p>
+              <p>State:</p>
+              <p>Zip:</p>
+            </div>
+            <button class="button is-success" id="edit-sponsor">Edit</button>
+          </article>
+        </div>
+      </div>
+      <div class="tile is-parent">
+        <article class="tile is-child notification is-success">
+          <div class="content">
+            <p class="title">Tasks</p>
+            <p class="subtitle">{{uac.a_number}}</p>
+            <div class="content">
+              <span>FRP</span>
+              <span id = "FRP">{{uac.FRP}}</span> <br />
+              <span>ARI</span>
+              <span id ="ARI">{{uac.ARI}}</span> <br />
+              <span>POR</span>
+              <span id = "POR">{{uac.POR}} </span> <br />
+              <span>Sponsor BGC</span>
+              <span>{{uac.sponsor_bgc}}</span> <br />
+              <span>Sponsor ID</span>
+              <span id = "sponsor-id">{{uac.sponsor_id}}</span> <br />
+              <span>Sponsor FP</span>
+              <span id = "sponsor-fp">{{uac.sponsor_fp}}</span> <br />
+              <span>HHM ID</span>
+              <span id = "hhm-id">{{uac.hhm_id}}</span> <br />
+              <span>HHM Checks</span>
+              <span id = "hhm-checks">{{uac.hhm_checks}}</span> <br />
+              <span>SO check</span>
+              <span id = "sex-offender-check">{{uac.sex_offender_check}}</span> <br />
+              <span>SIR</span><br/>
+              <span id = "SIR">{{uac.SIR}}</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <div class="modal" id="edit-uac-modal">
+      <div class="modal-background" id="edit-uac-BG"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Edit UAC Info</p>
+          <button
+            class="delete"
+            id="edit-uac-close-x"
+            aria-label="close"
+          ></button>
+        </header>
+        <section class="modal-card-body">
+
+          <!-- Content ... -->
+          Name:
+          <input
+          
+            class="input"
+            name="uac_name"
+            type="text"
+            id= "uac-edit-name"
+            placeholder={{uac.uacname}}>
+          A#
+          <input class="input" id = "a-number" name="a_number" type="text" placeholder= {{uac.a_number}}>
+          DOB:
+          <input class="input" id = "uac-dob" name="dob" type="text" placeholder={{uac.dob}} >
+          COO:
+          <input class="input" id = "uac-coo" name="coo" type="text" placeholder={{uac.coo}} >
+          Age:
+          <input class="input" id = "uac-age" name="age" type="text" placeholder={{uac.age}} >
+          Category:
+          <input
+            class="input"
+            id = "category"
+            name="category"
+            type="text"
+            placeholder={{uac.category}}
+          >
+          Gender:
+          <input
+            class="input"
+            id = "uac-gender"
+            name="uac-gender"
+            type="text"
+            placeholder={{uac.gender}}
+          >
+        </section>
+        <footer class="modal-card-foot">
+          <button class="button is-success" id="edit-uac-btn">
+            Save Changes
+          </button>
+          <button class="button" id="cancel-edit-uac-modal">Cancel</button>
+        </footer>
+      </div>
+    </div>
+
+    <div class="modal" id="edit-sponsor-modal">
+      <div class="modal-background" id="edit-sponsor-BG"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Edit Sponsor Info</p>
+          <button
+            class="delete"
+            id="edit-sponsor-close-x"
+            aria-label="close"
+          ></button>
+        </header>
+        <section class="modal-card-body">
+          <!-- Content ... -->
+          <input
+            class="input"
+            name="sponsor_name"
+            type="text"
+            placeholder="Name of Sponsor"
+            id="sponsor-name"
+          />
+          <input
+            class="input"
+            name="sponsor_address1"
+            type="text"
+            placeholder="Address1"
+            id="sponsor-address1"
+          />
+          <input
+            class="input"
+            name="sponsor_address2"
+            type="text"
+            placeholder="Address2"
+            id="sponsor-address2"
+          />
+          <input
+            class="input"
+            name="sponsor_relationship"
+            type="text"
+            placeholder="Sponsor Relationship"
+            id="sponsor-relationship"
+          />
+          <input
+            class="input"
+            name="sponsor_age"
+            type="text"
+            placeholder="Sponsor Age"
+            id="sponsor-age"
+          />
+          <input
+            class="input"
+            name="category"
+            type="text"
+            placeholder="Category"
+            id="category"
+          />
+          <input
+            class="input"
+            name="sponsor-gender"
+            type="text"
+            placeholder="Gender"
+            id="sponsor-gender"
+          />
+        </section>
+        <footer class="modal-card-foot">
+          <button class="button is-success" id="save-sponsor-info">
+            Save Changes
+          </button>
+          <button class="button" id="cancel-edit-sponsor-modal">Cancel</button>
+        </footer>
+      </div>
+    </div>
+  </body>
+  <script src="../js/casemanagerview.js"></script>
+  <script src = "../js/editUAC.js"></script>
+</html>

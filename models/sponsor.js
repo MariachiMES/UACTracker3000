@@ -13,11 +13,12 @@ Sponsor.init(
     },
     uac: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       references: {
         model: "uac",
         key: "uac_id",
       },
+      defaultValue: "no uac assigned",
     },
     sponsor_name: {
       type: DataTypes.STRING,
