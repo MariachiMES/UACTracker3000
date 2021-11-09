@@ -2,10 +2,10 @@ const router = require("express").Router();
 const { UAC } = require("../../models");
 const { Sponsor } = require("../../models");
 
-router.post("/", async (req, res) => {
+router.put("/", async (req, res) => {
   console.log("changes made", req.body);
   //   try {
-  const uacData = await UAC.update(req.body);
+  const uacData = await UAC.put(req.body);
   console.log(uacData);
   // const sponsorData = await Sponsor.create(req.body);
   // console.log(sponsorData);

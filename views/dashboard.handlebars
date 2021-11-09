@@ -64,24 +64,25 @@
             <p class="subtitle">{{uac.a_number}}</p>
             <div class="content">
               <span>FRP</span>
-              <span>{{uac.FRP}}</span> <br />
+              <span id = "FRP">{{uac.FRP}}</span> <br />
               <span>ARI</span>
-              <span>Date:{{uac.ARI}}</span> <br />
+              <span id ="ARI">{{uac.ARI}}</span> <br />
               <span>POR</span>
-              <span>Date:{{uac.POR}} </span> <br />
+              <span id = "POR">{{uac.POR}} </span> <br />
               <span>Sponsor BGC</span>
-              <span>Date:{{uac.sponsor_bgc}}</span> <br />
+              <span>{{uac.sponsor_bgc}}</span> <br />
               <span>Sponsor ID</span>
-              <span>Date:{{uac.sponsor_id}}</span> <br />
+              <span id = "sponsor-id">{{uac.sponsor_id}}</span> <br />
               <span>Sponsor FP</span>
-              <span>Date:{{uac.sponsor_fp}}</span> <br />
+              <span id = "sponsor-fp">{{uac.sponsor_fp}}</span> <br />
               <span>HHM ID</span>
-              <span>Date:{{uac.hhm_id}}</span> <br />
+              <span id = "hhm-id">{{uac.hhm_id}}</span> <br />
               <span>HHM Checks</span>
-              <span>Date:{{uac.hhm_checks}}</span> <br />
+              <span id = "hhm-checks">{{uac.hhm_checks}}</span> <br />
               <span>SO check</span>
-              <span>Date:{{uac.sex_offender_check}}</span> <br />
-              <span>SIR: {{uac.SIR}}</span>
+              <span id = "sex-offender-check">{{uac.sex_offender_check}}</span> <br />
+              <span>SIR</span><br/>
+              <span id = "SIR">{{uac.SIR}}</span>
             </div>
           </div>
         </article>
@@ -104,21 +105,24 @@
           <!-- Content ... -->
           Name:
           <input
+          
             class="input"
             name="uac_name"
             type="text"
+            id= "uac-edit-name"
             placeholder={{uac.uacname}}>
           A#
-          <input class="input" name="a_number" type="text" placeholder= {{uac.a_number}}>
+          <input class="input" id = "a-number" name="a_number" type="text" placeholder= {{uac.a_number}}>
           DOB:
-          <input class="input" name="dob" type="text" placeholder={{uac.dob}} >
+          <input class="input" id = "uac-dob" name="dob" type="text" placeholder={{uac.dob}} >
           COO:
-          <input class="input" name="coo" type="text" placeholder={{uac.coo}} >
+          <input class="input" id = "uac-coo" name="coo" type="text" placeholder={{uac.coo}} >
           Age:
-          <input class="input" name="age" type="text" placeholder={{uac.age}} >
+          <input class="input" id = "uac-age" name="age" type="text" placeholder={{uac.age}} >
           Category:
           <input
             class="input"
+            id = "category"
             name="category"
             type="text"
             placeholder={{uac.category}}
@@ -126,13 +130,14 @@
           Gender:
           <input
             class="input"
+            id = "uac-gender"
             name="uac-gender"
             type="text"
             placeholder={{uac.gender}}
           >
         </section>
         <footer class="modal-card-foot">
-          <button class="button is-success" id="edit-uac">
+          <button class="button is-success" id="edit-uac-btn">
             Save Changes
           </button>
           <button class="button" id="cancel-edit-uac-modal">Cancel</button>
@@ -213,4 +218,5 @@
     </div>
   </body>
   <script src="../js/casemanagerview.js"></script>
+  <script src = "../js/editUAC.js"></script>
 </html>
