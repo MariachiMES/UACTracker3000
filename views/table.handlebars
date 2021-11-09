@@ -94,32 +94,21 @@
             </th>
           </tr>
         </thead>
+        {{#each uacTable}}
         <tbody>
-          <td>2204341343</td>
-          <td>David José Ortiz</td>
-          <td>Bettyjo Binford</td>
-          <td>10/1/2021</td>
-          <td>11/4/2021</td>
-          <td>10/7/2021</td>
-          <td>10/15/2021</td>
-          <td>10/15/2021</td>
-          <td>12/1/2021</td>
-          <td>0</td>
-          <td>pending fingerprint appointment 11/2/2021</td>
-        </tbody>
-        <tbody>
-            <td>{{a_number}}</td>
-            <td>{{uac_name}}</td>
-            <td>{{case_manager}}</td>
-            <td>{{frp_date}}</td>
-            <td>{{ari_date}}</td>
-            <td>{{bc_date}}</td>
-            <td>{{trail_of_bcs}}</td>
-            <td>{{sponsor_bgc}}</td>
-            <td>{{hhm_id}}</td>
-            <td>{{sir}}</td>
-            <td>{{exception}}</td>
-          </tbody>
+    
+          <td><a href= "dashboard/{{uac_id}}">{{a_number}}</td></a>
+          <td>{{uacname}}</td>
+          <td>{{case_manager}}</td>
+          <td>{{FRP}}</td>
+          <td>{{ARI}}</td>
+          <td>{{POR}}</td>
+          <td>{{sponsor_bgc}}</td>
+          <td>{{sponsor_fp}}</td>
+          <td>{{hhm_id}}</td>
+          <td>{{SIR}}</td>
+          <td>{{exception}}</td>
+        </tbody>{{/each}}
 
         <tfoot>
           <tr>
@@ -194,10 +183,11 @@
                 </div>
                 <div class="dropdown-menu" id="dropdown-menu" role="menu">
                   <div class="dropdown-content">
-                    <a href="#" class="dropdown-item">
-                      Dropdown item
-                    </a> 
-                    <a class="dropdown-item">
+                    {{#each cmSelector}}
+                    <a href = "#" class="dropdown-item">
+                      {{username}}
+                    </a> {{/each}}
+                    {{!-- <a class="dropdown-item">
                       Other dropdown item
                     </a>
                     <a href="#" class="dropdown-item is-active">
@@ -209,11 +199,10 @@
                     <hr class="dropdown-divider">
                     <a href="#" class="dropdown-item">
                       With a divider
-                    </a>
+                    </a> --}}
                   </div>
                 </div>
               </div>
-
 
           </section>
           <footer class="modal-card-foot">

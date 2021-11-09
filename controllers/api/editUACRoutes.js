@@ -3,9 +3,9 @@ const { UAC } = require("../../models");
 const { Sponsor } = require("../../models");
 
 router.post("/", async (req, res) => {
-  console.log("Create new uac", req.body);
+  console.log("changes made", req.body);
   //   try {
-  const uacData = await UAC.create(req.body);
+  const uacData = await UAC.update(req.body);
   console.log(uacData);
   // const sponsorData = await Sponsor.create(req.body);
   // console.log(sponsorData);

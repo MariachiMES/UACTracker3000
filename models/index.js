@@ -1,5 +1,5 @@
-const caseManager = require("./casemanager");
+const CaseManager = require("./casemanager");
 const UAC = require("./uac");
-const sponsor = require("./sponsor");
+const Sponsor = require("./sponsor");
 
-module.exports = { caseManager, UAC, sponsor };
+module.exports = { CaseManager, UAC, Sponsor };
