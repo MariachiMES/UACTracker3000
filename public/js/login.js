@@ -1,13 +1,14 @@
+console.log("LoginJS");
 async function loginFormHandler(event) {
   console.log("submit");
   event.preventDefault();
-  const username = document.querySelector("#user-email").value.trim();
+  const email = document.querySelector("#user-email").value.trim();
   const password = document.querySelector("#user-password").value.trim();
-  if (username && password) {
+  if (email && password) {
     const response = await fetch("/api/users/login", {
       method: "post",
       body: JSON.stringify({
-        username,
+        email,
         password,
       }),
       headers: {
@@ -15,10 +16,11 @@ async function loginFormHandler(event) {
       },
     });
     if (response.ok) {
-      document.location.replace("/");
+      alert("User logged In");
+      document.location.replace("/table");
     } else {
       alert(response.statusText);
     }
   }
 }
-document.querySelector(".login").addEventListener("click", loginFormHandler);
+document.querySelector("#login").addEventListener("click", loginFormHandler);
