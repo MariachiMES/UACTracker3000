@@ -18,7 +18,6 @@ Sponsor.init(
         model: "uac",
         key: "uac_id",
       },
-      defaultValue: "no uac assigned",
     },
     sponsor_name: {
       type: DataTypes.STRING,

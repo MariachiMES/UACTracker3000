@@ -107,7 +107,7 @@ router.get("/login", (req, res) => {
 });
 
 router.get("/", (req, res) => {
-  res.render("signup");
+  res.render("login");
 });
 
 // GET all UAC's and CM's for table
@@ -125,6 +125,9 @@ router.get("/table", async (req, res) => {
     res.render("table", {
       uacTable,
       cmSelector,
+      username: req.session.username,
+      id: req.session.user_id,
+      email: req.session.email,
     });
     console.log(uacTable, cmSelector);
   } catch (err) {

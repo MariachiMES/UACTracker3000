@@ -21,6 +21,7 @@ router.post("/", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
+  console.log("Login", req.body);
   try {
     const userData = await CaseManager.findOne({
       where: { email: req.body.email },
@@ -43,7 +44,9 @@ router.post("/login", async (req, res) => {
     }
 
     req.session.save(() => {
-      req.session.user_id = userData.id;
+      req.session.user_id = userData.user_id;
+      req.session.username = userData.username;
+      req.session.email = userData.email;
       req.session.logged_in = true;
 
       res.json({ user: userData, message: "You are now logged in!" });
