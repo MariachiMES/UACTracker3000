@@ -7,17 +7,12 @@ Sponsor.init(
   {
     sponsor_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true,
-      autoIncrement: true,
-    },
-    uac: {
-      type: DataTypes.INTEGER,
       allowNull: true,
       references: {
         model: "uac",
         key: "uac_id",
       },
+      defaultValue: 1,
     },
     sponsor_name: {
       type: DataTypes.STRING,

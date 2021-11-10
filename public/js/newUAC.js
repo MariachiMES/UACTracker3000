@@ -27,7 +27,7 @@ async function newUAChandler(event) {
   if (response.ok) {
     newUACModal.classList.remove("is-active");
     document.location.replace("/table");
-    console.log("I DON'T KNOW WHY THAT'S NOT WORKING", response);
+    console.log(response);
   } else {
     alert(response.statusText);
   }
