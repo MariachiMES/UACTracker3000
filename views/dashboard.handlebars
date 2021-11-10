@@ -5,7 +5,7 @@
           <div class="tile is-parent is-vertical">
             <article class="tile is-child notification is-primary">
               <p class="title">Menu</p>
-              <p class="subtitle">{{casemanager.username}}</p>
+              <p class="subtitle">{{username}}</p>
                   <a href = "/logout"><button class="button is-danger" id="logout">
                     Logout 
                   </button></a><br><a href = "/table">
@@ -46,8 +46,8 @@
         </div>
         <div class="tile is-parent">
           <article class="tile is-child notification is-warning">
-            <p class="title">Sponsor</p>
-            <p class="subtitle">info</p>
+            <p class="title">{{sponsor.sponsor_name}}</p>
+            <p class="subtitle">Age {{sponsor.age}}</p>
             <div class="content">
               <div class="contain field">
                 <p class="control">
@@ -56,11 +56,11 @@
                   </button> --}}
                 </p>
               </div>
-              <p>Address 1:</p>
-              <p>Address 2:</p>
-              <p>City:</p>
-              <p>State:</p>
-              <p>Zip:</p>
+              <p>Address 1: {{sponsor.address1}}</p>
+              <p>Address 2: {{sponsor.address2}}</p>
+              <p>City: {{sponsor.city}}</p>
+              <p>State: {{sponsor.state}}</p>
+              <p>Zip: {{sponsor.zip}}</p>
             </div>
             <button class="button is-success" id="edit-sponsor">Edit</button>
           </article>
@@ -173,6 +173,7 @@
         </header>
         <section class="modal-card-body">
           <!-- Content ... -->
+          Name
           <input
             class="input"
             name="sponsor_name"
@@ -180,6 +181,7 @@
             placeholder="Name of Sponsor"
             id="sponsor-name"
           />
+          Address 1
           <input
             class="input"
             name="sponsor_address1"
@@ -187,6 +189,7 @@
             placeholder="Address1"
             id="sponsor-address1"
           />
+          Address 2
           <input
             class="input"
             name="sponsor_address2"
@@ -194,6 +197,30 @@
             placeholder="Address2"
             id="sponsor-address2"
           />
+          City
+          <input
+            class="input"
+            name="city"
+            type="text"
+            placeholder="City"
+            id="city"
+          />
+          State<input
+            class="input"
+            name="state"
+            type="text"
+            placeholder="State"
+            id="state"
+          />
+          Zip
+          <input
+            class="input"
+            name="zip"
+            type="text"
+            placeholder="Zip Code"
+            id="zip"
+          />
+          Relationship
           <input
             class="input"
             name="sponsor_relationship"
@@ -201,6 +228,7 @@
             placeholder="Sponsor Relationship"
             id="sponsor-relationship"
           />
+          Age
           <input
             class="input"
             name="sponsor_age"
@@ -208,13 +236,15 @@
             placeholder="Sponsor Age"
             id="sponsor-age"
           />
+          {{!-- Category
           <input
             class="input"
             name="category"
             type="text"
             placeholder="Category"
             id="category"
-          />
+          /> --}}
+          Gender
           <input
             class="input"
             name="sponsor-gender"
@@ -381,6 +411,7 @@ FRP and Supporting Documents:</strong>
   </body>
   <script src="../js/casemanagerview.js"></script>
   <script src = "../js/editUAC.js"></script>
-  <script src = "../controllers/api/userRoutes.js"></script>
+  {{!-- <script src = "../controllers/api/userRoutes.js"></script> --}}
+  <script src = "../js/newSponsor.js"></script>
 </html>
 

@@ -35,15 +35,33 @@ router.get("/new-user", async (req, res) => {
   res.render("signUp");
 });
 
-//GET ONE UAC
+//GET ONE SPONSOR
 
+router.get("dashboard/:sponsor_id", async (req, res) => {
+  try {
+    const singleSponsor = await Sponsor.findOne(req.params.sponsor_id);
+    const sponsor = singleSponsor.get({ plain: true });
+
+    res.render("dashboard", {
+      sponsor,
+      username: req.session.username,
+      id: req.session.user_id,
+      email: req.session.email,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 router.get("/dashboard/:id", async (req, res) => {
   try {
     const singleUACinfo = await UAC.findByPk(req.params.id);
 
     const uac = singleUACinfo.get({ plain: true });
 
-    res.render("dashboard", { uac });
+    res.render("dashboard", {
+      uac,
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -135,6 +153,7 @@ router.get("/table", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 // //GET all CM names for assignment
 // router.get("/table", async (req, res) => {
 //   try {

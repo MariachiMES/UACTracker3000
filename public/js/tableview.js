@@ -40,3 +40,9 @@ cmBgModalEl.addEventListener("click", function () {
 cmXcloseEl.addEventListener("click", function () {
   cmModalEl.classList.remove("is-active");
 });
+
+var dropdown = document.querySelector(".dropdown");
+dropdown.addEventListener("click", function (event) {
+  event.stopPropagation();
+  dropdown.classList.toggle("is-active");
+});
