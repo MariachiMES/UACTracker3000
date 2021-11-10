@@ -23,8 +23,8 @@
               <p class="subtitle">{{uac.a_number}}</p>
               <div class="container field is-grouped">
                 <p class="control">
-                  <button class="button is-warning" id="release-request">
-                    Release Request 
+                  <button class="button is-warning" id="release-request-btn">
+                    Releae Request 
                   </button>
                 </p>
                 <p class="control">
@@ -45,7 +45,7 @@
           </div>
         </div>
         <div class="tile is-parent">
-          <article class="tile is-child notification is-danger">
+          <article class="tile is-child notification is-warning">
             <p class="title">Sponsor</p>
             <p class="subtitle">info</p>
             <div class="content">
@@ -328,7 +328,20 @@ POR
         </footer>
       </div>
     </div>
+    <div class="modal" id = "release-request-modal">
+  <div class="modal-background" id= "release-request-BG"></div>
+  <div class="modal-content">
+    <div class = "box">
+      <div class = "content">
+        <strong>Release Request</strong><br>
+        <small>{{uac.uacname}} {{uac.a_number}}</small><br>
+        <small>THE RELEASE REQUEST GOES IN HERE AND SHOULD LOOK GOOD</small>
+      </div>
+    </div> </div>
+  <button class="modal-close is-large" aria-label="close" id = "release-request-x"></button>
+</div>
   </body>
   <script src="../js/casemanagerview.js"></script>
   <script src = "../js/editUAC.js"></script>
 </html>
+

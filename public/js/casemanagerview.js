@@ -16,6 +16,24 @@ const editTaskxCloseEl = document.querySelector("#edit-tasks-close-x");
 const editTaskcancelBtnEL = document.querySelector("#cancel-edit-task-modal");
 const editTaskbgEl = document.querySelector("#edit-tasks-BG");
 
+const releaseRequestModal = document.querySelector("#release-request-modal");
+const releaseRequestBtnEl = document.querySelector("#release-request-btn");
+const releaseRequestModalBG = document.querySelector("#release-request-BG");
+const releaseRequestModalX = document.querySelector("#release-request-x");
+
+const closeRRModal = function () {
+  releaseRequestModal.classList.remove("is-active");
+};
+
+const activateRRModal = function () {
+  releaseRequestModal.classList.add("is-active");
+};
+releaseRequestModalBG.addEventListener("click", closeRRModal);
+
+releaseRequestModalX.addEventListener("click", closeRRModal);
+
+releaseRequestBtnEl.addEventListener("click", activateRRModal);
+
 const closeUACModal = function () {
   editUACModal.classList.remove("is-active");
 };
