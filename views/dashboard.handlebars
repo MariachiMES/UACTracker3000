@@ -4,8 +4,17 @@
         <div class="tile">
           <div class="tile is-parent is-vertical">
             <article class="tile is-child notification is-primary">
-              <p class="title">Caseload</p>
-              <p class="subtitle">stuff</p>
+              <p class="title">Menu</p>
+              <p class="subtitle">{{casemanager.username}}</p>
+                  <button class="button is-danger" id="logout">
+                    Logout 
+                  </button><br><a href = "/table">
+                  <br>
+                  <button class="button is-link" id="Table View">
+
+                    Table View 
+                  </button></a><br>
+              
             </article>
           </div>
           <div class="tile is-parent">
@@ -19,9 +28,9 @@
                   </button>
                 </p>
                 <p class="control">
-                  <button class="button is-danger" id="fingerprints">
+                  {{!-- <button class="button is-danger" id="fingerprints">
                     Fingerprints
-                  </button>
+                  </button> --}}
                 </p>
               </div>
               <div class="uac-info">
@@ -42,9 +51,9 @@
             <div class="content">
               <div class="contain field">
                 <p class="control">
-                  <button class="button is-success" id="address-route">
+                  {{!-- <button class="button is-success" id="address-route">
                     Address Verification
-                  </button>
+                  </button> --}}
                 </p>
               </div>
               <p>Address 1:</p>
@@ -83,11 +92,17 @@
               <span id = "sex-offender-check">{{uac.sex_offender_check}}</span> <br />
               <span>SIR</span><br/>
               <span id = "SIR">{{uac.SIR}}</span>
+              <button class="button is-link" id="edit-tasks">
+            Edit
+          </button>
             </div>
           </div>
         </article>
       </div>
     </div>
+
+
+
 
     <div class="modal" id="edit-uac-modal">
       <div class="modal-background" id="edit-uac-BG"></div>
@@ -107,7 +122,7 @@
           <input
           
             class="input"
-            name="uac_name"
+            name="uacname"
             type="text"
             id= "uac-edit-name"
             placeholder={{uac.uacname}}>
@@ -130,8 +145,8 @@
           Gender:
           <input
             class="input"
-            id = "uac-gender"
-            name="uac-gender"
+            id = "gender"
+            name="gender"
             type="text"
             placeholder={{uac.gender}}
           >
@@ -213,6 +228,103 @@
             Save Changes
           </button>
           <button class="button" id="cancel-edit-sponsor-modal">Cancel</button>
+        </footer>
+      </div>
+    </div>
+
+
+        <div class="modal" id="edit-tasks-modal">
+      <div class="modal-background" id="edit-tasks-BG"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Edit Tasks</p>
+          <button
+            class="delete"
+            id="edit-tasks-close-x"
+            aria-label="close"
+          ></button>
+        </header>
+        <section class="modal-card-body">
+          <!-- Content ... -->
+          FRP:
+          <input
+            class="input"
+            name="FRP"
+            type="text"
+            placeholder="Date Received"
+            id="FRP"
+          />
+          ARI
+          <input
+            class="input"
+            name="ARI"
+            type="text"
+            placeholder="Date Received"
+            id="ARI"
+          />
+POR
+          <input
+            class="input"
+            name="POR"
+            type="text"
+            placeholder="Date All BC's Received"
+            id="POR"
+          />
+          Sponsor Background Check
+          <input
+            class="input"
+            name="sponsor_bgc"
+            type="text"
+            placeholder="Date Completed"
+            id="sponsor_bgc"
+          />
+          Sponsor ID
+          <input
+            class="input"
+            name="sponsor_id"
+            type="text"
+            placeholder="Date Received"
+            id="sponsor_id"
+          />
+          Sponsor FP
+          <input
+            class="input"
+            name="sponsor_fp"
+            type="text"
+            placeholder="Date Fingerprinted"
+            id="sponsor_fp"
+          />
+          HHM ID
+          <input
+            class="input"
+            name="hhm_id"
+            type="text"
+            placeholder="Date Received"
+            id="hhm_id"
+          />
+          Sex-Offender Check          
+          <input
+            class="input"
+            name="sex_offender_check"
+            type="text"
+            placeholder="Date Checked"
+            id="sex_offender_check"
+          />
+          SIR 
+                    <input
+            class="input"
+            name="SIR"
+            type="text"
+            placeholder="Number of SIRs"
+            id="SIR"
+          />
+
+        </section>
+        <footer class="modal-card-foot">
+          <button class="button is-success" id="save-task-info">
+            Save Changes
+          </button>
+          <button class="button" id="cancel-edit-task-modal">Cancel</button>
         </footer>
       </div>
     </div>

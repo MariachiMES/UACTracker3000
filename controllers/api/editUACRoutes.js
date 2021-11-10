@@ -1,29 +1,33 @@
 const router = require("express").Router();
 const { UAC } = require("../../models");
-const { Sponsor } = require("../../models");
 
-router.put("/", async (req, res) => {
-  console.log("changes made", req.body);
-  //   try {
-  const uacData = await UAC.put(req.body);
-  console.log(uacData);
-  // const sponsorData = await Sponsor.create(req.body);
-  // console.log(sponsorData);
-
-  //     console.log("uac data: ", userData);
-  //     req.session.save(() => {
-  //       req.session.user_id = userData.user_id;
-  //       req.session.logged_in = true;
-  //       req.session.username = userData.username;
-  //       req.session.email = userData.email;
-
-  res.sendStatus(200);
-  //     });
-  //   } catch (err) {
-  //     console.log("Err", err);
-  //     res.status(400).json(err);
-
-  //   }
+router.put("/:uac_id", (req, res) => {
+  //Calls the update method on the Book model
+  UAC.update(
+    {
+      // All the fields you can update and the data attached to the request body.
+      uacname: req.body.uacname,
+      a_number: req.body.a_number,
+      dob: req.body.dob,
+      coo: req.body.coo,
+      age: req.body.age,
+      category: req.body.category,
+      gender: req.body.gender,
+    },
+    {
+      // Gets a book based on the book_id given in the request parameters
+      where: {
+        uac_id: req.params.uac_id,
+      },
+    }
+  )
+    .then((updatedUAC) => {
+      res.json(updatedUAC);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.json(err);
+    });
 });
 
 module.exports = router;

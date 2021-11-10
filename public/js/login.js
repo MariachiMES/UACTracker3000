@@ -16,7 +16,6 @@ async function loginFormHandler(event) {
       },
     });
     if (response.ok) {
-      alert("User logged In");
       document.location.replace("/table");
     } else {
       alert(response.statusText);
