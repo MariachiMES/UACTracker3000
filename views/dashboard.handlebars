@@ -4,8 +4,17 @@
         <div class="tile">
           <div class="tile is-parent is-vertical">
             <article class="tile is-child notification is-primary">
-              <p class="title">Caseload</p>
-              <p class="subtitle">stuff</p>
+              <p class="title">Menu</p>
+              <p class="subtitle">{{casemanager.username}}</p>
+                  <a href = "/logout"><button class="button is-danger" id="logout">
+                    Logout 
+                  </button></a><br><a href = "/table">
+                  <br>
+                  <button class="button is-link" id="Table View">
+
+                    Table View 
+                  </button></a><br>
+              
             </article>
           </div>
           <div class="tile is-parent">
@@ -14,20 +23,20 @@
               <p class="subtitle">{{uac.a_number}}</p>
               <div class="container field is-grouped">
                 <p class="control">
-                  <button class="button is-warning" id="release-request">
-                    Release Request 
+                  <button class="button is-warning" id="release-request-btn">
+                    Releae Request 
                   </button>
                 </p>
                 <p class="control">
-                  <button class="button is-danger" id="fingerprints">
+                  {{!-- <button class="button is-danger" id="fingerprints">
                     Fingerprints
-                  </button>
+                  </button> --}}
                 </p>
               </div>
               <div class="uac-info">
-                <p>DOB:{{uac.dob}}</p>
+                <p>DOB:{{format_nice_date uac.dob}}</p>
                 <p>COO:{{uac.coo}}</p>
-                <p>LOS:{{uac.intake}}</p>
+                <p>LOS:{{format_nice_date uac.intake}}</p>
                 <p>Age:{{uac.age}}</p>
                 <p>Category:{{uac.category}}</p>
               </div>
@@ -36,15 +45,15 @@
           </div>
         </div>
         <div class="tile is-parent">
-          <article class="tile is-child notification is-danger">
+          <article class="tile is-child notification is-warning">
             <p class="title">Sponsor</p>
             <p class="subtitle">info</p>
             <div class="content">
               <div class="contain field">
                 <p class="control">
-                  <button class="button is-success" id="address-route">
+                  {{!-- <button class="button is-success" id="address-route">
                     Address Verification
-                  </button>
+                  </button> --}}
                 </p>
               </div>
               <p>Address 1:</p>
@@ -83,11 +92,17 @@
               <span id = "sex-offender-check">{{uac.sex_offender_check}}</span> <br />
               <span>SIR</span><br/>
               <span id = "SIR">{{uac.SIR}}</span>
+              <button class="button is-link" id="edit-tasks">
+            Edit
+          </button>
             </div>
           </div>
         </article>
       </div>
     </div>
+
+
+
 
     <div class="modal" id="edit-uac-modal">
       <div class="modal-background" id="edit-uac-BG"></div>
@@ -107,7 +122,7 @@
           <input
           
             class="input"
-            name="uac_name"
+            name="uacname"
             type="text"
             id= "uac-edit-name"
             placeholder={{uac.uacname}}>
@@ -130,8 +145,8 @@
           Gender:
           <input
             class="input"
-            id = "uac-gender"
-            name="uac-gender"
+            id = "gender"
+            name="gender"
             type="text"
             placeholder={{uac.gender}}
           >
@@ -216,7 +231,156 @@
         </footer>
       </div>
     </div>
+
+
+        <div class="modal" id="edit-tasks-modal">
+      <div class="modal-background" id="edit-tasks-BG"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Edit Tasks</p>
+          <button
+            class="delete"
+            id="edit-tasks-close-x"
+            aria-label="close"
+          ></button>
+        </header>
+        <section class="modal-card-body">
+          <!-- Content ... -->
+          FRP:
+          <input
+            class="input"
+            name="FRP"
+            type="text"
+            placeholder="Date Received"
+            id="FRP"
+          />
+          ARI
+          <input
+            class="input"
+            name="ARI"
+            type="text"
+            placeholder="Date Received"
+            id="ARI"
+          />
+POR
+          <input
+            class="input"
+            name="POR"
+            type="text"
+            placeholder="Date All BC's Received"
+            id="POR"
+          />
+          Sponsor Background Check
+          <input
+            class="input"
+            name="sponsor_bgc"
+            type="text"
+            placeholder="Date Completed"
+            id="sponsor_bgc"
+          />
+          Sponsor ID
+          <input
+            class="input"
+            name="sponsor_id"
+            type="text"
+            placeholder="Date Received"
+            id="sponsor_id"
+          />
+          Sponsor FP
+          <input
+            class="input"
+            name="sponsor_fp"
+            type="text"
+            placeholder="Date Fingerprinted"
+            id="sponsor_fp"
+          />
+          HHM ID
+          <input
+            class="input"
+            name="hhm_id"
+            type="text"
+            placeholder="Date Received"
+            id="hhm_id"
+          />
+          Sex-Offender Check          
+          <input
+            class="input"
+            name="sex_offender_check"
+            type="text"
+            placeholder="Date Checked"
+            id="sex_offender_check"
+          />
+          SIR 
+                    <input
+            class="input"
+            name="SIR"
+            type="text"
+            placeholder="Number of SIRs"
+            id="SIR"
+          />
+
+        </section>
+        <footer class="modal-card-foot">
+          <button class="button is-success" id="save-task-info">
+            Save Changes
+          </button>
+          <button class="button" id="cancel-edit-task-modal">Cancel</button>
+        </footer>
+      </div>
+    </div>
+    <div class="modal" id = "release-request-modal">
+  <div class="modal-background" id= "release-request-BG"></div>
+  <div class="modal-content">
+    <div class = "box">
+      <div class = "content">
+        <strong>Release Request</strong><br>
+        <small>{{uac.uacname}} {{uac.a_number}}</small><br>
+        <small><strong>SPONSOR/UAC RELATIONSHIP:</strong><br><br>
+
+ {{sponsor.pronoun}} {{sponor.name}}, Age {{sponsor.age}}, category {{uac.category}}, {{sponsor.relationship}} requests sponsorship of {{uac.uacname}} (A# {{uac.a_number}}), {{uac.gender}}, age {{uac.age}}). {{sponsor.pronoun}}. {{sponsor.name}} currently resides in {{sponsor.city}},{{sponsor.state}} USA. 
+
+<br><br>
+
+<strong>
+FRP and Supporting Documents:</strong>
+<br>
+<br>
+ The Case Manager received and reviewed {{sponsor.pronoun}} {{sponsor.name}}'s family reunification packet, which includes: <br><br>
+ 
+ --Sponsor ID: {{uac.sponsor_id}} <br>
+ --Household Member ID: {{uac.hhm_id}} <br>
+ --Proof of ability to provide housing, food, education: <br>
+ The sponsor adequately demonstrated that he is able to support the minor financially. <br>
+ --Proof of Address: [type of document] received on {{uac.POR}} <br>
+ Verified through Smarty Streets on {{uac.POA}} Verified through Google Maps on {{uac.POA}}. <br>
+ --Proof of immigration/citizenship status: {{uac.sponsor_id}} <br>
+ --Letter of Designation: Received on {{uac.LOD}} <br>
+ --LOPC Packet: Sent on 10/10/2021. <br>
+ --Sponsor Handbook: Sponsor confirmed reading Sponsor Handbook on 10/10/2021. Criminal: <br>
+ --As of 10/10/2021, for {{sponsor.name}} : <br>
+ --Public Records Check: Clear <br>
+ --Sex offender Check: Clear <br>
+ --Fingerprint Check: Fingerprints taken: {{uac.sponsor_fp}} <br><br>
+ Results Required Prior to Release: yes Results Status: Received Results: Clear The FFS informed this case manager that the sponsor has criminal record information that does allow for the UAC to be safely released to the sponsor.<br><br>
+ --There are no other household members in the residence<br>
+ --Self-Disclosure: This Case Manager asked the sponsor if he/she has any criminal history on 10/10/2021 Sponsor responded: No. <br>
+ <br>
+ Birth Certificates: All birth certificates needed to prove the sponsor-UAC relationship were received on 10/10/2021 Sponsor is confirmed to be the UAC’s {{sponsor.relationship}}. Birth certificates received are: Mom, Dad, grandma, grandpa, whoever. <br><br>
+ 
+ PRIOR SPONSORSHIP: Verified on 10/10/2021 that the sponsor did not previously sponsor or attempt to sponsor a child. <br><br>
+ PRIOR ADDRESS: Verified on 10/10/2021 that the sponsor’s address was not used in a previous case. <br><br>
+ 
+ <strong>CONTACT WITH PRIMARY CAREGIVER IN COO:</strong><br><br> Spoke with Hector’s Mom on 10/10/2021. Mr. Barberi’s Mother was able to verify information provided by the UAC and the sponsor. <br><br>
+ <strong>SPONSOR RESOURCES:</strong> <br><br>
+ The following emergency contact information was provided to the sponsor: 911, ORR Parent and Sponsor Hotline, information regarding health care and vaccinations, Department of Family and Protective Services (in state of residence), and National Human Trafficking Resource Center.<br><br>
+ <strong> Release Recommendation: </strong>Recommended Straight Release</small>
+      </div>
+    </div> </div>
+  <button class="modal-close is-large" aria-label="close" id = "release-request-x"></button>
+</div>
   </body>
   <script src="../js/casemanagerview.js"></script>
   <script src = "../js/editUAC.js"></script>
+  <script src = "../controllers/api/userRoutes.js"></script>
 </html>
+

@@ -13,6 +13,7 @@
     "express-handlebars": "^5.3.4",
     "express-session": "^1.17.2",
     "handlebars": "^4.7.7",
+    "heroku": "^7.59.1",
     "mysql2": "^2.3.2",
     "nodemon": "^2.0.14",
     "sequelize": "^6.8.0",

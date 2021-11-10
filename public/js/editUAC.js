@@ -6,7 +6,7 @@ async function editUAChandler(event) {
   const dob = document.querySelector("#uac-dob").value.trim();
   const coo = document.querySelector("#uac-coo").value.trim();
   //   const intake = document.querySelector("#intake").value.trim();
-  const gender = document.querySelector("#uac-gender").value.trim();
+  const gender = document.querySelector("#gender").value.trim();
   const age = document.querySelector("#uac-age").value.trim();
   const category = document.querySelector("#category").value.trim();
   //   const FRP = document.querySelector("#FRP").value.trim();
@@ -25,7 +25,7 @@ async function editUAChandler(event) {
 
   const editUACModal = document.querySelector("#edit-uac-modal");
 
-  const response = await fetch("/api/uac", {
+  const response = await fetch("/edit/:id", {
     method: "PUT",
     body: JSON.stringify({
       a_number,
@@ -37,8 +37,8 @@ async function editUAChandler(event) {
       age,
       category,
       //   FRP,
-      ARI,
-      POR,
+      // ARI,
+      // POR,
       //   list_of_bcs,
       //   sponsor_bgc,
       //   sponsor_id,
