@@ -39,10 +39,10 @@ router.get("/new-user", async (req, res) => {
 
 router.get("dashboard/:sponsor_id", async (req, res) => {
   try {
-    const singleSponsor = await Sponsor.findOne(req.params.sponsor_id);
+    const singleSponsor = await Sponsor.findByPk(req.params.sponsor_id);
     const sponsor = singleSponsor.get({ plain: true });
 
-    res.render("dashboard", {
+    res.render("sponsortab", {
       sponsor,
       username: req.session.username,
       id: req.session.user_id,

@@ -36,7 +36,7 @@ async function newSponsorHandler(event) {
 
   if (response.ok) {
     editSponsor.classList.remove("is-active");
-    document.location.replace("/dashboard/:id");
+    document.location.replace("/dashboard/");
     console.log(response);
   } else {
     alert(response.statusText);
