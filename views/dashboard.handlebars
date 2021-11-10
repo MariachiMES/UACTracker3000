@@ -34,9 +34,9 @@
                 </p>
               </div>
               <div class="uac-info">
-                <p>DOB:{{uac.dob}}</p>
+                <p>DOB:{{format_nice_date uac.dob}}</p>
                 <p>COO:{{uac.coo}}</p>
-                <p>LOS:{{uac.intake}}</p>
+                <p>LOS:{{format_nice_date uac.intake}}</p>
                 <p>Age:{{uac.age}}</p>
                 <p>Category:{{uac.category}}</p>
               </div>
@@ -381,5 +381,6 @@ FRP and Supporting Documents:</strong>
   </body>
   <script src="../js/casemanagerview.js"></script>
   <script src = "../js/editUAC.js"></script>
+  <script src = "../controllers/api/userRoutes.js"></script>
 </html>
 

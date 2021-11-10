@@ -19,4 +19,10 @@ module.exports = {
       return `<span for="img" aria-label="gear">⚙️</span>`;
     }
   },
+
+  format_nice_date: (date) => {
+    return `${new Date(date).getMonth()}/${new Date(date).getDate()}/${new Date(
+      date
+    ).getFullYear()}`;
+  },
 };
