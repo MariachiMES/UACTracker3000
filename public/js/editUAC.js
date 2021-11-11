@@ -10,8 +10,7 @@ async function editUAChandler(event) {
   const age = document.querySelector("#uac-age").value.trim();
   const category = document.querySelector("#category").value.trim();
   //   const FRP = document.querySelector("#FRP").value.trim();
-  const ARI = document.querySelector("#ARI").value;
-  const POR = document.querySelector("#POR").value;
+
   //   const list_of_bcs = document.querySelector("#list-of-bcs").value.trim();
   //   const sponsor_bgc = document.querySelector("#sponsor-bgc").value;
   //   const sponsor_id = document.querySelector("#sponsor-id").value.trim();
@@ -24,8 +23,9 @@ async function editUAChandler(event) {
   //     .value.trim();
 
   const editUACModal = document.querySelector("#edit-uac-modal");
-
-  const response = await fetch("/edit/:id", {
+  const uacID = window.location.pathname;
+  console.log(uacID);
+  const response = await fetch("/api/uac/" + uacID, {
     method: "PUT",
     body: JSON.stringify({
       a_number,
@@ -55,7 +55,7 @@ async function editUAChandler(event) {
 
   if (response.ok) {
     editUACModal.classList.remove("is-active");
-    document.location.replace();
+    document.location.replace("/table");
     console.log(response);
   } else {
     alert(response.statusText);
@@ -63,4 +63,17 @@ async function editUAChandler(event) {
 }
 document
   .querySelector("#edit-uac-btn")
+  .addEventListener("click", editUAChandler);
+
+const FRP = document.querySelector("#FRP").value;
+const ARI = document.querySelector("#ARI").value;
+const POR = document.querySelector("#POR").value;
+const sponsor_fp = document.querySelector("#sponsor-id").value;
+const sponsor_fp = document.querySelector("#sponsor-fp").value;
+const hhm_id = document.querySelector("#hhm_id").value;
+const sex_offender_check = document.querySelector("#sex-offender-check").value;
+const SIR = document.querySelector("#SIR").value;
+
+document
+  .querySelector("#save-task-info")
   .addEventListener("click", editUAChandler);
