@@ -1,8 +1,9 @@
 const router = require("express").Router();
 const { UAC } = require("../../models");
 
-router.put("/:uac_id", (req, res) => {
+router.put("/uac/:uac_id", (req, res) => {
   //Calls the update method on the Book model
+  console.log("This works");
   UAC.update(
     {
       // All the fields you can update and the data attached to the request body.
