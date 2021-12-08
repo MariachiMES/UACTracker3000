@@ -35,6 +35,10 @@ CaseManager.init(
         len: [8, 34],
       },
     },
+    is_team_lead: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
   },
   {
     hooks: {

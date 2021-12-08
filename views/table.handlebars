@@ -1,5 +1,6 @@
+
 <strong>Welcome {{username}}</strong>
-    <section class="hero is-info is-small">
+    <section class="hero is-info is-small ">
       <div class="hero-head">
         <nav class="navbar" role="navigation" aria-label="main navigation">
           <div class="navbar-brand">
@@ -26,7 +27,12 @@
                         <strong>Add Case Manager</strong>
                     
                   </a>
-                  <a class="button is-light" name = "logout"> <strong>Log out</strong> </a>
+                   <div class = "button is-one-eighth has-background-info-light p-4 mb-2 has-text-weight-bold has-text-black">Total: {{uacTable.[0].totaluacs}}</div>
+                   <div class = "button is-one-eighth has-background-warning p-4 mb-2 has-text-weight-bold	has-text-black">Submitted: {{uacTable.[0].totalSubmitted}}</div>
+                   <div class = "button is-one-eighth has-background-primary p-4 mb-2 has-text-weight-bold	has-text-black">Approved: {{uacTable.[0].totalApproved}}</div>
+                   <div class = "button is-one-eighth has-background-danger p-4 mb-2 has-text-weight-bold	has-text-black">Remanded: {{uacTable.[0].totalRemanded}}</div>
+                   <a class="button has-background-danger-dark has-text-weight-bold has-text-black" name = "logout"> <strong>Log out</strong>
+                   </a>
                 </div>
               </div>
             </div>
@@ -47,18 +53,13 @@
             </th>
             <th><strong>Case Manager</strong></th>
             <th>
+              <abbr title="Sponsor Assessment"
+                ><strong>Sponsor Assessment</strong></abbr
+              >
+            </th>
+            <th>
               <abbr title="Family reunification packet"
                 ><strong>FRP</strong></abbr
-              >
-            </th>
-            <th>
-              <abbr title="Authorization of release of information"
-                ><strong>ARI</strong></abbr
-              >
-            </th>
-            <th>
-              <abbr title="Trail of birth certificates"
-                ><strong>BC</strong></abbr
               >
             </th>
             <th>
@@ -75,7 +76,13 @@
               <abbr title="Household member IDs"><strong>HHM IDs</strong></abbr>
             </th>
             <th>
-              <abbr title="Serious incident report"><strong>SIR</strong></abbr>
+              <abbr title="dat submitted"><strong>Submitted</strong></abbr>
+            </th>
+            <th>
+              <abbr title="date approved"><strong>Approved</strong></abbr>
+            </th>
+            <th>
+              <abbr title="Remanded"><strong>Remanded</strong></abbr>
             </th>
             <th>
               <abbr title="Exception entered"><strong>Exception</strong></abbr>
@@ -87,17 +94,53 @@
     
           <td><a href= "dashboard/{{uac_id}}">{{a_number}}</td></a>
           <td>{{uacname}}</td>
-          <td>{{case_manager}}</td>
-          <td>{{FRP}}</td>
-          <td>{{ARI}}</td>
-          <td>{{POR}}</td>
-          <td>{{sponsor_bgc}}</td>
-          <td>{{sponsor_fp}}</td>
-          <td>{{hhm_id}}</td>
-          <td>{{SIR}}</td>
-          <td>{{exception}}</td>
+          <td><a href = "caseload/{{casemanager.user_id}}">{{casemanager.username}} </a><a href = "mailto:{{casemanager.email}}">{{casemanager.email}}</a></td>
+          {{#if sponsor_assessment}}
+          <td class = "has-background-primary-light">{{format_nice_date sponsor_assessment}}</td>
+          {{else}}
+          <td class = "has-background-danger-light">{{format_nice_date sponsor_assessment}}</td>
+          {{/if}}
+          {{#if frp}}
+          <td class = "has-background-primary-light">{{format_nice_date frp}}</td>
+          {{else}}
+          <td class = "has-background-danger-light">{{format_nice_date frp}}</td>
+          {{/if}}
+          {{#if sponsor_bgc}}
+          <td class = "has-background-primary-light">{{format_nice_date sponsor_bgc}}</td>
+          {{else}}
+          <td class = "has-background-danger-light">{{format_nice_date sponsor_bgc}}</td>
+          {{/if}}
+          {{#if sponsor_fp}}
+          <td class = "has-background-primary-light">{{format_nice_date sponsor_fp}}</td>
+          {{else}}
+          <td class = "has-background-danger-light">{{format_nice_date sponsor_fp}}</td>
+          {{/if}}
+          {{#if hhm_id}}
+          <td class = "has-background-primary-light">{{format_nice_date hhm_id}}</td>
+          {{else}}
+          <td class = "has-background-danger-light">{{format_nice_date hhm_id}}</td>
+          {{/if}}
+          {{#if submitted}}
+          <td class = "has-background-primary-light">{{submitted}}</td>
+          {{else}}
+          <td class = "has-background-danger-light">{{submitted}}</td>
+          {{/if}}
+           {{#if approved}}
+          <td class = "has-background-primary-light">{{approved}}</td>
+          {{else}}
+          <td class = "has-background-danger-light">{{approved}}</td>
+          {{/if}}
+           {{#if remanded}}
+          <td class = "has-background-danger-light">{{remanded}}</td>
+          {{else}}
+          <td class = "has-background-primary-light">{{remanded}}</td>
+          {{/if}}
+          {{#if exception}}
+          <td class = "has-background-primary-light">{{exception}}</td>
+          {{else}}
+          <td class = "has-background-danger-light">{{exception}}</td>
+          {{/if}}
         </tbody>{{/each}}
-
         <tfoot>
           <tr>
             <th>
@@ -108,18 +151,14 @@
             </th>
             <th><strong>Case Manager</strong></th>
             <th>
+                <abbr title="Sponsor Assessment"
+                ><strong>Sponsor Assessment</strong></abbr
+              >
+
+            </th>
+            <th>
               <abbr title="Family reunification packet"
                 ><strong>FRP</strong></abbr
-              >
-            </th>
-            <th>
-              <abbr title="Authorization of release of information"
-                ><strong>ARI</strong></abbr
-              >
-            </th>
-            <th>
-              <abbr title="Trail of birth certificates"
-                ><strong>BC</strong></abbr
               >
             </th>
             <th>
@@ -136,7 +175,13 @@
               <abbr title="Household member IDs"><strong>HHM IDs</strong></abbr>
             </th>
             <th>
-              <abbr title="Serious incident report"><strong>SIR</strong></abbr>
+              <abbr title="dat submitted"><strong>Submitted</strong></abbr>
+            </th>
+            <th>
+              <abbr title="date approved"><strong>Approved</strong></abbr>
+            </th>
+            <th>
+              <abbr title="Remanded"><strong>Remanded</strong></abbr>
             </th>
             <th>
               <abbr title="Exception entered"><strong>Exception</strong></abbr>
@@ -145,6 +190,8 @@
         </tfoot>
       </table>
     </div>
+
+    {{!-- ADD NEW UAC MODAL START --}}
     <div class="modal" id = "new-uac-modal">
         <div class="modal-background"></div>
         <div class="modal-card">
@@ -154,27 +201,34 @@
           </header>
           <section class="modal-card-body">
             <!-- Content ... -->
+            <span>A#</span>
             <input class="input" name ="a-number" type="text" placeholder="A#" id="a-number">
+            <span>Full Name</span>
             <input class="input" name = "uac-name" type="text" placeholder="UAC Name" id="uac-name">
+            <span>DOB</span>
             <input class="input" name = "dob" type="text" placeholder="DOB" id="dob">
+            <span>Country of Origin</span>
             <input class="input" name = "coo" type="text" placeholder="Country of Origin" id="coo">
+            <span>Date Admitted</span>
             <input class="input" name = "date-admitted" type="text" placeholder="Date Admitted" id="date-admitted">
+            <span>Gender</span>
             <input class="input" name = "gender" type="text" placeholder="Gender" id="gender">
-            <div class="dropdown">
+            Case Manager User ID: <span id = "user-id"></span><br>
+            <div class="dropdown is-up">
                 <div class="dropdown-trigger">
                   <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-                    <span>Assign Case Manager</span>
+                    <span id="selected-cm">Assign Case Manager</span>
                     <span class="icon is-small">
                       <i class="fas fa-angle-down" aria-hidden="true"></i>
                     </span>
                   </button>
                 </div>
                 <div class="dropdown-menu" id="dropdown-menu" role="menu">
-                  <div class="dropdown-content">
+                  <div class="dropdown-content" id = "cm-dropdown">
                     {{#each cmSelector}}
-                    <a href = "#" class="dropdown-item">
+                    <div class="dropdown-item" value = {{user_id}} id = {{user_id}}>
                       {{username}}
-                    </a> {{/each}}
+                    </div> {{/each}}
                     {{!-- <a class="dropdown-item">
                       Other dropdown item
                     </a>
@@ -192,6 +246,7 @@
                 </div>
               </div>
 
+
           </section>
           <footer class="modal-card-foot">
             <button class="button is-success" id = "save-new-uac">Save changes</button>
@@ -199,18 +254,25 @@
           </footer>
         </div>
       </div>
+          {{!-- ADD NEW UAC MODAL END --}}
 
+ {{!-- ADD NEW CASE MANAGER MODAL START --}}
       <div class="modal" id = "cm-modal">
         <div class="modal-background" id = "cm-BG"></div>
         <div class="modal-card">
           <header class="modal-card-head">
-            <p class="modal-card-title">Add New UAC</p>
+            <p class="modal-card-title" >Add New Case Manager</p>
             <button class="delete" id = "cm-close-x" aria-label="close"></button>
           </header>
           <section class="modal-card-body">
             <!-- Content ... -->
+            Name:
             <input class="input" name ="cm-name" type="text" placeholder="Name">
+            Email:
             <input class="input" name = "cm-email" type="text" placeholder="E-Mail">
+            Role:
+            <input class="input" name = "cm-role" type="text" placeholder="i.e. Case Manager/Team Lead/Admin">
+
 
           </section>
           <footer class="modal-card-foot">
@@ -219,9 +281,12 @@
           </footer>
         </div>
       </div>
-  
+ {{!-- ADD NEW CASE MANAGER MODAL END --}}
+
   <script src = "./js/tableview.js">
   
 </script>
 <script src = "./js/newUAC.js"></script>
+
+<script src="https://kit.fontawesome.com/365a8998c2.js" crossorigin="anonymous"></script>
 

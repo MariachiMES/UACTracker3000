@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const { UAC } = require("../../models");
-const { Sponsor } = require("../../models");
 
 router.post("/", async (req, res) => {
   console.log("Create new uac", req.body);

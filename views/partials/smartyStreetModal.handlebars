@@ -1,0 +1,91 @@
+<div class="modal" id="smarty-streets-modal">
+  <div class="modal-background" id="smarty-streets-BG"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Address Verification</p>
+      <button
+        class="delete"
+        id="smarty-streets-close-x"
+        aria-label="close"
+      ></button>
+    </header>
+    <section class="modal-card-body">
+      Address:
+      <input
+        class="input"
+        id="smarty-address"
+        value="{{uac.sponsor_address_1}}"
+      />
+      City:
+      <input class="input" id="smarty-city" value="{{uac.sponsor_city}}" />
+      State:
+      <input class="input" id="smarty-state" value="{{uac.sponsor_state}}" />
+      Zip:
+      <input class="input" id="smarty-zip" value="{{uac.sponsor_zip}}" />
+      <br /><br />
+      <button class="button has-background-primary" id="view-results">View
+        Results</button>
+      <button
+        class="button has-background-info is-hidden"
+        id="google-maps"
+      >Google Maps</button>
+      <button
+        class="button has-background-info is-hidden"
+        id="google-earth"
+      >Google Earth</button>
+      <br />
+      <a
+        class="subtitle is-7"
+        href="https://www.smartystreets.com/products/us-address-verification"
+        target="_blank"
+      >SmartyStreets</a>
+      <br /><br />
+      <h2 class="title is-3 has-text-centered is-hidden" id="found">Found
+        <span id="no-of-results"></span>
+        valid address.</h2><br /><br />
+
+      <table class="table is-fullwidth">
+        <tr>
+          <td class="title is-3" id="address-1-result">Address1</td>
+        </tr>
+        <tr>
+          <td class="subtitle is-7 has-text-right">Delivery line 1</td>
+        </tr>
+        <tr>
+          <td class="title is-3" id="city-result">City</td>
+        </tr>
+        <tr>
+          <td class="subtitle is-7 has-text-right">
+            City, State, Zipcode, +4Code</td>
+        </tr>
+        <tr>
+          <td class="title is-3" id="latitude-result">Lat</td>
+        </tr>
+        <tr>
+          <td class="subtitle is-7 has-text-right">Latitude</td>
+        </tr>
+        <tr>
+          <td class="title is-3" id="longitude-result">Lon</td>
+        </tr>
+        <tr>
+          <td class="subtitle is-7 has-text-right">Longitude</td>
+        </tr>
+        <tr>
+          <td class="title is-3" id="precision-result">Precision</td>
+        </tr>
+        <tr>
+          <td class="subtitle is-7 has-text-right">Precision</td>
+        </tr>
+      </table>
+      <br />
+      <br />
+      <h3 class="title is-4 has-text-centered" id="footnote"><img
+          src="/../../public/assets/images/success.png"
+        />footnote</h3>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button" id="smarty-streets-cancel">Cancel</button>
+
+    </footer>
+  </div>
+</div>

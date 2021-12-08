@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { CaseManager, Sponsor } = require("../../models");
+const { CaseManager } = require("../../models");
 
 router.post("/", async (req, res) => {
   console.log("Create new user");

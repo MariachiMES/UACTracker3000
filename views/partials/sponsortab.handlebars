@@ -1,19 +1,14 @@
-<article class="tile is-child notification is-warning">
-            <p class="title">{{sponsor.sponsor_name}}</p>
-            <p class="subtitle">Age {{sponsor.age}}</p>
+<article class="tile is-child notification has-background-grey-lighter">
+            <p class="title">Sponsor Name{{sponsor_name}}</p>
+            <p class="subtitle">Relationship {{sponsor_relationship}} {{a_number}}</p>
             <div class="content">
               <div class="contain field">
-                <p class="control">
-                  {{!-- <button class="button is-success" id="address-route">
-                    Address Verification
-                  </button> --}}
-                </p>
               </div>
-              <p>Address 1: {{sponsor.address1}}</p>
-              <p>Address 2: {{sponsor.address2}}</p>
-              <p>City: {{sponsor.city}}</p>
-              <p>State: {{sponsor.state}}</p>
-              <p>Zip: {{sponsor.zip}}</p>
+              <p>Address 1: {{sponsor_address1}}</p>
+              <p>Address 2: {{sponsor_address2}}</p>
+              <p>City: {{sponsor_city}}</p>
+              <p>State: {{sponsor_state}}</p>
+              <p>Zip: {{sponsor_zip}}</p>
             </div>
             <button class="button is-success" id="edit-sponsor">Edit</button>
           </article>

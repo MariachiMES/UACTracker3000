@@ -6,6 +6,7 @@
   "dependencies": {
     "bcrypt": "^5.0.1",
     "bulma": "^0.9.3",
+    "bulma-calendar": "^6.1.14",
     "connect-session": "0.0.1",
     "connect-session-sequelize": "^7.1.2",
     "dotenv": "^10.0.0",
@@ -15,12 +16,16 @@
     "handlebars": "^4.7.7",
     "heroku": "^7.59.1",
     "mysql2": "^2.3.2",
-    "nodemon": "^2.0.14",
+    "nodemon": "^2.0.15",
     "sequelize": "^6.8.0",
-    "sessions": "0.0.2-7"
+    "sessions": "0.0.2-7",
+    "smartystreets-javascript-sdk": "^1.11.4"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint": "^8.2.0"
+  },
   "scripts": {
+    "start": "nodemon server.js",
     "test": "npm test",
     "seed": "node seeds/seeds.js"
   },
@@ -28,7 +33,7 @@
     "type": "git",
     "url": "git+https://github.com/MariachiMES/UACTracker3000.git"
   },
-  "author": "David Ortiz, Ben Townsend, Frank Almaraz",
+  "author": "David Ortiz",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/MariachiMES/UACTracker3000/issues"
