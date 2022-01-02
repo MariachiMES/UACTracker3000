@@ -18,6 +18,7 @@ async function editUAChandler(event) {
 
   const editUACModal = document.querySelector("#edit-uac-modal");
   const editUACID = UACID.split("/")[2];
+  const exception = document.querySelector("#exception").value;
 
   const response = await fetch("/api/edit/uac/" + editUACID, {
     method: "PUT",
@@ -31,6 +32,7 @@ async function editUAChandler(event) {
       gender: gender,
       sir: sir,
       sir_narrative: sir_narrative,
+      exception: exception,
     }),
 
     headers: {
@@ -247,7 +249,7 @@ const colorCoding = function () {
   document;
   document
     .querySelector("#sa-container")
-    .classList.add("has-background-primary");
+    .classList.add("has-background-primary-dark");
   if (frp.value === "") {
     document
       .querySelector("#frp-container")
@@ -256,7 +258,7 @@ const colorCoding = function () {
   document;
   document
     .querySelector("#frp-container")
-    .classList.add("has-background-primary");
+    .classList.add("has-background-primary-dark");
   if (ari.value === "") {
     document
       .querySelector("#ari-container")
@@ -265,7 +267,7 @@ const colorCoding = function () {
   document;
   document
     .querySelector("#ari-container")
-    .classList.add("has-background-primary");
+    .classList.add("has-background-primary-dark");
   if (poa.value === "") {
     document
       .querySelector("#poa-container")
@@ -274,7 +276,7 @@ const colorCoding = function () {
   document;
   document
     .querySelector("#poa-container")
-    .classList.add("has-background-primary");
+    .classList.add("has-background-primary-dark");
   if (por.value === "") {
     document
       .querySelector("#por-container")
@@ -283,7 +285,7 @@ const colorCoding = function () {
   document;
   document
     .querySelector("#por-container")
-    .classList.add("has-background-primary");
+    .classList.add("has-background-primary-dark");
   if (lod.value === "") {
     document
       .querySelector("#lod-container")
@@ -292,7 +294,7 @@ const colorCoding = function () {
   document;
   document
     .querySelector("#lod-container")
-    .classList.add("has-background-primary");
+    .classList.add("has-background-primary-dark");
   if (lopc.value === "") {
     document
       .querySelector("#lopc-container")
@@ -301,7 +303,7 @@ const colorCoding = function () {
   document;
   document
     .querySelector("#lopc-container")
-    .classList.add("has-background-primary");
+    .classList.add("has-background-primary-dark");
   if (sponsor_bgc.value === "") {
     document
       .querySelector("#sponsor_bgc-container")
@@ -310,7 +312,7 @@ const colorCoding = function () {
   document;
   document
     .querySelector("#sponsor_bgc-container")
-    .classList.add("has-background-primary");
+    .classList.add("has-background-primary-dark");
   if (sponsor_id.value === "") {
     document
       .querySelector("#sponsor_id-container")
@@ -319,7 +321,7 @@ const colorCoding = function () {
   document;
   document
     .querySelector("#sponsor_id-container")
-    .classList.add("has-background-primary");
+    .classList.add("has-background-primary-dark");
   if (sponsor_fp.value === "") {
     document
       .querySelector("#sponsor_fp-container")
@@ -328,7 +330,7 @@ const colorCoding = function () {
   document;
   document
     .querySelector("#sponsor_fp-container")
-    .classList.add("has-background-primary");
+    .classList.add("has-background-primary-dark");
   if (hhm_checks.value === "") {
     document
       .querySelector("#hhm_checks-container")
@@ -337,7 +339,7 @@ const colorCoding = function () {
   document;
   document
     .querySelector("#hhm_checks-container")
-    .classList.add("has-background-primary");
+    .classList.add("has-background-primary-dark");
   if (sex_offender_check.value === "") {
     document
       .querySelector("#sex_offender_check-container")
@@ -346,7 +348,7 @@ const colorCoding = function () {
   document;
   document
     .querySelector("#sex_offender_check-container")
-    .classList.add("has-background-primary");
+    .classList.add("has-background-primary-dark");
   if (coo_caregiver_date.value === "") {
     document
       .querySelector("#coo_caregiver_date-container")
@@ -355,7 +357,7 @@ const colorCoding = function () {
   document;
   document
     .querySelector("#coo_caregiver_date-container")
-    .classList.add("has-background-primary");
+    .classList.add("has-background-primary-dark");
   if (can_check_requested_date.value === "") {
     document
       .querySelector("#can_check_requested_date-container")
@@ -364,7 +366,7 @@ const colorCoding = function () {
   document;
   document
     .querySelector("#can_check_requested_date-container")
-    .classList.add("has-background-primary");
+    .classList.add("has-background-primary-dark");
   if (prior_sponsorship_date.value === "") {
     document
       .querySelector("#prior_sponsorship_date-container")
@@ -373,7 +375,7 @@ const colorCoding = function () {
   document;
   document
     .querySelector("#prior_sponsorship_date-container")
-    .classList.add("has-background-primary");
+    .classList.add("has-background-primary-dark");
   if (previous_address_date.value === "") {
     document
       .querySelector("#previous_address_date-container")
@@ -382,7 +384,7 @@ const colorCoding = function () {
   document;
   document
     .querySelector("#previous_address_date-container")
-    .classList.add("has-background-primary");
+    .classList.add("has-background-primary-dark");
   if (criminal_history_date.value === "") {
     document
       .querySelector("#criminal_history_date-container")
@@ -391,7 +393,7 @@ const colorCoding = function () {
   document;
   document
     .querySelector("#criminal_history_date-container")
-    .classList.add("has-background-primary");
+    .classList.add("has-background-primary-dark");
   if (hhm_id.value === "") {
     document
       .querySelector("#hhm_id-container")
@@ -400,13 +402,14 @@ const colorCoding = function () {
   document;
   document
     .querySelector("#hhm_id-container")
-    .classList.add("has-background-primary");
+    .classList.add("has-background-primary-dark");
 };
 colorCoding();
 
 async function editStatusHandler(event) {
   console.log("editStatusHandler");
   event.preventDefault();
+  const discharged = document.querySelector("#discharged").value;
   const submitted = document.querySelector("#submitted").value;
   const approved = document.querySelector("#approved").value;
   const remanded = document.querySelector("#remanded").value;
@@ -417,6 +420,7 @@ async function editStatusHandler(event) {
       submitted: submitted,
       approved: approved,
       remanded: remanded,
+      discharged: discharged,
     }),
 
     headers: {
@@ -438,9 +442,19 @@ document
   .addEventListener("click", editStatusHandler);
 
 const statusColor = function () {
-  if (document.querySelector("#remanded").value !== "") {
-    document.querySelector("#edit-status").classList.remove("is-primary");
+  if (
+    document.querySelector("#remanded").value !== "" ||
+    document.querySelector("#discharged").value !== ""
+  ) {
+    document
+      .querySelector("#edit-status")
+      .classList.remove("has-background-primary-dark");
     document.querySelector("#edit-status").classList.add("is-danger");
+  }
+  if (document.querySelector("#discharged").value !== "") {
+    document.querySelector("#submitted").value = "";
+    document.querySelector("#remanded").value = "";
+    document.querySelector("#approved").value = "";
   }
 };
 statusColor();

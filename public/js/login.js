@@ -1,6 +1,5 @@
-console.log("LoginJS");
+console.log("LoginJSSD:FLKSJ:DFLKSJ:DFLKSJD:FLKJ");
 async function loginFormHandler(event) {
-  console.log("submit");
   event.preventDefault();
   const email = document.querySelector("#user-email").value.trim();
   const password = document.querySelector("#user-password").value.trim();
@@ -16,9 +15,10 @@ async function loginFormHandler(event) {
       },
     });
     if (response.ok) {
+      console.log(response.body);
       document.location.replace("/table");
     } else {
-      alert(response.statusText);
+      document.location.replace("/nomatch");
     }
   }
 }

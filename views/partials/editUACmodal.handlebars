@@ -1,0 +1,99 @@
+{{! EDIT UAC MODAL START }}
+<div class="modal" id="edit-uac-modal">
+  <div class="modal-background" id="edit-uac-BG"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Edit UAC Info</p>
+      <button class="delete" id="edit-uac-close-x" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+      Name:
+      <input
+        class="input"
+        name="uacname"
+        type="text"
+        id="uac-edit-name"
+        value="{{uac.uacname}}"
+      />
+      A#
+      <input
+        class="input"
+        id="a-number"
+        name="a_number"
+        type="text"
+        value={{uac.a_number}}
+      />
+      DOB:
+      <input
+        class="input"
+        id="uac-dob"
+        name="dob"
+        type="text"
+        value={{format_nice_date uac.dob}}
+      />
+      COO:
+      <input
+        class="input"
+        id="uac-coo"
+        name="coo"
+        type="text"
+        value="{{uac.coo}}"
+      />
+      Age:
+      <input
+        class="input"
+        id="uac-age"
+        name="age"
+        type="text"
+        value={{uac.age}}
+      />
+      Category:
+      <input
+        class="input"
+        id="category"
+        name="category"
+        type="text"
+        value={{uac.category}}
+      />
+      Gender:
+      <input
+        class="input"
+        id="gender"
+        name="gender"
+        type="text"
+        value={{uac.gender}}
+      />
+      SIR:
+      <input
+        class="input"
+        id="sir"
+        name="sir"
+        type="text"
+        placeholder="'No' OR Number of SIRs"
+        value={{uac.sir}}
+      />
+      SIR Narrative:
+      <textarea
+        class="textarea"
+        id="sir_narrative"
+        name="sir_narrative"
+        placeholder="If the UAC has SIRs, elaborate on their nature and efforts to address them with all pertinent concerned parties"
+      >{{uac.sir_narrative}}</textarea>
+      Exception:
+      <textarea
+        class="textarea"
+        id="exception"
+        name="exception"
+        placeholder="Enter any exceptions for thie minor regarding case status"
+      >{{uac.exception}}</textarea>
+    </section>
+
+    <footer class="modal-card-foot">
+      <button class="button is-success" id="edit-uac-btn">
+        Save Changes
+      </button>
+      <button class="button" id="cancel-edit-uac-modal">Cancel</button>
+    </footer>
+  </div>
+</div>
+{{! EDIT UAC MODAL END }}

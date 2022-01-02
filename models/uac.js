@@ -249,15 +249,20 @@ UAC.init(
     },
     submitted: {
       type: DataTypes.STRING,
-      allosNull: true,
+      allowNull: true,
     },
     approved: {
       type: DataTypes.STRING,
-      allosNull: true,
+      allowNull: true,
     },
     remanded: {
       type: DataTypes.STRING,
-      allosNull: true,
+      allowNull: true,
+    },
+    discharged: {
+      type: DataTypes.STRING,
+      allownull: true,
+      defaultValue: "",
     },
     exception: {
       type: DataTypes.STRING,

@@ -1,7 +1,7 @@
 const authID = "324701bf-28ba-dfcc-31a5-425082b46655";
 const authToken = "5QUlIO8vnJ69UmOi05O3";
-const key = "21102174564513388";
-const license = "license-1";
+// const authID = process.env.AUTH_ID;
+// const authToken = process.env.AUTH_TOKEN;
 const goTime = document.querySelector("#view-results");
 
 let formattedAddres;
@@ -64,6 +64,13 @@ var displayValidation = function (data) {
   console.log(data);
   if (data.length === 0) {
     console.log("fuuuuuck");
+    document.querySelector("#all-good").classList.add("is-hidden");
+
+    document
+      .querySelector("#secondary-info-confirm")
+      .classList.add("is-hidden");
+    document.querySelector("#secondary-info").classList.add("is-hidden");
+    document.querySelector("#not-good").classList.remove("is-hidden");
     document.querySelector("#google-maps").classList.add("is-hidden");
     document.querySelector("#google-earth").classList.add("is-hidden");
     document.querySelector("#address-1-result").innerHTML = "err";
@@ -71,12 +78,19 @@ var displayValidation = function (data) {
     document.querySelector("#latitude-result").innerHTML = "err";
     document.querySelector("#city-result").innerHTML = "err";
     document.querySelector("#found").classList.remove("is-hidden");
+    document.querySelector("#precision-result").innerHTML = "err";
     document.querySelector("#no-of-results").innerHTML = data.length;
 
     return;
   }
-  if (data !== []) {
+  if (data !== [] && data[0].analysis.dpv_footnotes === "AABB") {
     console.log(data.length);
+    document
+      .querySelector("#secondary-info-confirm")
+      .classList.add("is-hidden");
+    document.querySelector("#secondary-info").classList.add("is-hidden");
+    document.querySelector("#not-good").classList.add("is-hidden");
+    document.querySelector("#all-good").classList.remove("is-hidden");
     document.querySelector("#found").classList.remove("is-hidden");
     document.querySelector("#no-of-results").innerHTML = data.length;
     document.querySelector("#google-maps").classList.remove("is-hidden");
@@ -88,9 +102,58 @@ var displayValidation = function (data) {
     document.querySelector("#latitude-result").innerHTML =
       data[0].metadata.latitude;
     document.querySelector("#city-result").innerHTML = data[0].last_line;
+    document.querySelector("#precision-result").innerHTML =
+      data[0].metadata.rdi;
     if (data[0].analysis.dpv_match_code === "Y") {
       console.log("entire thing matched");
     }
+  }
+  if (data !== [] && data[0].analysis.dpv_footnotes === "AAN1") {
+    console.log(data.length);
+    document
+      .querySelector("#secondary-info-confirm")
+      .classList.add("is-hidden");
+    document.querySelector("#secondary-info").classList.remove("is-hidden");
+    document.querySelector("#not-good").classList.add("is-hidden");
+    document.querySelector("#all-good").classList.add("is-hidden");
+    document.querySelector("#found").classList.remove("is-hidden");
+    document.querySelector("#no-of-results").innerHTML = data.length;
+    document.querySelector("#google-maps").classList.remove("is-hidden");
+    document.querySelector("#google-earth").classList.remove("is-hidden");
+    document.querySelector("#address-1-result").innerHTML =
+      data[0].delivery_line_1;
+    document.querySelector("#longitude-result").innerHTML =
+      data[0].metadata.longitude;
+    document.querySelector("#latitude-result").innerHTML =
+      data[0].metadata.latitude;
+    document.querySelector("#city-result").innerHTML = data[0].last_line;
+    document.querySelector("#precision-result").innerHTML =
+      data[0].metadata.rdi;
+    if (data[0].analysis.dpv_match_code === "Y") {
+      console.log("entire thing matched");
+    }
+  }
+  if (data !== [] && data[0].analysis.dpv_footnotes === "AACC") {
+    console.log(data.length);
+    document
+      .querySelector("#secondary-info-confirm")
+      .classList.remove("is-hidden");
+    document.querySelector("#secondary-info").classList.add("is-hidden");
+    document.querySelector("#not-good").classList.add("is-hidden");
+    document.querySelector("#all-good").classList.add("is-hidden");
+    document.querySelector("#found").classList.remove("is-hidden");
+    document.querySelector("#no-of-results").innerHTML = data.length;
+    document.querySelector("#google-maps").classList.remove("is-hidden");
+    document.querySelector("#google-earth").classList.remove("is-hidden");
+    document.querySelector("#address-1-result").innerHTML =
+      data[0].delivery_line_1;
+    document.querySelector("#longitude-result").innerHTML =
+      data[0].metadata.longitude;
+    document.querySelector("#latitude-result").innerHTML =
+      data[0].metadata.latitude;
+    document.querySelector("#city-result").innerHTML = data[0].last_line;
+    document.querySelector("#precision-result").innerHTML =
+      data[0].metadata.rdi;
   }
 };
 
@@ -101,7 +164,7 @@ const openGoogleMaps = function () {
   formatCity();
   formatState();
   formatZip();
-  const googleMapsAddress = `https://www.google.com/maps/place/${lon},${lat}/${formattedAddress},+${formattedCity},+${formattedState}+${formattedZip}/`;
+  const googleMapsAddress = `https://www.google.com/maps/place/${formattedAddress},+${formattedCity},+${formattedState}+${formattedZip}/`;
   console.log(googleMapsAddress);
   window.open(googleMapsAddress);
 };

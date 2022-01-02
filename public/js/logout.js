@@ -8,6 +8,7 @@ async function logout() {
   if (response.ok) {
     document.location.replace("/");
   } else {
+    console.log("front end logout");
     alert(response.statusText);
   }
 }

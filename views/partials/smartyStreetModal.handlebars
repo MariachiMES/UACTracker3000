@@ -2,7 +2,7 @@
   <div class="modal-background" id="smarty-streets-BG"></div>
   <div class="modal-card">
     <header class="modal-card-head">
-      <p class="modal-card-title">Address Verification</p>
+      <p class="modal-card-title">Smarty Streets Verification</p>
       <button
         class="delete"
         id="smarty-streets-close-x"
@@ -42,7 +42,7 @@
       <br /><br />
       <h2 class="title is-3 has-text-centered is-hidden" id="found">Found
         <span id="no-of-results"></span>
-        valid address.</h2><br /><br />
+        valid address.</h2>
 
       <table class="table is-fullwidth">
         <tr>
@@ -77,11 +77,52 @@
           <td class="subtitle is-7 has-text-right">Precision</td>
         </tr>
       </table>
-      <br />
-      <br />
-      <h3 class="title is-4 has-text-centered" id="footnote"><img
-          src="/../../public/assets/images/success.png"
-        />footnote</h3>
+      <h3 class="title is-4 has-text-centered is-hidden" id="all-good"><span
+          style="color: lightgreen"
+        ><i class="fas fa-check"></i><span
+            class="ml-3"
+            style="color: black"
+          >Matched street and city and state</span></span><br />
+        <span style="color: lightgreen"><i class="fas fa-check"></i><span
+            class="ml-3"
+            style="color:black"
+          >Confirmed entire address</span>
+        </span></h3>
+      <h3 class="title is-4 has-text-centered is-hidden" id="not-good"><span
+          style="color: red"
+        ><i class="fas fa-ban"></i><span
+            class="ml-3"
+            style="color: black"
+          >Address Not Found</span></span><br />
+        <span style="color: red"><i class="fas fa-ban"></i><span
+            class="ml-3"
+            style="color:black"
+          >Not Valid Address/Missing Secondary Info</span>
+        </span></h3>
+      <h3
+        class="title is-4 has-text-centered is-hidden"
+        id="secondary-info"
+      ><span style="color: lightgreen"><i class="fas fa-check"></i><span
+            class="ml-3"
+            style="color: black"
+          >Matched street and city and state</span></span><br />
+        <span style="color: rgb(255, 255, 0)"><i
+            class="fas fa-exclamation-triangle"
+          ></i><span class="ml-3" style="color:black">Missing Secondary Address
+            Information</span>
+        </span></h3>
+      <h3
+        class="title is-4 has-text-centered is-hidden"
+        id="secondary-info-confirm"
+      ><span style="color: lightgreen"><i class="fas fa-check"></i><span
+            class="ml-3"
+            style="color: black"
+          >Matched street and city and state</span></span><br />
+        <span style="color: rgb(255, 255, 0)"><i
+            class="fas fa-exclamation-triangle"
+          ></i><span class="ml-3" style="color:black">Secondary address info
+            cannot be confirmed</span>
+        </span></h3>
     </section>
     <footer class="modal-card-foot">
       <button class="button" id="smarty-streets-cancel">Cancel</button>

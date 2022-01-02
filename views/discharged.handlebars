@@ -1,6 +1,6 @@
 
 
-<section class="hero is-info is-small ">
+<section class="hero is-danger is-small ">
   <div class="hero-head">
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
@@ -23,37 +23,10 @@
         </p>
       </div>
     </div>
-    <button class="button is-primary is-modal-button ml-3 mr-3" data-target="modal" id ="uacModalBtn">
-      <strong>Add UAC</strong></button>
-      <a href = "/discharged"><button class = "button has-background-info-light ml-3 mr-3">Go To Discharged</button></a>
-
-    <button class="button is-warning is-modal-button mr-3 is-hidden" data-target="#cm-modal" id ="cmModalBtn">
-      <strong>Add Case Manager</strong></button>
+    <a href = "/table"><button class="button is-primary is-modal-button ml-3 mr-3">
+      <strong>See Active Cases</strong></button></a>
   <div class = "level-item has-text-centered mr-6 ml-6">
-    <div>
-      <p class = "heading">Total</p>
-      <p class = "title">{{uacTable.[0].totaluacs}}</p>
-    </div>
-  </div>
-  <div class="level-item has-text-centered mr-6 ml-3">
-    <div>
-      <p class="heading">Submitted</p>
-      <p class="title">{{uacTable.[0].totalSubmitted}}</p>
-    </div>
-  </div>
-  <br><br>
-  <div class="level-item has-text-centered mr-6 ml-3">
-    <div>
-      <p class="heading">Approved</p>
-      <p class="title">{{uacTable.[0].totalApproved}}</p>
-    </div>
-  </div>
-  <br><br>
-  <div class="level-item has-text-centered mr-6 ml-3">
-    <div>
-      <p class="heading">Remanded</p>
-      <p class="title">{{uacTable.[0].totalRemanded}}</p>
-    </div>
+   
   </div>
   <br><br><div class = "is-right">
       <button class="button has-background-danger-dark has-text-weight-bold has-text-black is hidden" id ="logout" name = "logout"> <strong>Log out</strong>
@@ -124,7 +97,6 @@
         </thead>
         {{#each uacTable}}
         {{#if discharged }}
-        {{else}}
         <tbody>
           <td id = "spacer"></td>
           <td id="a-number-delete"><a href= "dashboard/{{uac_id}}">{{a_number}}<button class = "delete is-small is-hidden" id="delete-uac-btn"></button></td></a>
@@ -176,7 +148,7 @@
           {{else}}
           <td class = "has-background-danger-light">{{exception}}</td>
           {{/if}}
-        </tbody>{{/if}}{{/each}}
+        </tbody>{{else}}{{/if}}{{/each}}
     
         <tfoot>
          <tr>

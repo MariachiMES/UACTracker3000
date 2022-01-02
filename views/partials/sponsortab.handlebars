@@ -1,15 +1,21 @@
-<article class="tile is-child notification has-background-grey-lighter">
-            <p class="title">Sponsor Name{{sponsor_name}}</p>
-            <p class="subtitle">Relationship {{sponsor_relationship}} {{a_number}}</p>
+{{!-- SPONSOR TAB PARTIAL --}}
+        <div class="tile is-parent">
+          <article class="tile is-child notification has-background-black-bis has-text-white-bis">
+            <p class = "title">Sponsor</p>
+            <p class="title is-2">{{uac.sponsor_name}}</p>
+            <p class="subtitle is-3">{{uac.sponsor_relationship}}</p>
             <div class="content">
               <div class="contain field">
               </div>
-              <p>Address 1: {{sponsor_address1}}</p>
-              <p>Address 2: {{sponsor_address2}}</p>
-              <p>City: {{sponsor_city}}</p>
-              <p>State: {{sponsor_state}}</p>
-              <p>Zip: {{sponsor_zip}}</p>
+              <p>Address 1: {{uac.sponsor_address_1}}</p>
+              <p>Address 2: {{uac.sponsor_address_2}}</p>
+              <p>City: {{uac.sponsor_city}}</p>
+              <p>State: {{uac.sponsor_state}}</p>
+              <p>Zip: {{uac.sponsor_zip}}</p>
             </div>
             <button class="button is-success" id="edit-sponsor">Edit</button>
+            <button class="button is-warning" id="smarty-streets">Smarty Streets</button>
           </article>
         </div>
+      </div>
+    {{!-- SPONSOR TAB PARTIAL END --}}

@@ -1,0 +1,58 @@
+{{! EDIT STATUS MODAL START }}
+<div class="modal" id="edit-status-modal">
+  <div class="modal-background" id="edit-status-BG"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Edit Status</p>
+      <button
+        class="delete"
+        id="edit-status-close-x"
+        aria-label="close"
+      ></button>
+    </header>
+    <section class="modal-card-body">
+      Submitted:
+      <input
+        class="input"
+        name="submitted"
+        type="text"
+        placeholder="Date Submitted"
+        id="submitted"
+        value="{{uac.submitted}}"
+      />
+      Approved:
+      <input
+        class="input"
+        name="approved"
+        type="text"
+        placeholder="Date Approved"
+        id="approved"
+        value="{{uac.approved}}"
+      />
+      Remanded:
+      <input
+        class="input"
+        name="remanded"
+        type="text"
+        placeholder="Date Remanded"
+        id="remanded"
+        value="{{uac.remanded}}"
+      />
+      Discharged:
+      <input
+        class="input"
+        name="discharged"
+        type="text"
+        placeholder="Date Discharged"
+        id="discharged"
+        value="{{uac.discharged}}"
+      />
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-success" id="save-status-info">
+        Save Changes
+      </button>
+      <button class="button" id="cancel-edit-status-modal">Cancel</button>
+    </footer>
+  </div>
+</div>

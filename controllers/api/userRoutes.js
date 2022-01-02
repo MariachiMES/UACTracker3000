@@ -1,14 +1,19 @@
 const router = require("express").Router();
 const { CaseManager } = require("../../models");
 
+//CREATE new user
 router.post("/", async (req, res) => {
   console.log("Create new user");
   try {
-    const userData = await CaseManager.create(req.body);
+    const userData = await CaseManager.create({
+      username: req.body.username,
+      email: req.body.email,
+      password: req.body.password,
+    });
     console.log("Userdata - ", userData);
     req.session.save(() => {
-      req.session.user_id = userData.user_id;
       req.session.logged_in = true;
+      req.session.user_id = userData.user_id;
       req.session.username = userData.username;
       req.session.email = userData.email;
 
@@ -19,7 +24,7 @@ router.post("/", async (req, res) => {
     res.status(400).json(err);
   }
 });
-
+//LOGIN
 router.post("/login", async (req, res) => {
   console.log("Login", req.body);
   try {
@@ -31,6 +36,7 @@ router.post("/login", async (req, res) => {
       res
         .status(401)
         .json({ message: "Incorrect email or password, please try again" });
+
       return;
     }
 
@@ -60,8 +66,10 @@ router.post("/logout", (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
       res.status(204).end();
+      console.log("it's not working, david");
     });
   } else {
+    console.log(res, "user route else");
     res.status(404).end();
   }
 });

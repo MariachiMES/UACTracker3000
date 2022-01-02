@@ -1,0 +1,172 @@
+{{! MISC MODAL START }}
+<div class="modal" id="edit-RR-modal">
+  <div class="modal-background" id="edit-RR-BG"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Release Request Data</p>
+      <button class="delete" id="edit-RR-close-x" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+      List of Birth Certificates:
+      <textarea
+        class="textarea"
+        rows="2"
+        name="list_of_bcs"
+        id="list_of_bcs"
+        placeholder="List Birth Certificates and relationship of sponsor to UAC."
+      >{{uac.list_of_bcs}}</textarea>
+      Home Country Narrative:
+      <textarea
+        class="textarea"
+        rows="2"
+        name="coo_narrative"
+        id="coo_narrative"
+        placeholder="Include a brief paragraph about the daily life of the UAC in country of origin including who he lived with, information about school, why he or she traveled to the US, who traveled with the UAC, and if he or she has a debt that is expected to be paid back by the minor or family"
+      >{{uac.coo_narrative}}</textarea>
+      Self-Disclosure:
+      <input
+        class="input"
+        name="self_disclosure"
+        type="text"
+        placeholder="'Yes/'No' if 'Yes', describe the charges indicated"
+        id="self_disclosure"
+        value="{{uac.self_disclosure}}"
+      />
+      Criminal History Disclosed:
+      <input
+        class="input"
+        name="criminal_history"
+        id="criminal_history"
+        placeholder="YES/NO If yes, list charges and dates"
+        value="{{uac.criminal_history}}"
+      />
+      Sponsor ID Type:
+      <input
+        class="input"
+        name="sponsor_id_type"
+        type="text"
+        placeholder="i.e. 'Guatemalan Consular ID'"
+        id="sponsor_id_type"
+        value="{{uac.sponsor_id_type}}"
+      />
+      List Addittional ID's:
+      <textarea
+        class="textarea"
+        rows="2"
+        name="hhm_id_list"
+        type="text"
+        placeholder="List any additional HHM ID's and Expiration dates"
+        id="hhm_id_list"
+      >{{uac.hhm_id_list}}</textarea>
+      Proof of Address Verification:
+      <input
+        class="input"
+        rows="1"
+        name="poa_document"
+        id="poa_document"
+        placeholder="Enter the type of document received to verify proof of address"
+        value="{{uac.poa_document}}"
+      />
+      Fingerprint Results Required:
+      <input
+        class="input"
+        name="fp_required"
+        type="text"
+        placeholder="'Yes'/'No'"
+        id="fp_required"
+        value="{{uac.fp_required}}"
+      />
+      Fingerprint Results:
+      <input
+        class="input"
+        name="fp_results"
+        type="text"
+        placeholder="Clear/Record Was Found (if record found, list charges and dates)"
+        id="fp_results"
+        rows="2"
+        value="{{uac.fp_results}}"
+      />
+      CA/N Check Required:
+      <input
+        class="input"
+        name="can_check_required"
+        type="text"
+        placeholder="YES/NO"
+        id="can_check_required"
+        value="{{uac.can_check_required}}"
+      />
+      CA/N Check Received:
+      <input
+        class="input"
+        name="can_check_received"
+        type="text"
+        placeholder="Date Received/Pending"
+        id="can_check_received"
+        value="{{uac.can_check_received}}"
+      />
+      CA/N Check Results:
+      <input
+        class="input"
+        name="can_check_results"
+        type="text"
+        placeholder="Clear/Record Was Found (if record found, list charges and dates)"
+        id="can_check_results"
+        value="{{uac.can_check_results}}"
+      />
+      Caregiver in COO:
+      <input
+        class="input"
+        name="coo_caregiver"
+        type="text"
+        placeholder="Caregiver's Name"
+        id="coo_caregiver"
+        value="{{uac.coo_caregiver}}"
+      />
+      Prior Sponsorship:
+      <input
+        class="input"
+        name="prior_sponsorship"
+        type="text"
+        placeholder="DID/DID NOT (if applicable, provide details on compliance with ORR requirements as it relates to the previous sponsorship"
+        id="prior_sponsorship"
+        value="{{uac.prior_sponsorship}}"
+      />
+      Previous Address:
+      <input
+        class="input"
+        name="previous_address"
+        type="text"
+        placeholder="WAS/WAS NOT (if WAS, list UACs previously sponsored under current address"
+        id="previous_address"
+        value="{{uac.previous_address}}"
+      />
+      Release Recommendation:
+      <textarea
+        class="textarea"
+        rows="2"
+        name="release_recommendation"
+        type="text"
+        placeholder="Include the release recommendation for a straight release, release with PRS, release with a positive Home Study recommendation, or denial."
+        id="release_recommendation"
+      >{{uac.release_recommendation}}</textarea>
+      Home Study/PRS:
+      <textarea
+        class="textarea"
+        rows="5"
+        name="home_study_prs"
+        type="text"
+        placeholder="List the reasons for recommending Home Study, and or, Post Release Services. The release request needs to state what the reason for the home study was, what kind of home study (TVPRA or Discretionary) if there are any special recommendations/conditions from the home study provider and if they were completed."
+        id="home_study_prs"
+      >{{uac.home_study_prs}}</textarea>
+
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-success" id="save-rr-info">
+        Save Changes
+      </button>
+      <button class="button" id="cancel-edit-RR-modal">Cancel</button>
+    </footer>
+  </div>
+</div>
+
+{{! MISC MODAL END }}

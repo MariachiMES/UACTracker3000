@@ -1,26 +1,22 @@
 const router = require("express").Router();
 const { UAC } = require("../../models");
-
-router.put("/status/:status_id", (req, res) => {
+router.delete("/:uac_id", (req, res) => {
   //Calls the update method on the Book model
-  console.log("editStatusRoutes.js", req.body);
-  UAC.update(
+  console.log("delteUAC.js", req.body);
+  UAC.destroy(
     {
       // All the fields you can update and the data attached to the request body.
-      submitted: req.body.submitted,
-      approved: req.body.approved,
-      remanded: req.body.remanded,
-      discharged: req.body.discharged,
+      uac_id: req.body.uac_id,
     },
     {
       // Gets a book based on the book_id given in the request parameters
       where: {
-        uac_id: req.params.status_id,
+        uac_id: req.body.uac_id,
       },
     }
   )
-    .then((updatedUAC) => {
-      res.json(updatedUAC);
+    .then((deletedUAC) => {
+      res.json(deletedUAC);
     })
     .catch((err) => {
       console.log(err);

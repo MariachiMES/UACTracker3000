@@ -1,13 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
+    <title>fuggin test</title>
+  </head>
+  <body>
+    
 
+    <strong>Welcome {{username}}</strong>
 
-<section class="hero is-info is-small ">
-  <div class="hero-head">
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand">
-      </div>
-<div class = "container m-3">
-<strong>Welcome, {{username}}</strong>
-</div>
+    <section class="hero is-info is-small ">
+      <div class="hero-head">
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+          <div class="navbar-brand">
+            <a
+              role="button"
+              class="navbar-burger"
+              aria-label="menu"
+              aria-expanded="false"
+              data-target="navbarBasicExample"
+            >
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
+          </div>
+
+         
 <!-- Main container -->
 <nav class="level is-mobile">
   <!-- Left side -->  
@@ -25,9 +50,8 @@
     </div>
     <button class="button is-primary is-modal-button ml-3 mr-3" data-target="modal" id ="uacModalBtn">
       <strong>Add UAC</strong></button>
-      <a href = "/discharged"><button class = "button has-background-info-light ml-3 mr-3">Go To Discharged</button></a>
 
-    <button class="button is-warning is-modal-button mr-3 is-hidden" data-target="#cm-modal" id ="cmModalBtn">
+    <button class="button is-warning is-modal-button mr-3" data-target="#cm-modal" id ="cmModalBtn">
       <strong>Add Case Manager</strong></button>
   <div class = "level-item has-text-centered mr-6 ml-6">
     <div>
@@ -56,25 +80,18 @@
     </div>
   </div>
   <br><br><div class = "is-right">
-      <button class="button has-background-danger-dark has-text-weight-bold has-text-black is hidden" id ="logout" name = "logout"> <strong>Log out</strong>
+      <button class="button has-background-danger-dark has-text-weight-bold has-text-black" name = "logout"> <strong>Log out</strong>
     </button>
     </div>
 
     </section>
     </nav>
     </nav>
-    <script>
-      $(document).ready( function () {
-    $('#uac-table').DataTable();
-} );
-    </script>
+
     <div class="table-container is-centered">
-      <table class="table is-fullwidth is-hoverable is-narrow is-bordered" id ="uac-table">
+      <table class="table is-striped is-hoverable">
         <thead>
           <tr>
-            <th>
-              <abbrr title="delete"><strong></strong></abbrr>
-            </th>
             <th>
               <abbrr title="Alien number"><strong>A#</strong></abbrr>
             </th>
@@ -82,9 +99,6 @@
               <abbr title="UAC"><strong>UAC</strong></abbr>
             </th>
             <th><strong>Case Manager</strong></th>
-            <th>
-              <abbr title = "email"> <strong>Email</strong></abbr>
-            </th>
             <th>
               <abbr title="Sponsor Assessment"
                 ><strong>Sponsor Assessment</strong></abbr
@@ -123,14 +137,11 @@
           </tr>
         </thead>
         {{#each uacTable}}
-        {{#if discharged }}
-        {{else}}
         <tbody>
-          <td id = "spacer"></td>
-          <td id="a-number-delete"><a href= "dashboard/{{uac_id}}">{{a_number}}<button class = "delete is-small is-hidden" id="delete-uac-btn"></button></td></a>
-          <td >{{uacname}}</td>
-          <td><a href = "caseload/{{casemanager.user_id}}">{{casemanager.username}} </a></td>
-          <td><a href = "mailto:{{casemanager.email}}" subject = "whatever" message = "dude, seriously!">{{casemanager.email}}</a></td>
+    
+          <td><a href= "dashboard/{{uac_id}}">{{a_number}}</td></a>
+          <td>{{uacname}}</td>
+          <td><a href = "caseload/{{casemanager.user_id}}">{{casemanager.username}} </a><a href = "mailto:{{casemanager.email}}">{{casemanager.email}}</a></td>
           {{#if sponsor_assessment}}
           <td class = "has-background-primary-light">{{format_nice_date sponsor_assessment}}</td>
           {{else}}
@@ -176,13 +187,9 @@
           {{else}}
           <td class = "has-background-danger-light">{{exception}}</td>
           {{/if}}
-        </tbody>{{/if}}{{/each}}
-    
+        </tbody>{{/each}}
         <tfoot>
-         <tr>
-            <th>
-              <abbrr title="delete"><strong></strong></abbrr>
-            </th>
+          <tr>
             <th>
               <abbrr title="Alien number"><strong>A#</strong></abbrr>
             </th>
@@ -191,12 +198,10 @@
             </th>
             <th><strong>Case Manager</strong></th>
             <th>
-              <abbr title = "email"> <strong>Email</strong></abbr>
-            </th>
-            <th>
-              <abbr title="Sponsor Assessment"
+                <abbr title="Sponsor Assessment"
                 ><strong>Sponsor Assessment</strong></abbr
               >
+
             </th>
             <th>
               <abbr title="Family reunification packet"
@@ -326,12 +331,16 @@
  {{!-- ADD NEW CASE MANAGER MODAL END --}}
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src = "./js/tableview.js"></script>
-  <script src = "./js/logout.js"></script>
 
-
+  <script src = "./js/tableview.js">
+  
+</script>
 <script src = "./js/newUAC.js"></script>
 
-<script src="https://kit.fontawesome.com/cd8c8fb565.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/365a8998c2.js" crossorigin="anonymous"></script>
 
+
+
+
+  </body>
+</html>

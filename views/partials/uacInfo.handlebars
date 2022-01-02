@@ -1,0 +1,29 @@
+{{!-- UAC INFO TAB START --}}
+          <div class="tile is-parent">
+            <article class="tile is-child notification has-background-black-bis has-text-white-bis">
+              <p class="title">{{{uac.uacname}}}</p>
+              <p class="subtitle">A# {{uac.a_number}}</p>
+              <div class="container field is-grouped">
+                <p class="control">
+                  <button class = "button is-info" id = "edit-RR">Edit Release Request</button>
+                  <button class="button is-info" id="release-request-btn">
+                    Release Request 
+                  </button>
+                </p>
+              </div>
+              <div class="uac-info">
+                
+                <p>DOB:{{format_nice_date uac.dob}}</p>
+                <p>COO:{{uac.coo}}</p>
+                <p>LOS:{{format_nice_date uac.intake}}</p>
+                <p>Age:{{uac.age}}</p>
+                <p>Category:{{uac.category}}</p>
+                <p>Gender: {{uac.gender}}</p>
+                <p>SIR: {{uac.sir}}</p>
+                <p>Exception: {{uac.exception}}</p>
+              </div>
+              <button class="button is-info" id="edit-uac">Edit</button>
+            </article>
+          </div>
+        </div>
+{{!-- UAC INFO TAB END  --}}

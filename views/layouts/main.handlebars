@@ -3,66 +3,44 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>UAC Tracker 3000</title>
-   
+    <title>Reunification Flow</title>
+   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+  
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
     />
-
   </head>
   <body>
-    <section class="hero is-info is-small has-background-link-dark">
-      <div class="hero-head">
-        <nav class="navbar">
-          <div class="container">
-            <div class="navbar-brand">
-              <span class="navbar-burger" data-target="navbarMenuHeroB"> </span>
-            </div>
-            <div id="navbarMenuHeroB" class="navbar-menu"></div>
-          </div>
-        </nav>
+<section class="hero is-small is-link">
+      <div class="hero-body">
+        <p class="title">Reunification Flow</p>
+        <p class="subtitle">UAC Case Management Supplement Workflow</p>
       </div>
-
-      <div class="hero-body has-background-link-dark">
-        <div class="container">
-          <p class="title">UAC Tracker 3000</p>
-          <p class="subtitle">Data Tracker Supplement for UAC Portal</p>
-        </div>
-      </div>
-      </section>
+    </section>
 
           <!-- Conditionally render login or logout links -->
-          {{#if logged_in}}
-            <a href="/cmtracker">profile</a>
-            |
-            <button class="no-button" id="logout">logout</button>
-          {{else}}
-          <div class="field">
+  {{!-- {{#if logged_in}}
+  <a href="/cmtracker">profile</a>
+    |<button class="no-button" id="logout">logout</button>
+  {{else}}
+  <div class="field">
   <div class="container field has-addons">
-            {{!-- <button
-  class="button is-link"
-  id="login"
-  type="submit"
-  value="something"
->Existing Users Login</button> --}}
 </div></div>
-          {{/if}}
-        </nav>
-      </header>
-      <main class="container is-full">
-        <!-- Render the sub layout -->
-        {{{body}}}
-      </main>
-      <footer>
+  {{/if}} --}}
 
-      </footer>
+    {{{body}}}
+  <footer>
+    <div class = "container has-text-centered">© 2021 comal software</div>
+</footer>
     </div>
 
     <!-- Render script for logged in users only -->
-    {{#if logged_in}}
+    {{!-- {{#if logged_in}}
       <script src="/js/logout.js"></script>
-    {{/if}}
+    {{/if}} --}}
   </body>
 
 </html>
