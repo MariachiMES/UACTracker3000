@@ -15,11 +15,11 @@ async function signupFormHandler(event) {
         "Content-Type": "application/json",
       },
     });
-    console.log("res", response);
+    console.log("This is the Response", response);
     if (response.ok) {
       document.location.replace("/");
     } else {
-      res.redirect("/blocked");
+      location.replace("/Unathorized");
     }
   }
 }

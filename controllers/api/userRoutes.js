@@ -11,6 +11,7 @@ router.post("/", async (req, res) => {
 
     if (!userData) {
       res.status(401).json({ message: "This email is not an authorized user" });
+      res.redirect("/notAuthorized");
 
       return;
     }
