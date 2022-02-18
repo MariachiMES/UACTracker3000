@@ -3,7 +3,7 @@ const sequelize = require("../config/connection");
 
 class authCM extends Model {}
 
-CaseManager.init(
+authCM.init(
   {
     email: {
       type: DataTypes.STRING,

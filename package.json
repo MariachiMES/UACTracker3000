@@ -27,7 +27,7 @@
   "scripts": {
     "start": "nodemon server.js",
     "test": "npm test",
-    "seed": "node seeds/seeds.js"
+    "seed": "node seeds/seed.js"
   },
   "repository": {
     "type": "git",

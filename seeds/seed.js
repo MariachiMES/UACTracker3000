@@ -4,20 +4,13 @@ const authData = require("./authData.json");
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
-  const casemanagers = await authCM.bulkCreate(authData, {
+  const newUsers = await authCM.bulkCreate(authData, {
     individualHooks: true,
     returning: true,
   });
 
-  for (const { id } of casemanagers) {
-    const newCM = await authCM.create({
-      auth_id: id,
-    });
-  }
+  console.log(newUsers);
 
   process.exit(0);
 };
 seedDatabase();
-// seedSponsors();
-// seedUACs();
-// seedCaseManager();

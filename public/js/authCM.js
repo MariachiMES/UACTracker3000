@@ -2,7 +2,7 @@ async function authCMHandler(event) {
   const authCMModal = document.querySelector("#auth-cm-modal");
   console.log("authCM.js");
   event.preventDefault();
-  const email = document.querySelector("#email");
+  const email = document.querySelector("#auth-cm-email").value;
   const response = await fetch("/api/cm", {
     method: "post",
     body: JSON.stringify({
