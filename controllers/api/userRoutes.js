@@ -1,23 +1,33 @@
 const router = require("express").Router();
-const { CaseManager } = require("../../models");
+const { CaseManager, authCM } = require("../../models");
 
-//CREATE new user
+//signup new user
 router.post("/", async (req, res) => {
   console.log("Create new user");
   try {
-    const userData = await CaseManager.create({
+    const userData = await authCM.findOne({
+      where: { email: req.body.email },
+    });
+
+    if (!userData) {
+      res.status(401).json({ message: "This email is not an authorized user" });
+
+      return;
+    }
+
+    const newCMData = await CaseManager.create({
       username: req.body.username,
       email: req.body.email,
       password: req.body.password,
     });
-    console.log("Userdata - ", userData);
+    console.log("Userdata - ", newCMData);
     req.session.save(() => {
       req.session.logged_in = true;
-      req.session.user_id = userData.user_id;
-      req.session.username = userData.username;
-      req.session.email = userData.email;
+      req.session.user_id = newCMData.user_id;
+      req.session.username = newCMData.username;
+      req.session.email = newCMData.email;
 
-      res.status(200).json(userData);
+      res.status(200).json(newCMData);
     });
   } catch (err) {
     console.log("Err", err);
@@ -66,10 +76,10 @@ router.post("/logout", (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
       res.status(204).end();
-      console.log("it's not working, david");
+      console.log("logging-out");
     });
   } else {
-    console.log(res, "user route else");
+    console.log(res, "post logout else");
     res.status(404).end();
   }
 });

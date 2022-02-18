@@ -7,25 +7,6 @@ router.get("/new-user", async (req, res) => {
   res.render("signUp");
 });
 
-//GET ONE SPONSOR
-
-router.get("dashboard/:sponsor_id", async (req, res) => {
-  try {
-    const singleSponsor = await Sponsor.findByPk(req.params.sponsor_id);
-    const sponsor = singleSponsor.get({ plain: true });
-
-    res.render("sponsortab", {
-      sponsor,
-      username: req.session.username,
-      id: req.session.user_id,
-      email: req.session.email,
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
-
 //GET ONE UAC, RENDER TO DASHBOARD
 router.get("/dashboard/:id", async (req, res) => {
   try {
@@ -38,23 +19,6 @@ router.get("/dashboard/:id", async (req, res) => {
     console.log("UAC INFO", uac);
 
     res.render("dashboard", {
-      uac,
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
-
-//GET ONE UAC AND RENDER TO SPONSOR TAB//
-router.get("/sponsortab/:id", async (req, res) => {
-  try {
-    const singleUACinfo = await UAC.findByPk(req.params.id);
-
-    const uac = singleUACinfo.get({ plain: true });
-    console.log("UAC INFO", uac);
-
-    res.render("sponsortab", {
       uac,
     });
   } catch (err) {
@@ -79,7 +43,7 @@ router.get("/", (req, res) => {
 });
 //Delete ONE UAC
 router.delete("/:uac_id", (req, res) => {
-  // Looks for the books based book_id given in the request parameters
+  //deletes one UAC
   UAC.destroy({
     where: {
       uac_id: req.params.uac_id,

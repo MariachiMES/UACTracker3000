@@ -6,21 +6,15 @@
       <div class="navbar-brand">
       </div>
 <div class = "container m-3">
-<strong>Welcome, {{username}}</strong>
+<strong>Welcome {{username}}</strong>
 </div>
 <!-- Main container -->
 <nav class="level is-mobile">
   <!-- Left side -->  
     <div class="level-item">
       <div class="field has-addons">
-        <p class="control">
-          <input class="input m-3 is-hidden" type="text" placeholder="Search by A#">
-        </p>
-        <p class="control">
-          <button class="button m-3 is-hidden">
-            Search
-          </button>
-        </p>
+        <button class="button is-primary is-modal-button ml-3 mr-3" data-target="modal" id ="auth-cm-btn">
+      <strong>Auth New User</strong></button>
       </div>
     </div>
     <button class="button is-primary is-modal-button ml-3 mr-3" data-target="modal" id ="uacModalBtn">
@@ -271,19 +265,7 @@
                     <div class="dropdown-item" value = {{user_id}} id = {{user_id}}>
                       {{username}}
                     </div> {{/each}}
-                    {{!-- <a class="dropdown-item">
-                      Other dropdown item
-                    </a>
-                    <a href="#" class="dropdown-item is-active">
-                      Active dropdown item
-                    </a>
-                    <a href="#" class="dropdown-item">
-                      Other dropdown item
-                    </a>
-                    <hr class="dropdown-divider">
-                    <a href="#" class="dropdown-item">
-                      With a divider
-                    </a> --}}
+               
                   </div>
                 </div>
               </div>
@@ -299,27 +281,24 @@
           {{!-- ADD NEW UAC MODAL END --}}
 
  {{!-- ADD NEW CASE MANAGER MODAL START --}}
-      <div class="modal" id = "cm-modal">
-        <div class="modal-background" id = "cm-BG"></div>
+      <div class="modal" id = "auth-cm-modal">
+        <div class="modal-background" id = "auth-cm-BG"></div>
         <div class="modal-card">
           <header class="modal-card-head">
-            <p class="modal-card-title" >Add New Case Manager</p>
-            <button class="delete" id = "cm-close-x" aria-label="close"></button>
+            <p class="modal-card-title" >Authorize New Case Manager</p>
+            <button class="delete" id = "auth-cm-x" aria-label="close"></button>
           </header>
           <section class="modal-card-body">
-            <!-- Content ... -->
-            Name:
-            <input class="input" name ="cm-name" type="text" placeholder="Name">
+
             Email:
-            <input class="input" name = "cm-email" type="text" placeholder="E-Mail">
-            Role:
-            <input class="input" name = "cm-role" type="text" placeholder="i.e. Case Manager/Team Lead/Admin">
+            <input class="input" name = "email" type="text" placeholder="E-Mail">
+
 
 
           </section>
           <footer class="modal-card-foot">
-            <button class="button is-success" id = "save-new-uac">Add New Case Manager</button>
-            <button class="button" id = "cancel-cm-modal">Cancel</button>
+            <button class="button is-success" id = "auth-cm-save">Add New Case Manager</button>
+            <button class="button" id = "auth-cm-modal-cancel">Cancel</button>
           </footer>
         </div>
       </div>
@@ -329,7 +308,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src = "./js/tableview.js"></script>
   <script src = "./js/logout.js"></script>
-
+<script src = "./js/authCM.js"></script>
 
 <script src = "./js/newUAC.js"></script>
 

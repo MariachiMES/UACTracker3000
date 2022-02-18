@@ -7,6 +7,7 @@ const editTaskRoutes = require("./editTaskRoutes");
 const editRRRoutes = require("./editRRRoutes");
 const editStatusRoutes = require("./editStatusRoutes");
 const deleteUACRoute = require("./deleteUAC");
+const authCM = require("./authCM");
 
 router.use("/users", userRoutes);
 router.use("/uac", newUacRoutes);
@@ -16,4 +17,5 @@ router.use("/edit", editSponsorRoutes);
 router.use("/edit", editRRRoutes);
 router.use("/edit", editStatusRoutes);
 router.use("/delete", deleteUACRoute);
+router.use("/cm", authCM);
 module.exports = router;

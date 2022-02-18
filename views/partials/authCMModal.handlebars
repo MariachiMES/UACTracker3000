@@ -1,0 +1,31 @@
+{{! AUTH CM START }}
+<div class="modal" id="auth-cm-modal">
+  <div class="modal-background" id="auth-cm-BG"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Authorize New Case Manager</p>
+      <button
+        class="delete"
+        id="edit-auth-cm-close-x"
+        aria-label="close"
+      ></button>
+    </header>
+    <section class="modal-card-body">
+      Email:
+      <input
+        class="input"
+        name="email"
+        type="text"
+        placeholder="Email Address"
+        id="email"
+      />
+
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-success" id="save-auth-cm-info">
+        Save Changes
+      </button>
+      <button class="button" id="cancel-auth-cm-modal">Cancel</button>
+    </footer>
+  </div>
+</div>

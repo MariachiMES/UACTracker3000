@@ -1,5 +1,5 @@
-const authID = "324701bf-28ba-dfcc-31a5-425082b46655";
-const authToken = "5QUlIO8vnJ69UmOi05O3";
+const authID = "0b42747f-8fb5-655c-8aea-df31b60bd6b4";
+const authToken = "YobajrDKGXx87VDkFJNg";
 // const authID = process.env.AUTH_ID;
 // const authToken = process.env.AUTH_TOKEN;
 const goTime = document.querySelector("#view-results");
@@ -42,7 +42,7 @@ const formatZip = function () {
   return formattedZip;
 };
 
-const fetchSmartyStreets = function (street, city, state, zip) {
+const fetchSmartyStreets = function () {
   formatAddress();
   formatCity();
   formatState();

@@ -9,6 +9,28 @@ const cancelCmModalEl = document.querySelector("#cancel-cm-modal");
 const cmBgModalEl = document.querySelector("#cm-BG");
 const cmXcloseEl = document.querySelector("#cm-close-x");
 
+const authCMModal = document.querySelector("#auth-cm-modal");
+const authCMModalBtn = document.querySelector("#auth-cm-btn");
+const authCMCloseX = document.querySelector("#auth-cm-x");
+const authCMCancel = document.querySelector("#auth-cm-modal-cancel");
+const authCMBG = document.querySelector("#auth-cm-BG");
+
+authCMModalBtn.addEventListener("click", function () {
+  authCMModal.classList.add("is-active");
+});
+
+authCMBG.addEventListener("click", function () {
+  authCMModal.classList.remove("is-active");
+});
+
+authCMCloseX.addEventListener("click", function () {
+  authCMModal.classList.remove("is-active");
+});
+
+authCMCancel.addEventListener("click", function () {
+  authCMModal.classList.remove("is-active");
+});
+
 uacModalBtnEl.addEventListener("click", function () {
   uacModalEl.classList.add("is-active");
 });

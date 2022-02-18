@@ -1,10 +1,10 @@
 const router = require("express").Router();
-const { UAC } = require("../../models");
+const { authCM } = require("../../models");
 
 router.post("/", async (req, res) => {
   console.log("Create new uac", req.body);
-  const uacData = await UAC.create(req.body);
-  console.log(uacData);
+  const cmData = await authCM.create(req.body);
+  console.log(cmData);
 
   res.sendStatus(200);
 });
