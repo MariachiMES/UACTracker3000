@@ -1,4 +1,5 @@
 const path = require("path");
+const smartyStreets = require("./controllers/api/smartyStreets");
 const express = require("express");
 const exphbs = require("express-handlebars");
 const routes = require("./controllers");
@@ -35,6 +36,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use(routes);
+app.use("/", smartyStreets);
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`Now listening on port ${PORT}`));

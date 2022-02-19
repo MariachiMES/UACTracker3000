@@ -9,19 +9,22 @@
         aria-label="close"
       ></button>
     </header>
+    <form action = "/" method="POST">
     <section class="modal-card-body">
       Address:
       <input
+      name="address"
         class="input"
         id="smarty-address"
         value="{{uac.sponsor_address_1}}"
       />
       City:
-      <input class="input" id="smarty-city" value="{{uac.sponsor_city}}" />
+      <input name ="city" class="input" id="smarty-city" value="{{uac.sponsor_city}}" />
       State:
-      <input class="input" id="smarty-state" value="{{uac.sponsor_state}}" />
+      <input name="state" class="input" id="smarty-state" value="{{uac.sponsor_state}}" />
       Zip:
-      <input class="input" id="smarty-zip" value="{{uac.sponsor_zip}}" />
+      <input name = "zip" class="input" id="smarty-zip" value="{{uac.sponsor_zip}}" />        </form>
+
       <br /><br />
       <button class="button has-background-primary" id="view-results">View
         Results</button>

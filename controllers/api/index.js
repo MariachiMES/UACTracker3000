@@ -8,6 +8,7 @@ const editRRRoutes = require("./editRRRoutes");
 const editStatusRoutes = require("./editStatusRoutes");
 const deleteUACRoute = require("./deleteUAC");
 const authCM = require("./authCM");
+const smartyStreets = require("./smartyStreets");
 
 router.use("/users", userRoutes);
 router.use("/uac", newUacRoutes);
@@ -18,4 +19,5 @@ router.use("/edit", editRRRoutes);
 router.use("/edit", editStatusRoutes);
 router.use("/delete", deleteUACRoute);
 router.use("/cm", authCM);
+router.use("/smartystreets", smartyStreets);
 module.exports = router;
