@@ -29,23 +29,6 @@ const editStatuscancelBtnEL = document.querySelector(
 );
 const editStatusbgEl = document.querySelector("#edit-status-BG");
 
-const smartyStreetsBtn = document.querySelector("#smarty-streets");
-const smartyStreetsModal = document.querySelector("#smarty-streets-modal");
-const smartyStreetsModalBG = document.querySelector("#smarty-streets-BG");
-const smartyStreetsCloseX = document.querySelector("#smarty-streets-close-x");
-const smartyStreetsCancelBtn = document.querySelector("#smarty-streets-cancel");
-
-const activateSmartyStreetsModal = function () {
-  smartyStreetsModal.classList.add("is-active");
-};
-const closeSmartyStreetsModal = function () {
-  smartyStreetsModal.classList.remove("is-active");
-};
-smartyStreetsBtn.addEventListener("click", activateSmartyStreetsModal);
-smartyStreetsModalBG.addEventListener("click", closeSmartyStreetsModal);
-smartyStreetsCloseX.addEventListener("click", closeSmartyStreetsModal);
-smartyStreetsCancelBtn.addEventListener("click", closeSmartyStreetsModal);
-
 const closeStatusModal = function () {
   editStatusModal.classList.remove("is-active");
 };

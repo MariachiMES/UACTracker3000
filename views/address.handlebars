@@ -1,6 +1,4 @@
-{{!-- <div class="modal" id="smarty-streets-modal">
-  <div class="modal-background" id="smarty-streets-BG"></div>
-  <div class="modal-card">
+
     <header class="modal-card-head">
       <p class="modal-card-title">Smarty Streets Verification</p>
       <button
@@ -9,21 +7,41 @@
         aria-label="close"
       ></button>
     </header>
-    <form action = "/" method="POST">
+    {{#if address}}
+    <form action = "/address/{{address.uac_id}}" method="POST">
     <section class="modal-card-body">
       Address:
       <input
       name="address"
         class="input"
         id="smarty-address"
-        value="{{uac.sponsor_address_1}}"
+        value="{{address.sponsor_address_1}}"
       />
       City:
-      <input name ="city" class="input" id="smarty-city" value="{{uac.sponsor_city}}" />
+      <input name ="city" class="input" id="smarty-city" value="{{address.sponsor_city}}"/>
       State:
-      <input name="state" class="input" id="smarty-state" value="{{uac.sponsor_state}}" />
+      <input name="state" class="input" id="smarty-state" value="{{address.sponsor_state}}" />
       Zip:
-      <input name = "zip" class="input" id="smarty-zip" value="{{uac.sponsor_zip}}" />        </form>
+      <input name = "zip" class="input" id="smarty-zip" value="{{address.sponsor_zip}}" />        </form>
+
+      {{else}}
+          <form action = "/address/:id" method="POST">
+    <section class="modal-card-body">
+      Address:
+      <input
+      name="address"
+        class="input"
+        id="smarty-address"
+        value="{{street}}"
+      />
+      City:
+      <input name ="city" class="input" id="smarty-city" value="{{city}}"/>
+      State:
+      <input name="state" class="input" id="smarty-state" value="{{state}}" />
+      Zip:
+      <input name = "zip" class="input" id="smarty-zip" value="{{zip}}" />        </form>
+
+      {{/if}}
 
       <br /><br />
       <button class="button has-background-primary" id="view-results">View
@@ -44,7 +62,7 @@
       >SmartyStreets</a>
       <br /><br />
       <h2 class="title is-3 has-text-centered is-hidden" id="found">Found
-        <span id="no-of-results"></span>
+        <span id="no-of-results">{{results}}</span>
         valid address.</h2>
 
       <table class="table is-fullwidth">
@@ -55,31 +73,32 @@
           <td class="subtitle is-7 has-text-right">Delivery line 1</td>
         </tr>
         <tr>
-          <td class="title is-3" id="city-result">City</td>
+          <td class="title is-3" id="city-result">{{city}}, {{state}}, {{zip}}</td>
         </tr>
         <tr>
           <td class="subtitle is-7 has-text-right">
             City, State, Zipcode, +4Code</td>
         </tr>
         <tr>
-          <td class="title is-3" id="latitude-result">Lat</td>
+          <td class="title is-3" id="latitude-result">{{lat}}</td>
         </tr>
         <tr>
           <td class="subtitle is-7 has-text-right">Latitude</td>
         </tr>
         <tr>
-          <td class="title is-3" id="longitude-result">Lon</td>
+          <td class="title is-3" id="longitude-result">{{lon}}</td>
         </tr>
         <tr>
           <td class="subtitle is-7 has-text-right">Longitude</td>
         </tr>
         <tr>
-          <td class="title is-3" id="precision-result">Precision</td>
+          <td class="title is-3" id="precision-result">{{type}}</td>
         </tr>
         <tr>
           <td class="subtitle is-7 has-text-right">Precision</td>
         </tr>
       </table>
+      <h1 class ="is-hidden" id = "address-code">{{code}}</h1>
       <h3 class="title is-4 has-text-centered is-hidden" id="all-good"><span
           style="color: lightgreen"
         ><i class="fas fa-check"></i><span
@@ -132,4 +151,4 @@
 
     </footer>
   </div>
-</div> --}}
+<script src ="./js/addressAPI.js" defer></script>

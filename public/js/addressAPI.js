@@ -1,68 +1,9 @@
-const authID = "0b42747f-8fb5-655c-8aea-df31b60bd6b4";
-const authToken = "YobajrDKGXx87VDkFJNg";
-// const authID = process.env.AUTH_ID;
-// const authToken = process.env.AUTH_TOKEN;
-const goTime = document.querySelector("#view-results");
+const code = document.querySelector("#address-code").innerText;
+console.log(code);
 
-let formattedAddres;
-let formattedCity;
-let formattedState;
-
-const formatAddress = function () {
-  const street = document.querySelector("#smarty-address").value;
-  let smartyStreet = street.toLowerCase().split("");
-  for (let i = 0; i < smartyStreet.length; i++) {
-    if (smartyStreet[i] === " ") {
-      smartyStreet.splice(i, 1, "+");
-    }
-  }
-  formattedAddress = smartyStreet.join("");
-  return formattedAddress;
-};
-const formatCity = function () {
-  const city = document.querySelector("#smarty-city").value;
-
-  let smartyCity = city.toLowerCase().split("");
-  for (let i = 0; i < smartyCity.length; i++) {
-    if (smartyCity[i] === " ") {
-      smartyCity.splice(i, 1, "+");
-    }
-  }
-  formattedCity = smartyCity.join("");
-  return formattedCity;
-};
-const formatState = function () {
-  const state = document.querySelector("#smarty-state").value;
-  formattedState = state.toUpperCase();
-  return formattedState;
-};
-const formatZip = function () {
-  const zip = document.querySelector("#smarty-zip").value;
-  formattedZip = zip.toString();
-  return formattedZip;
-};
-
-const fetchSmartyStreets = function () {
-  formatAddress();
-  formatCity();
-  formatState();
-  formatZip();
-
-  let fetchAddress = `https://us-street.api.smartystreets.com/street-address?auth-id=${authID}&auth-token=${authToken}&street=${formattedAddress}+${formattedCity}+${formattedState}+${formattedZip}`;
-  console.log(fetchAddress);
-  fetch(
-    fetchAddress
-    // `https://us-street.api.smartystreets.com/street-address?auth-id=${authID}&auth-token=${authToken}&street=510+W+Dimmit+Crystal+city+TX+78839`
-    // `https://us-street.api.smartystreets.com/street-address?auth-id=${authID}&auth-token=${authToken}&street=${formattedAddres}+${formattedCity}+${formattedState}+${zip}`
-  )
-    .then((response) => response.json())
-    .then((data) => displayValidation(data));
-};
-goTime.addEventListener("click", fetchSmartyStreets);
-
-var displayValidation = function (data) {
-  console.log(data);
-  if (data.length === 0) {
+var displayValidation = function (code) {
+  console.log(code);
+  if (code === null) {
     console.log("fuuuuuck");
     document.querySelector("#all-good").classList.add("is-hidden");
 
@@ -183,48 +124,5 @@ const openGoogleEarth = function () {
 document
   .querySelector("#google-earth")
   .addEventListener("click", openGoogleEarth);
-// fetchCityInfo(lon, lat);
-// map.setCenter({ lat: lat, lng: lon });
 
-// var weatherSearch = function () {
-//   if (document.querySelector("#city-name").value != " ") {
-//     fetchWeather(document.querySelector("#city-name").value);
-//   }
-// };
-
-// var alternateTripApi =
-//   "5ae2e3f221c38a28845f05b60ade91485de3f230f12f105b7c087b90";
-
-// var tripApi = "5ae2e3f221c38a28845f05b627a67175ff5888a5fca032db41baf3b1";
-
-// function fetchCityInfo(lon, lat) {
-//   fetch(
-//     "https://api.opentripmap.com/0.1/en/places/radius?radius=20000&lon=" +
-//       lon +
-//       "&lat=" +
-//       lat +
-//       "&format=json&apikey=" +
-//       tripApi
-//   )
-//     .then((response) => response.json())
-//     .then((data) => displayPlaces(data));
-// }
-// var displayPlaces = function (data) {
-//   for (var i = 0; i < 10; i++) {
-//     document.querySelector(`#place-${i}`).innerText = data[i].name;
-//   }
-// };
-
-// document.querySelector("#go-time").addEventListener("click", weatherSearch);
-// var savedTrips = [];
-// displayStorage = function (savedTrips) {
-//   if (savedTrips !== "") {
-//     var savedTrips = localStorage.getItem("saveTrips").split(",");
-//   }
-//   for (var i = 0; i < 6; i++) {
-//     document.getElementById(`save-${i}`).textContent = savedTrips[i];
-//   }
-// };
-
-// displayStorage(savedTrips);
-// console.log(savedTrips);
+window.addEventListener("load", displayValidation);

@@ -27,6 +27,25 @@ router.get("/dashboard/:id", async (req, res) => {
   }
 });
 
+//Get ONE UAC, RENDER TO ADDRESS VERIFY
+router.get("/address/:id", async (req, res) => {
+  try {
+    if (!req.session.logged_in) {
+      res.redirect("/");
+    }
+    const singleAddress = await UAC.findByPk(req.params.id);
+    const address = singleAddress.get({ plain: true });
+    console.log(address);
+
+    res.render("address", {
+      address,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 //LOG USER IN
 router.get("/login", (req, res) => {
   // If the user is already logged in, redirect the request to another route
