@@ -81,6 +81,7 @@ router.get("/table", async (req, res) => {
       res.redirect("/");
     }
     const dbUACdata = await UAC.findAll({
+      order: [["user_id", "ASC"]],
       include: [{ all: true, nested: true }],
       attributes: {
         include: [
@@ -140,7 +141,7 @@ router.get("/discharged", async (req, res) => {
       res.redirect("/");
     }
     const dbUACdata = await UAC.findAll({
-      order: sequelize.literal("ORDER BY casemanager.username DESC"),
+      order: [["user_id", "ASC"]],
       include: [{ all: true, nested: true }],
       attributes: {
         include: [
