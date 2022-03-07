@@ -3,7 +3,6 @@ const { CaseManager, authCM } = require("../../models");
 
 //signup new user
 router.post("/", async (req, res) => {
-  console.log("Create new user");
   try {
     const userData = await authCM.findOne({
       where: { email: req.body.email },
@@ -11,8 +10,6 @@ router.post("/", async (req, res) => {
 
     if (!userData) {
       res.status(401).json({ message: "This email is not an authorized user" });
-      res.redirect("/notAuthorized");
-
       return;
     }
 
@@ -47,6 +44,7 @@ router.post("/login", async (req, res) => {
       res
         .status(401)
         .json({ message: "Incorrect email or password, please try again" });
+      res.render("/unauthorized");
 
       return;
     }
@@ -57,6 +55,7 @@ router.post("/login", async (req, res) => {
       res
         .status(401)
         .json({ message: "Incorrect email or password, please try again" });
+      res.render("/unauthorized");
       return;
     }
 
@@ -77,10 +76,8 @@ router.post("/logout", (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
       res.status(204).end();
-      console.log("logging-out");
     });
   } else {
-    console.log(res, "post logout else");
     res.status(404).end();
   }
 });

@@ -1,4 +1,3 @@
-console.log("LoginJSSD:FLKSJ:DFLKSJ:DFLKSJD:FLKJ");
 async function loginFormHandler(event) {
   event.preventDefault();
   const email = document.querySelector("#user-email").value.trim();
@@ -18,7 +17,7 @@ async function loginFormHandler(event) {
       console.log(response.body);
       document.location.replace("/table");
     } else {
-      document.location.replace("/nomatch");
+      document.location.replace("/unauthorized");
     }
   }
 }

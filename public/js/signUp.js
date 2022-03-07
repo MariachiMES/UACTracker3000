@@ -17,9 +17,11 @@ async function signupFormHandler(event) {
     });
     console.log("This is the Response", response);
     if (response.ok) {
+      console.log("THERE WAS OK");
       document.location.replace("/");
     } else {
-      location.replace("/Unathorized");
+      console.log("THERE WAS AN ERROR");
+      document.location.replace("/unauthorized");
     }
   }
 }

@@ -158,4 +158,5 @@ document
   .querySelector("#google-earth")
   .addEventListener("click", openGoogleEarth);
 
+const form = document.querySelector("#address-verification");
 window.addEventListener("load", displayValidation);

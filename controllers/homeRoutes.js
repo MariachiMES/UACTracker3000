@@ -6,6 +6,9 @@ const sequelize = require("../config/connection");
 router.get("/new-user", async (req, res) => {
   res.render("signUp");
 });
+router.get("/unauthorized", (req, res) => {
+  res.render("unauthorized");
+});
 
 //GET ONE UAC, RENDER TO DASHBOARD
 router.get("/dashboard/:id", async (req, res) => {

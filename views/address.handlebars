@@ -1,5 +1,6 @@
 
     <header class="modal-card-head">
+      <script src="https://kit.fontawesome.com/cd8c8fb565.js" crossorigin="anonymous"></script>
       <p class="modal-card-title">Smarty Streets Verification</p>
       <button
         class="delete"
@@ -8,7 +9,7 @@
       ></button>
     </header>
     {{#if address}}
-    <form action = "/address/{{address.uac_id}}" method="POST">
+    <form id = "address-verification" action = "/address/{{address.uac_id}}" method="POST">
     <section class="modal-card-body">
       Address:
       <input
