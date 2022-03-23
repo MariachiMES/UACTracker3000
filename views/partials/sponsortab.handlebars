@@ -1,6 +1,6 @@
 {{!-- SPONSOR TAB PARTIAL --}}
         <div class="tile is-parent">
-          <article class="tile is-child notification has-background-black-bis has-text-white-bis">
+          <article class="tile is-child notification" style="background-color: rgb(85, 150, 105); color: white;">
             <p class = "title">Sponsor</p>
             <p class="title is-2">{{uac.sponsor_name}}</p>
             <p class="subtitle is-3">{{uac.sponsor_relationship}}</p>
@@ -13,9 +13,9 @@
               <p>State: {{uac.sponsor_state}}</p>
               <p>Zip: {{uac.sponsor_zip}}</p>
             </div>
-            <button class="button is-success" id="edit-sponsor">Edit</button>
-            <a href = "/address/{{uac.uac_id}}">
-            <button class="button is-warning" >Smarty Streets</button></a>
+            <h3 class="title is-6" style="color: navy" id="edit-sponsor"><i class ="fa-solid fa-file-pen"></i>Edit Sponsor Tab</h3>
+            {{!-- <a href = "/address/{{uac.uac_id}}"> --}}
+            {{!-- <h3 class="title is-6" style="color: yellow"><i class ="fa-solid fa-file-pen"></i>Smarty Streets</h3></a> --}}
           </article>
         </div>
       </div>

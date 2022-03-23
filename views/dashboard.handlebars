@@ -3,23 +3,40 @@
       <div class="tile is-vertical is-8">
         <div class="tile">
           <div class="tile is-parent is-vertical">
-            <article class="tile is-child notification has-background-black-bis has-text-white-bis">
-              <p class="title">Menu</p>
-              <a href = "/table">
+            <article class="tile is-child notification" style="background-color: rgb(121, 182, 140); color: white;">
+              <p class="title">Navigation</p>
+              
               <div class = "container has-text-centered "></div>
               <div class="container is-info has-text-centered mt-0">
-                    <div class="notification p-1 has-text-weight-bold is-info" id = "table-view">
-                      <span><i class="fa-solid fa-table" style="margin-right: 10px"></i>Table View</span>
-                    </div>
-                  </div></a><br>
-              <div class = "container has-text-centered "></div>
-              <div class="container is-info has-text-centered mt-0">
-                    <div class="notification p-1 has-text-weight-bold has-background-primary-dark" id = "edit-status">
+                    <div class="notification p-1 has-text-weight-bold has-background-primary-dark" style = "cursor: pointer;" id = "edit-status">
                       <span><i class="fa-solid fa-bars-progress" style= "margin-right: 10px"></i>Case Status</span>
                     </div>
-                  </div></a><br>
-               
-            </article>
+                  </div>
+                  <a href = "/table" style="text-decoration: none">
+              <div class="container is-info has-text-centered mt-3">
+                    <h3 class="title is-6" id ="table-view">
+                      <span><i class="fa-solid fa-table" style="margin-right: 10px; cursor: pointer;"></i>Table View</span>
+                    </h3>
+                  </div></a>
+              <div class = "container has-text-centered "></div>
+              <div class = "container is-info has-text-centered mt-3">
+                <h3 class ="title is-6" id = "edit-RR" style= "color: rgb(4, 60, 163); cursor: pointer;">
+                  <i class ="fa-solid fa-file-pen"></i>
+                  Edit Release Request
+                </h3>
+              </div>
+              <div class = "container is-info has-text-centered mt-3">
+                <h3 class= "title is-6" id = "release-request-btn" style="cursor: pointer;">
+                  <i class = "fa-solid fa-door-open"></i> Open Release Request
+                </h3>
+              </div>
+
+            <div class= "container is-info has-text-centered mt-3">
+              <a style = "text-decoration: none" = "/address/{{uac.uac_id}}">
+                          <h3 class="title is-6" style="color: yellow;"><i class="fa-solid fa-road" style="margin-right: 10px"></i>Smarty Streets</h3></a>
+
+            </div>
+              </article>
           </div>
 
           
@@ -86,7 +103,7 @@
   </body>
   <script src="../js/casemanagerview.js"></script>
   <script src = "../js/editUAC.js"></script>
-        <script src="https://kit.fontawesome.com/cd8c8fb565.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/cd8c8fb565.js" crossorigin="anonymous"></script>
 {{!-- END EDIT STATUS MODAL --}}
 
   {{!-- <script src = "../controllers/api/userRoutes.js"></script> --}}
