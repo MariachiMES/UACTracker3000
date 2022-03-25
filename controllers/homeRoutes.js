@@ -10,6 +10,74 @@ router.get("/unauthorized", (req, res) => {
   res.render("unauthorized");
 });
 
+//render the caseload to a page
+router.get("/caseload", async (req, res) => {
+  try {
+    if (!req.session.logged_in) {
+      res.redirect("/");
+    }
+    const dbUACdata = await UAC.findAll({
+      order: [["user_id", "ASC"]],
+      include: [{ all: true, nested: true }],
+      attributes: {
+        include: [
+          [
+            sequelize.literal(
+              "(SELECT COUNT(submitted) FROM uac WHERE uac.submitted LIKE '%/%')"
+            ),
+            "totalSubmitted",
+          ],
+          [
+            sequelize.literal(
+              "(SELECT COUNT(uacname) FROM uac WHERE uac.intake LIKE '%/%' AND uac.discharged NOT LIKE '%/%')"
+            ),
+            "totaluacs",
+          ],
+          [
+            sequelize.literal(
+              "(SELECT COUNT(approved) FROM uac WHERE uac.approved LIKE '%/%')"
+            ),
+            "totalApproved",
+          ],
+          [
+            sequelize.literal(
+              "(SELECT COUNT(remanded) FROM uac WHERE uac.remanded LIKE '%/%')"
+            ),
+            "totalRemanded",
+          ],
+        ],
+      },
+    });
+    const cmDbData = await CaseManager.findAll({
+      where: { email: req.session.email },
+      include: [{ all: true, nested: true }],
+    });
+
+    const uacTable = dbUACdata.map((uacData) => uacData.get({ plain: true }));
+    const cmCaseload = cmDbData.map((cmData) => cmData.get({ plain: true }));
+    console.log(
+      "HELLO",
+      cmCaseload,
+      `the name for the uac is ${cmCaseload[0].UACs[0].uacname}`
+    );
+    res.render("caseload", {
+      uacTable,
+      cmCaseload,
+      username: req.session.username,
+      id: req.session.user_id,
+      email: req.session.email,
+      caseload: req.body.UACs,
+    });
+    console.log(
+      "this is the UAC info",
+      uacTable,
+      `this is the case manager info with the objects that are weird: ${cmCaseload}`
+    );
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 //GET ONE UAC, RENDER TO DASHBOARD
 router.get("/dashboard/:id", async (req, res) => {
   try {
@@ -115,14 +183,17 @@ router.get("/table", async (req, res) => {
         ],
       },
     });
-    console.log();
     const cmDbData = await CaseManager.findAll({
       include: [{ all: true, nested: true }],
     });
 
     const uacTable = dbUACdata.map((uacData) => uacData.get({ plain: true }));
     const cmSelector = cmDbData.map((cmData) => cmData.get({ plain: true }));
-    console.log(cmSelector);
+    console.log(
+      "HELLO",
+      cmSelector,
+      `the name for the uac is ${cmSelector[0].UACs[0].uacname}`
+    );
     res.render("table", {
       uacTable,
       cmSelector,
@@ -130,7 +201,11 @@ router.get("/table", async (req, res) => {
       id: req.session.user_id,
       email: req.session.email,
     });
-    console.log(uacTable, cmSelector);
+    console.log(
+      "this is the UAC info",
+      uacTable,
+      `this is the case manager info with the objects that are weird: ${cmSelector}`
+    );
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -144,7 +219,6 @@ router.get("/discharged", async (req, res) => {
       res.redirect("/");
     }
     const dbUACdata = await UAC.findAll({
-      order: [["user_id", "ASC"]],
       include: [{ all: true, nested: true }],
       attributes: {
         include: [

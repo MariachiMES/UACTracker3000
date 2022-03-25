@@ -39,6 +39,14 @@ CaseManager.init(
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
+    team_lead: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: CaseManager,
+        key: "user_id",
+      },
+      allowNull: true,
+    },
   },
   {
     hooks: {

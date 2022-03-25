@@ -15,7 +15,7 @@ async function loginFormHandler(event) {
     });
     if (response.ok) {
       console.log(response.body);
-      document.location.replace("/table");
+      document.location.replace("/caseload");
     } else {
       document.location.replace("/unauthorized");
     }

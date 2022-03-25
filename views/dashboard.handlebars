@@ -12,10 +12,15 @@
                       <span><i class="fa-solid fa-bars-progress" style= "margin-right: 10px"></i>Case Status</span>
                     </div>
                   </div>
-                  <a href = "/table" style="text-decoration: none">
+              
+                <div class = "container has-text-centered mt-3">
+                  <a href="/caseload" style="text-decoration: none;">
+                  <h3 class="title is-6" style="color: red" id = "caseload"><span><i class="fa-solid fa-briefcase" style="margin-right: 10px"></i>My Caseload</h3></a></span>
+                </div>
               <div class="container is-info has-text-centered mt-3">
+                    <a href = "/table" style="text-decoration: none">
                     <h3 class="title is-6" id ="table-view">
-                      <span><i class="fa-solid fa-table" style="margin-right: 10px; cursor: pointer;"></i>Table View</span>
+                      <span><i class="fa-solid fa-table" style="margin-right: 10px; cursor: pointer;"></i>Census</span>
                     </h3>
                   </div></a>
               <div class = "container has-text-centered "></div>
@@ -32,7 +37,7 @@
               </div>
 
             <div class= "container is-info has-text-centered mt-3">
-              <a style = "text-decoration: none" = "/address/{{uac.uac_id}}">
+              <a style = "text-decoration: none" href= "/address/{{uac.uac_id}}">
                           <h3 class="title is-6" style="color: yellow;"><i class="fa-solid fa-road" style="margin-right: 10px"></i>Smarty Streets</h3></a>
 
             </div>

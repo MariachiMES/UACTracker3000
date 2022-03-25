@@ -34,7 +34,6 @@ router.post("/", async (req, res) => {
 });
 //LOGIN
 router.post("/login", async (req, res) => {
-  console.log("Login", req.body);
   try {
     const userData = await CaseManager.findOne({
       where: { email: req.body.email },
@@ -45,10 +44,8 @@ router.post("/login", async (req, res) => {
         .status(401)
         .json({ message: "Incorrect email or password, please try again" });
       res.render("/unauthorized");
-
       return;
     }
-
     const validPassword = await userData.checkPassword(req.body.password);
 
     if (!validPassword) {
@@ -70,6 +67,7 @@ router.post("/login", async (req, res) => {
   } catch (err) {
     res.status(400).json(err);
   }
+  console.log(req);
 });
 
 router.post("/logout", (req, res) => {

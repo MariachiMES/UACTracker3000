@@ -1,25 +1,53 @@
 
 
 <section class="hero is-info is-small ">
-  <div class="hero-head">
+  {{!-- <div class="hero-head"><nav class="breadcrumb" aria-label="breadcrumbs">
+    
+  <ul>
+      <li class="mr-4">
+          <strong>Welcome <a href = "/caseload">{{username}}</a></strong>
+      </li>
+    
+    <li>
+        <span class="icon is-small">
+          <i class="fas fa-book" aria-hidden="true"></i>
+        </span>
+        <span>Auth CM</span>
+    </li>
+    <li>
+        <span class="icon is-small">
+          <i class="fas fa-puzzle-piece" aria-hidden="true"></i>
+        </span>
+        <span>Discharged</span>
+    </li>
+    <li class="is-active">
+
+        <span class="icon is-small">
+          <i class="fas fa-thumbs-up" style="margin-right: 10px" aria-hidden="true"></i>
+        </span>
+        <span>Add New UAC</span>
+      
+    </li>
+  </ul>
+</nav> --}}
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
       </div>
 <div class = "container m-3">
-<strong>Welcome {{username}}</strong>
+<strong>Welcome, <a href = "/caseload">{{username}}</a></strong>
 </div>
 <!-- Main container -->
 <nav class="level is-mobile">
   <!-- Left side -->  
     <div class="level-item">
       <div class="field has-addons">
-        <button class="button is-primary is-modal-button ml-3 mr-3" data-target="modal" id ="auth-cm-btn">
-      <strong>Auth New User</strong></button>
+        <h3 class="is-modal-button ml-3 mr-3" data-target="modal" id ="auth-cm-btn">
+      <strong>Auth New User</strong></h3>
       </div>
     </div>
-    <button class="button is-primary is-modal-button ml-3 mr-3" data-target="modal" id ="uacModalBtn">
-      <strong>Add UAC</strong></button>
-      <a href = "/discharged"><button class = "button has-background-info-light ml-3 mr-3">Go To Discharged</button></a>
+    <h3 class="is-modal-button ml-3 mr-3" data-target="modal" id ="uacModalBtn">
+      <strong>Add UAC</strong></h3>
+      <a href = "/discharged"><h3 class = "ml-3 mr-3">Go To Discharged</h3></a>
 
     <button class="button is-warning is-modal-button mr-3 is-hidden" data-target="#cm-modal" id ="cmModalBtn">
       <strong>Add Case Manager</strong></button>

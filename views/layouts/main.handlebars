@@ -1,22 +1,69 @@
-<!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Reunify</title>
-   
+    <link rel="icon" href="/assets/images/reunify.ico" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
     />
+    <link rel="stylesheet" href="/css/style.css" class="stylesheeet">
   </head>
   <body>
-<section class="hero is-small is-link">
-      <div class="hero-body">
-        <p class="title">Reunify</p>
-        <p class="subtitle">UAC Case Management Supplement Workflow</p>
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="https://bulma.io">
+      <img src="/assets/images/Reunify-Min.png" >
+    </a>
+
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item">
+        Pricing
+      </a>
+
+      <a class="navbar-item">
+       Tour
+      </a>
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a>
+            <strong><i class="fa-solid fa-user-plus" style="margin-right: 10px"></i>Sign up</strong>
+          </a>
+          <a style="margin-left: 20px"><i class="fa-solid fa-right-to-bracket" style="margin-right: 10px"></i><strong>
+            Log in</strong>
+          </a>
+        </div>
       </div>
-    </section>
+    </div>
+  </div>
+</nav>
+{{!-- Begin Hero Content --}}
+<section class="hero is-large">
+        <!-- Begin Hero Content-->
+        <div class="hero-body">
+          <div class="container has-text-centered">
+            <h1 class="subtitle" style="color: white">Welcome to</h1>
+            <h2 class="title" style="color: white">REUNIFY</h2>
+            <h1 class="subtitle profession" style="color: white">Supplemental workflow platform for ORR EIS case management.</h1>
+          </div>
+        </div>
+        <!-- End Hero Content-->
+      </section>
+  </body>
+</html>
 
           <!-- Conditionally render login or logout links -->
   {{!-- {{#if logged_in}}
