@@ -1,45 +1,35 @@
-
-
 <section class="is-info is-small ">
-  <!-- Main container -->
-<nav class="level">
-  <!-- Left side -->
-  <div class="level-left">
-    <div class="level-item">
-      <p class="subtitle is-5">
-        <strong>Welcome, <a href = "/caseload">{{username}}</a></strong>
-      </p>
-    </div>
-    <nav class="breadcrumb" aria-label="breadcrumbs">
+<nav class="breadcrumb mb-6 is-centered" aria-label="breadcrumbs">
     
   <ul>
+      <li class="mr-4">
+          <strong>Welcome, {{username}}</strong>
+      </li>
     <li>
-      <a href="/table" style="text-decoration: none;">
+      <a href="/caseload" style="text-decoration: none;">
         <span class="icon is-small">
-          <i class="fas fa-home" aria-hidden="true"></i>
+          <i class="fa-solid fa-table-list" style="margin-right: 10px"></i>
         </span>
-        <span>Add Case Manager</span></a>
+        <span><strong>My Caseload</strong></span></a>
     
     </li>
     <li>
-      
-        <span class="icon is-small">
-          <i class="fas fa-book" aria-hidden="true"></i>
-        </span>
-        <span>Add New UAC</span>
-      
+           <span class="is-modal-button mr-3" data-target="modal" id ="auth-cm-btn" style="cursor: pointer;">
+      <a><i class="fa-solid fa-person-circle-plus" style="margin-right: 10px"></i><strong>Add Case Manager</strong></a></span>
+     
     </li>
     <li>
-      
-        <span class="icon is-small">
-          <i class="fas fa-puzzle-piece" aria-hidden="true"></i>
-        </span>
-        <span>Discharged</span>
-      
+    <span class="is-modal-button ml-3 mr-3" data-target="modal" id ="uacModalBtn" style="cursor: pointer;">
+      <a><i class="fa-solid fa-child-reaching" style="margin-right: 10px"></i><strong>Add UAC</strong></a></span>
+    </li>
+
+    <li>
+         <a href = "/discharged" style="cursor: pointer;"><h3 class = "ml-3 mr-3"><i class="fa-solid fa-hands-holding-child" style="margin-right: 10px"></i><strong>Go To Discharged</strong></h3></a>
     </li>
    
   </ul>
 </nav>
+</section>
     {{!-- <div class="level-item">
       <div class="field has-addons">
         <p class="control">
@@ -52,22 +42,8 @@
         </p>
       </div>
     </div> --}}
-  </div>
-
   <!-- Right side -->
-  <div class="level-right">
-<div class="level-item">
-      <div class="field has-addons ml-6">
-        <h3 class="is-modal-button mr-3" data-target="modal" id ="auth-cm-btn" style="cursor: pointer;">
-      <a><strong>Add Case Manager</strong></a></h3>
-      </div>
-    </div>
-    <h3 class="is-modal-button ml-3 mr-3" data-target="modal" id ="uacModalBtn" style="cursor: pointer;">
-      <a><strong>Add UAC</strong></a></h3>
-      <a href = "/discharged" style="cursor: pointer;"><h3 class = "ml-3 mr-3"><strong>Go To Discharged</strong></h3></a>
 
-  </div>
-</nav>
   <nav class="level">
   <div class="level-item has-text-centered">
     <div>
@@ -95,15 +71,8 @@
   </div>
 </nav>
     <nav class="navbar" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand">
-        
-      </div>
-      
-<div class = "container">
-
-
-<!-- Main container -->
-</nav>
+      <div class = "container">
+      </nav>
     <div class="table-container is-centered">
       <table class="table is-fullwidth is-hoverable is-narrow is-bordered" id ="uac-table">
         <thead>

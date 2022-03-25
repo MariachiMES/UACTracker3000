@@ -90,11 +90,18 @@ router.get("/dashboard/:id", async (req, res) => {
       res.redirect("/");
     }
     const singleUACinfo = await UAC.findByPk(req.params.id);
+    const cmDbData = await CaseManager.findAll({
+      where: { email: req.session.email },
+      include: [{ all: true, nested: true }],
+    });
+
+    const cmCaseload = cmDbData.map((cmData) => cmData.get({ plain: true }));
 
     const uac = singleUACinfo.get({ plain: true });
     console.log("UAC INFO", uac);
 
     res.render("dashboard", {
+      cmCaseload,
       uac,
       logged_in: req.session.logged_in,
     });
