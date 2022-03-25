@@ -127,7 +127,7 @@ router.get("/address/:id", async (req, res) => {
 //LOG USER IN
 router.get("/login", (req, res) => {
   // If the user is already logged in, redirect the request to another route
-  if (req.session.logged_in) {
+  if (!req.session.logged_in) {
     res.redirect("/");
     return;
   }
@@ -138,7 +138,14 @@ router.get("/login", (req, res) => {
 });
 //RENDER LOGIN PAGE
 router.get("/", (req, res) => {
-  res.render("login");
+  if (req.session.logged_in) {
+    res.redirect("/caseload");
+    return;
+  }
+  res.render("login", {
+    // Pass the logged in flag to the template
+    logged_in: req.session.logged_in,
+  });
 });
 //Delete ONE UAC
 router.delete("/:uac_id", (req, res) => {

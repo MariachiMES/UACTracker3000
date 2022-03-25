@@ -1,92 +1,109 @@
 
 
 <section class="is-info is-small ">
-  {{!-- <div class="hero-head"><nav class="breadcrumb" aria-label="breadcrumbs">
+  <!-- Main container -->
+<nav class="level">
+  <!-- Left side -->
+  <div class="level-left">
+    <div class="level-item">
+      <p class="subtitle is-5">
+        <strong>Welcome, <a href = "/caseload">{{username}}</a></strong>
+      </p>
+    </div>
+    <nav class="breadcrumb" aria-label="breadcrumbs">
     
   <ul>
-      <li class="mr-4">
-          <strong>Welcome <a href = "/caseload">{{username}}</a></strong>
-      </li>
-    
     <li>
+      <a href="/table" style="text-decoration: none;">
+        <span class="icon is-small">
+          <i class="fas fa-home" aria-hidden="true"></i>
+        </span>
+        <span>Add Case Manager</span></a>
+    
+    </li>
+    <li>
+      
         <span class="icon is-small">
           <i class="fas fa-book" aria-hidden="true"></i>
-        </span>
-        <span>Auth CM</span>
-    </li>
-    <li>
-        <span class="icon is-small">
-          <i class="fas fa-puzzle-piece" aria-hidden="true"></i>
-        </span>
-        <span>Discharged</span>
-    </li>
-    <li class="is-active">
-
-        <span class="icon is-small">
-          <i class="fas fa-thumbs-up" style="margin-right: 10px" aria-hidden="true"></i>
         </span>
         <span>Add New UAC</span>
       
     </li>
+    <li>
+      
+        <span class="icon is-small">
+          <i class="fas fa-puzzle-piece" aria-hidden="true"></i>
+        </span>
+        <span>Discharged</span>
+      
+    </li>
+   
   </ul>
-</nav> --}}
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand">
-      </div>
-<div class = "container m-3">
-<strong>Welcome, <a href = "/caseload">{{username}}</a></strong>
-</div>
-<!-- Main container -->
-<nav class="level is-mobile">
-  <!-- Left side -->  
-    <div class="level-item">
+</nav>
+    {{!-- <div class="level-item">
       <div class="field has-addons">
-        <h3 class="is-modal-button ml-3 mr-3" data-target="modal" id ="auth-cm-btn">
-      <strong>Auth New User</strong></h3>
+        <p class="control">
+          <input class="input" type="text" placeholder="Find a post">
+        </p>
+        <p class="control">
+          <button class="button">
+            Search
+          </button>
+        </p>
+      </div>
+    </div> --}}
+  </div>
+
+  <!-- Right side -->
+  <div class="level-right">
+<div class="level-item">
+      <div class="field has-addons ml-6">
+        <h3 class="is-modal-button mr-3" data-target="modal" id ="auth-cm-btn" style="cursor: pointer;">
+      <a><strong>Add Case Manager</strong></a></h3>
       </div>
     </div>
-    <h3 class="is-modal-button ml-3 mr-3" data-target="modal" id ="uacModalBtn">
-      <strong>Add UAC</strong></h3>
-      <a href = "/discharged"><h3 class = "ml-3 mr-3">Go To Discharged</h3></a>
+    <h3 class="is-modal-button ml-3 mr-3" data-target="modal" id ="uacModalBtn" style="cursor: pointer;">
+      <a><strong>Add UAC</strong></a></h3>
+      <a href = "/discharged" style="cursor: pointer;"><h3 class = "ml-3 mr-3"><strong>Go To Discharged</strong></h3></a>
 
-    <button class="button is-warning is-modal-button mr-3 is-hidden" data-target="#cm-modal" id ="cmModalBtn">
-      <strong>Add Case Manager</strong></button>
-  <div class = "level-item has-text-centered mr-6 ml-6">
+  </div>
+</nav>
+  <nav class="level">
+  <div class="level-item has-text-centered">
     <div>
-      <p class = "heading">Total</p>
+      <p class="heading">Total</p>
       <p class = "title">{{uacTable.[0].totaluacs}}</p>
     </div>
   </div>
-  <div class="level-item has-text-centered mr-6 ml-3">
+  <div class="level-item has-text-centered">
     <div>
       <p class="heading">Submitted</p>
       <p class="title">{{uacTable.[0].totalSubmitted}}</p>
     </div>
   </div>
-  <br><br>
-  <div class="level-item has-text-centered mr-6 ml-3">
+  <div class="level-item has-text-centered">
     <div>
       <p class="heading">Approved</p>
       <p class="title">{{uacTable.[0].totalApproved}}</p>
     </div>
   </div>
-  <br><br>
-  <div class="level-item has-text-centered mr-6 ml-3">
+  <div class="level-item has-text-centered">
     <div>
       <p class="heading">Remanded</p>
       <p class="title">{{uacTable.[0].totalRemanded}}</p>
     </div>
   </div>
-    </div>
+</nav>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        
+      </div>
+      
+<div class = "container">
 
-    </section>
-    </nav>
-    </nav>
-    <script>
-      $(document).ready( function () {
-    $('#uac-table').DataTable();
-} );
-    </script>
+
+<!-- Main container -->
+</nav>
     <div class="table-container is-centered">
       <table class="table is-fullwidth is-hoverable is-narrow is-bordered" id ="uac-table">
         <thead>
