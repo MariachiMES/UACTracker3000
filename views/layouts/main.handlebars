@@ -24,7 +24,8 @@
       <span aria-hidden="true"></span>
     </a>
   </div>
-
+{{#if logged_in}}
+{{else}}
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
       <a class="navbar-item">
@@ -35,19 +36,29 @@
        Tour
       </a>
     </div>
-
+{{/if}}
+ {{#if logged_in}}
     <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a style="margin-left: 20px"><i class="fa-solid fa-right-to-bracket" style="margin-right: 10px"></i><strong>
+            Log Out</strong>
+          </a>
+          {{else}}
+            <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
           <a>
             <strong><i class="fa-solid fa-user-plus" style="margin-right: 10px"></i>Sign up</strong>
           </a>
           <a style="margin-left: 20px"><i class="fa-solid fa-right-to-bracket" style="margin-right: 10px"></i><strong>
-            Log in</strong>
+            Log In</strong>
           </a>
+          {{/if}}
         </div>
       </div>
     </div>
+    
   </div>
 </nav>
 {{!-- Begin Hero Content --}}
@@ -76,11 +87,11 @@
   {{/if}} --}}
 
     {{{body}}}
+
   <footer>
     <div class = "container has-text-centered">© 2021 comal software</div>
 </footer>
     </div>
-
     <!-- Render script for logged in users only -->
     {{!-- {{#if logged_in}}
       <script src="/js/logout.js"></script>

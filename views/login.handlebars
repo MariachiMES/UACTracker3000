@@ -1,7 +1,8 @@
+{{#if logged_in}}
+{{else}}
 <section class="section">
   <div class="container">
-    <h1 class="title">Reunify</h1>
-    <p class="subtitle is-centered"><strong>Login</strong></p>
+    <h1 class="title">Login</h1>
   </div>
 </section>
 <div class="container field has-addons">
@@ -34,15 +35,16 @@
 <div class="container field is-grouped">
 
   <p class="control">
-    <button class="button is-link" id="login">Login</button>
+    <a id="login" style="margin-right: 30px;"><strong><i class="fa-solid fa-right-to-bracket" style="margin-right: 10px;"></i>Login</strong></a>
   </p>
 
 
   <p class="control">
-    <a href="/new-user"><button class="button" id="new-user">Sign-Up New User</button></a>
+    <a href="/new-user"><strong><i class="fa-solid fa-user-plus" style="margin-right: 10px"></i>Sign up</strong></a>
   </p>
   </div>
   </div>
 </div>
 <script src="./js/login.js"></script>
 <script src="https://kit.fontawesome.com/cd8c8fb565.js" crossorigin="anonymous"></script>
+{{/if}}

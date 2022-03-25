@@ -7,7 +7,10 @@ router.get("/new-user", async (req, res) => {
   res.render("signUp");
 });
 router.get("/unauthorized", (req, res) => {
-  res.render("unauthorized");
+  res.render("unauthorized", {
+    // Pass the logged in flag to the template
+    logged_in: req.session.logged_in,
+  });
 });
 
 //render the caseload to a page
@@ -55,11 +58,11 @@ router.get("/caseload", async (req, res) => {
 
     const uacTable = dbUACdata.map((uacData) => uacData.get({ plain: true }));
     const cmCaseload = cmDbData.map((cmData) => cmData.get({ plain: true }));
-    console.log(
-      "HELLO",
-      cmCaseload,
-      `the name for the uac is ${cmCaseload[0].UACs[0].uacname}`
-    );
+    // console.log(
+    //   "HELLO",
+    //   cmCaseload,
+    //   `the name for the uac is ${cmCaseload[0].UACs[0].uacname}`
+    // );
     res.render("caseload", {
       uacTable,
       cmCaseload,
@@ -67,12 +70,14 @@ router.get("/caseload", async (req, res) => {
       id: req.session.user_id,
       email: req.session.email,
       caseload: req.body.UACs,
+      logged_in: req.session.logged_in,
     });
-    console.log(
-      "this is the UAC info",
-      uacTable,
-      `this is the case manager info with the objects that are weird: ${cmCaseload}`
-    );
+
+    // console.log(
+    //   "this is the UAC info",
+    //   uacTable,
+    //   `this is the case manager info with the objects that are weird: ${cmCaseload}`
+    // );
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -91,6 +96,7 @@ router.get("/dashboard/:id", async (req, res) => {
 
     res.render("dashboard", {
       uac,
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     console.log(err);
@@ -106,10 +112,11 @@ router.get("/address/:id", async (req, res) => {
     }
     const singleAddress = await UAC.findByPk(req.params.id);
     const address = singleAddress.get({ plain: true });
-    console.log(address);
+    // console.log(address);
 
     res.render("address", {
       address,
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     console.log(err);
@@ -124,8 +131,10 @@ router.get("/login", (req, res) => {
     res.redirect("/");
     return;
   }
-
-  res.render("login");
+  res.render("login", {
+    // Pass the logged in flag to the template
+    logged_in: req.session.logged_in,
+  });
 });
 //RENDER LOGIN PAGE
 router.get("/", (req, res) => {
@@ -189,18 +198,20 @@ router.get("/table", async (req, res) => {
 
     const uacTable = dbUACdata.map((uacData) => uacData.get({ plain: true }));
     const cmSelector = cmDbData.map((cmData) => cmData.get({ plain: true }));
-    console.log(
-      "HELLO",
-      cmSelector,
-      `the name for the uac is ${cmSelector[0].UACs[0].uacname}`
-    );
+    // console.log(
+    //   "HELLO",
+    //   cmSelector,
+    //   `the name for the uac is ${cmSelector[0].UACs[0].uacname}`
+    // );
     res.render("table", {
       uacTable,
       cmSelector,
       username: req.session.username,
       id: req.session.user_id,
       email: req.session.email,
+      logged_in: req.session.logged_in,
     });
+
     console.log(
       "this is the UAC info",
       uacTable,
@@ -245,7 +256,9 @@ router.get("/discharged", async (req, res) => {
       username: req.session.username,
       id: req.session.user_id,
       email: req.session.email,
+      logged_in: req.session.logged_in,
     });
+
     console.log(uacTable, cmSelector);
   } catch (err) {
     console.log(err);
