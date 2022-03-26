@@ -10,73 +10,61 @@
         <span class="icon is-small">
           <i class="fa-solid fa-table-list" style="margin-right: 10px"></i>
         </span>
-        <span><strong>My Caseload</strong></span></a>
+        <span><strong>Census</strong></span></a>
     
     </li>
     <li>
-           <span class="is-modal-button mr-3" data-target="modal" id ="auth-cm-btn" style="cursor: pointer;">
-      <a><i class="fa-solid fa-person-circle-plus" style="margin-right: 10px"></i><strong>Add Case Manager</strong></a></span>
+           <span class="is-modal-button mr-3" data-target="modal" id ="edit-team-lead-btn" style="cursor: pointer;">
+      <a><i class="fa-solid fa-person-circle-plus" style="margin-right: 10px"></i><strong>Edit Team Lead</strong></a></span>
      
     </li>
     <li>
-    <span class="is-modal-button ml-3 mr-3" data-target="modal" id ="uacModalBtn" style="cursor: pointer;">
-      <a><i class="fa-solid fa-child-reaching" style="margin-right: 10px"></i><strong>Add UAC</strong></a></span>
+    <span class="is-modal-button ml-3 mr-3" data-target="modal" id ="edit-role-btn" style="cursor: pointer;">
+      <a><i class="fa-solid fa-child-reaching" style="margin-right: 10px"></i><strong>Edit Role</strong></a></span>
     </li>
 
     <li>
          <a href = "/discharged" style="cursor: pointer;"><h3 class = "ml-3 mr-3"><i class="fa-solid fa-hands-holding-child" style="margin-right: 10px"></i><strong>Go To Discharged</strong></h3></a>
     </li>
-    <li>
-      <span class="is-modal-button ml-3 mr-3" data-target="modal"  id="edit-roles" style="cursor: pointer;"></span>
-      <a><h3><i class="fa-solid fa-gears" style="margin-right: 10px"></i><strong>Edit Roles</strong></a></h3>
-    </li>
+
    
   </ul>
 </nav>
-</section>
-    {{!-- <div class="level-item">
-      <div class="field has-addons">
-        <p class="control">
-          <input class="input" type="text" placeholder="Find a post">
-        </p>
-        <p class="control">
-          <button class="button">
-            Search
-          </button>
-        </p>
-      </div>
-    </div> --}}
-  <!-- Right side -->
-
-  <nav class="level">
+<nav class="level is-mobile">
   <div class="level-item has-text-centered">
     <div>
-      <p class="heading">Total</p>
-      <p class = "title">{{uacTable.[0].totaluacs}}</p>
+      <p class="heading">Team</p>
+      <p class="title">{{casemanager.team_lead}}</p>
     </div>
   </div>
   <div class="level-item has-text-centered">
     <div>
-      <p class="heading">Submitted</p>
-      <p class="title">{{uacTable.[0].totalSubmitted}}</p>
+      <p class="heading">Email</p>
+      <p class="title">{{casemanager.email}}</p>
     </div>
   </div>
   <div class="level-item has-text-centered">
     <div>
-      <p class="heading">Approved</p>
-      <p class="title">{{uacTable.[0].totalApproved}}</p>
+      <p class="heading">Role</p>
+      {{#if casemanager.is_team_lead}}
+      <p class="title">Admin</p>
+      {{else}}
+      <p class="title">Case Manager</p>
+      {{/if}}
     </div>
   </div>
   <div class="level-item has-text-centered">
     <div>
-      <p class="heading">Remanded</p>
-      <p class="title">{{uacTable.[0].totalRemanded}}</p>
+      <p class="heading">Likes</p>
+      <p class="title">789</p>
     </div>
   </div>
 </nav>
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-      <div class = "container">
-      </nav>
+</section>
+
+<!-- Main container -->
+
+
     <div class="table-container is-centered">
       <table class="table is-fullwidth is-hoverable is-narrow is-bordered" id ="uac-table">
         <thead>
@@ -90,10 +78,7 @@
             <th>
               <abbr title="UAC"><strong>UAC</strong></abbr>
             </th>
-            <th><strong>Case Manager</strong></th>
-            <th>
-              <abbr title = "email"> <strong>Email</strong></abbr>
-            </th>
+           
             <th>
               <abbr title="Sponsor Assessment"
                 ><strong>Sponsor Assessment</strong></abbr
@@ -131,15 +116,14 @@
             </th>
           </tr>
         </thead>
-        {{#each uacTable}}
+        {{#each casemanager.UACs}}
         {{#if discharged }}
         {{else}}
         <tbody>
           <td id = "spacer"></td>
-          <td id="a-number-delete"><a href= "dashboard/{{uac_id}}">{{a_number}}<button class = "delete is-small is-hidden" id="delete-uac-btn"></button></td></a>
+          <td id="a-number-delete"><a href= "/dashboard/{{uac_id}}">{{a_number}}<button class = "delete is-small is-hidden" id="delete-uac-btn"></button></td></a>
           <td >{{uacname}}</td>
-          <td><a href = "caseload/{{casemanager.user_id}}">{{casemanager.username}} </a></td>
-          <td><a href = "mailto:{{casemanager.email}}" subject = "whatever" message = "dude, seriously!">{{casemanager.email}}</a></td>
+
           {{#if sponsor_assessment}}
           <td class = "has-background-primary-light">{{format_nice_date sponsor_assessment}}</td>
           {{else}}
@@ -198,10 +182,6 @@
             <th>
               <abbr title="UAC"><strong>UAC</strong></abbr>
             </th>
-            <th><strong>Case Manager</strong></th>
-            <th>
-              <abbr title = "email"> <strong>Email</strong></abbr>
-            </th>
             <th>
               <abbr title="Sponsor Assessment"
                 ><strong>Sponsor Assessment</strong></abbr
@@ -241,115 +221,42 @@
         </tfoot>
       </table>
     </div>
-
-    {{!-- ADD NEW UAC MODAL START --}}
-    <div class="modal" id = "new-uac-modal">
-        <div class="modal-background"></div>
+{{!-- Edit Role Modal Start --}}
+<div class="modal" id = "edit-roles-modal">
+        <div class="modal-background" id = "edit-roles-BG"></div>
         <div class="modal-card">
           <header class="modal-card-head">
-            <p class="modal-card-title">Add New UAC</p>
-            <button class="delete" id = "close-x" aria-label="close"></button>
+            <p class="modal-card-title" >Administrator Access</p>
+            <button class="delete" id = "edit-roles-x" aria-label="close"></button>
           </header>
           <section class="modal-card-body">
-            <!-- Content ... -->
-            <span>A#</span>
-            <input class="input" name ="a-number" type="text" placeholder="A#" id="a-number">
-            <span>Full Name</span>
-            <input class="input" name = "uac-name" type="text" placeholder="UAC Name" id="uac-name">
-            <span>DOB</span>
-            <input class="input" name = "dob" type="text" placeholder="DOB" id="dob">
-            <span>Country of Origin</span>
-            <input class="input" name = "coo" type="text" placeholder="Country of Origin" id="coo">
-            <span>Date Admitted</span>
-            <input class="input" name = "date-admitted" type="text" placeholder="Date Admitted" id="date-admitted">
-            <span>Gender</span>
-            <input class="input" name = "gender" type="text" placeholder="Gender" id="gender">
-            Case Manager User ID: <span id = "user-id"></span><br>
-            <div class="dropdown is-up">
+            <table class="table is-fullwidth has-text-centered mb-6">
+              <tr>
+                <th>Set {{casemanager.username}} to Administrator?</th>
+             
+                <th> <div class="dropdown is-down">
                 <div class="dropdown-trigger">
                   <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-                    <span id="selected-cm">Assign Case Manager</span>
+                    <span id="selected-cm">Is Administrator</span>
                     <span class="icon is-small">
                       <i class="fas fa-angle-down" aria-hidden="true"></i>
                     </span>
                   </button>
                 </div>
                 <div class="dropdown-menu" id="dropdown-menu" role="menu">
-                  <div class="dropdown-content" id = "cm-dropdown">
-                    {{#each cmSelector}}
-                    <div class="dropdown-item" value = {{user_id}} id = {{user_id}}>
-                      {{username}}
-                    </div> {{/each}}
+                  <div class="dropdown-content" id = "cm-role">
+                  
+                    <div class="dropdown-item" value = "true" id ="yes">
+                      YES
+                    </div> 
+                    <div class="dropdown-item" value = "false" id ="no">
+                      NO
+                    </div> 
                
                   </div>
                 </div>
-              </div>
-
-
-          </section>
-          <footer class="modal-card-foot">
-            <button class="button is-success" id = "save-new-uac">Save changes</button>
-            <button class="button" id = "cancel-modal">Cancel</button>
-          </footer>
-        </div>
-      </div>
-          {{!-- ADD NEW UAC MODAL END --}}
-
- {{!-- ADD NEW CASE MANAGER MODAL START --}}
-      <div class="modal" id = "auth-cm-modal">
-        <div class="modal-background" id = "auth-cm-BG"></div>
-        <div class="modal-card">
-          <header class="modal-card-head">
-            <p class="modal-card-title" >Authorize New Case Manager</p>
-            <button class="delete" id = "auth-cm-x" aria-label="close"></button>
-          </header>
-          <section class="modal-card-body">
-
-            Email:
-            <input class="input" id="auth-cm-email"name = "email" type="text" placeholder="E-Mail">
-
-
-
-          </section>
-          <footer class="modal-card-foot">
-            <button class="button is-success" id = "auth-cm-save">Add New Case Manager</button>
-            <button class="button" id = "auth-cm-modal-cancel">Cancel</button>
-          </footer>
-        </div>
-      </div>
- {{!-- ADD NEW CASE MANAGER MODAL END --}}
-
- {{!-- EDIT ROLES MODAL START --}}
-<div class="modal" id = "edit-roles-modal">
-        <div class="modal-background" id = "edit-roles-BG"></div>
-        <div class="modal-card">
-          <header class="modal-card-head">
-            <p class="modal-card-title" >Edit Roles</p>
-            <button class="delete" id = "edit-roles-x" aria-label="close"></button>
-          </header>
-          <section class="modal-card-body">
-            <table class="table is-fullwidth">
-              <tr>
-                <th>Employee Name</th>
-                <th>Admin</th>
-                <th></th>
-              </tr>
-                {{#each cmSelector}}
-                <tr>
-                  <td class="user-name">{{username}}</td>
-                  <td><label class="checkbox"><input class = "list-item" name = "is_team_lead" type="checkbox" checked={{is_team_lead}}>{{is_team_lead}}</label></td>
-                  <td><i class="user-id fa-solid fa-floppy-disk"  id="save-role-{{user_id}}"></i><span class="tag is-success">Saved!!</span><span class="tag is-danger">Error</span></td>
-                </tr>
-                {{/each}}
+              </div></th>
             </table>
-            
-             {{!-- <ul>
-               {{#each cmSelector}}
-          <li class="mt-2 mb-2 title is-4">
-            {{username}} <span class="is-right">{{is_team_lead}}</span>
-        </li>
-        {{/each}}
-        </ul> --}}
           </section>
           <footer class="modal-card-foot">
             <button class="button is-success" id = "edit-roles-save">Save</button>
@@ -357,15 +264,16 @@
           </footer>
         </div>
       </div>
+      {{!-- Edit Role Modal End --}}
 
- {{!-- EDIT ROLES MODAL END --}}
 
 
-  <script src = "./js/tableview.js"></script>
-  <script src = "./js/logout.js"></script>
-<script src = "./js/authCM.js"></script>
-<script src = "./js/roles.js"></script>
-<script src = "./js/newUAC.js"></script>
+
+  <script src = "/js/tableview.js"></script>
+  <script src = "/js/logout.js"></script>
+<script src = "/js/authCM.js"></script>
+
+<script src = "/js/editCM.js"></script>
 
 <script src="https://kit.fontawesome.com/cd8c8fb565.js" crossorigin="anonymous"></script>
 

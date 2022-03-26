@@ -15,14 +15,13 @@
     </div>
   <p class="level-item has-text-centered">
     <a id = "edit-RR">
-      <i class ="fa-solid fa-file-pen"></i>
-                  Edit Release Request</a>
+      <i class ="fa-solid fa-file-pen"></i>Edit Release Request</a>
   </p>
   <p class="level-item has-text-centered">
        <a id = "release-request-btn">
-                  <i class = "fa-solid fa-door-open"></i> Open Release Request
-                </a>
+                  <i class = "fa-solid fa-door-open"></i> Open Release Request</a>
   </p>
+  
 </nav>
 {{!-- 
 Begin Layout --}}
@@ -221,58 +220,7 @@ Begin Layout --}}
   {{!-- End Taskbar --}}
 </div>
 {{!-- End Layout --}}
-    <div class="tile is-ancestor m-3">
-      <div class="tile is-vertical is-8">
-        <div class="tile">
-          <div class="tile is-parent is-vertical">
-            <article class="tile is-child notification" style="background-color: rgb(121, 182, 140); color: white;">
-              <p class="title">Navigation</p>
-              
-              <div class = "container has-text-centered "></div>
-              <div class="container is-info has-text-centered mt-0">
-                    <div class="notification p-1 has-text-weight-bold has-background-primary-dark" style = "cursor: pointer;" id = "edit-status">
-                      <span><i class="fa-solid fa-bars-progress" style= "margin-right: 10px"></i>Case Status</span>
-                    </div>
-                  </div>
-              
-                <div class = "container has-text-centered mt-3">
-                  <a href="/caseload" style="text-decoration: none;">
-                  <h3 class="title is-6" style="color: red" id = "caseload"><span><i class="fa-solid fa-briefcase" style="margin-right: 10px"></i>My Caseload</h3></a></span>
-                </div>
-              <div class="container is-info has-text-centered mt-3">
-                    <a href = "/table" style="text-decoration: none">
-                    <h3 class="title is-6" id ="table-view">
-                      <span><i class="fa-solid fa-table" style="margin-right: 10px; cursor: pointer;"></i>Census</span>
-                    </h3>
-                  </div></a>
-              <div class = "container has-text-centered "></div>
-              <div class = "container is-info has-text-centered mt-3">
-                <h3 class ="title is-6" id = "edit-RR" style= "color: rgb(4, 60, 163); cursor: pointer;">
-                  <i class ="fa-solid fa-file-pen"></i>
-                  Edit Release Request
-                </h3>
-              </div>
-              <div class = "container is-info has-text-centered mt-3">
-                <h3 class= "title is-6" id = "release-request-btn" style="cursor: pointer;">
-                  <i class = "fa-solid fa-door-open"></i> Open Release Request
-                </h3>
-              </div>
-
-            <div class= "container is-info has-text-centered mt-3">
-              <a style = "text-decoration: none" href= "/address/{{uac.uac_id}}">
-                          <h3 class="title is-6" style="color: yellow;"><i class="fa-solid fa-road" style="margin-right: 10px"></i>Smarty Streets</h3></a>
-
-            </div>
-              </article>
-          </div>
-
-          
-{{> uacInfo}}
-
-{{> sponsortab}}
-
-{{> taskbar}}
-
+  
 
 {{> editUACmodal}}
 

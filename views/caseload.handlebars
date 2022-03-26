@@ -4,6 +4,7 @@
   <ul>
       <li class="mr-4">
           <strong>Welcome, {{username}}</strong>
+           
       </li>
     <li>
       <a href="/table" style="text-decoration: none;">
@@ -85,7 +86,8 @@
             </th>
           </tr>
         </thead>
-        {{#each cmCaseload}}
+       
+        {{#each casemanager}}
         {{#each UACs}}
         {{#if discharged }}
         {{else}}
