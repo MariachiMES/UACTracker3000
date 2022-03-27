@@ -26,10 +26,6 @@
     <li>
          <a href = "/discharged" style="cursor: pointer;"><h3 class = "ml-3 mr-3"><i class="fa-solid fa-hands-holding-child" style="margin-right: 10px"></i><strong>Go To Discharged</strong></h3></a>
     </li>
-    <li>
-      <span class="is-modal-button ml-3 mr-3" data-target="modal"  id="edit-roles" style="cursor: pointer;"></span>
-      <a><h3><i class="fa-solid fa-gears" style="margin-right: 10px"></i><strong>Edit Roles</strong></a></h3>
-    </li>
    
   </ul>
 </nav>
@@ -138,7 +134,7 @@
           <td id = "spacer"></td>
           <td id="a-number-delete"><a href= "dashboard/{{uac_id}}">{{a_number}}<button class = "delete is-small is-hidden" id="delete-uac-btn"></button></td></a>
           <td >{{uacname}}</td>
-          <td><a href = "caseload/{{casemanager.user_id}}">{{casemanager.username}} </a></td>
+          <td><a href = "casemanager/{{casemanager.user_id}}">{{casemanager.username}} </a></td>
           <td><a href = "mailto:{{casemanager.email}}" subject = "whatever" message = "dude, seriously!">{{casemanager.email}}</a></td>
           {{#if sponsor_assessment}}
           <td class = "has-background-primary-light">{{format_nice_date sponsor_assessment}}</td>

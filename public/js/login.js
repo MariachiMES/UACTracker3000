@@ -22,3 +22,17 @@ async function loginFormHandler(event) {
   }
 }
 document.querySelector("#login").addEventListener("click", loginFormHandler);
+
+const loginModal = document.getElementById("login-modal");
+const loginModalBG = document.getElementById("login-modal-bg");
+const loginBtn = document.getElementById("login-btn");
+
+openLoginModal = function () {
+  loginModal.classList.add("is-active");
+};
+
+closeLoginModal = function () {
+  loginModal.classList.remove("is-active");
+};
+loginBtn.addEventListener("click", openLoginModal);
+loginModalBG.addEventListener("click", closeLoginModal);

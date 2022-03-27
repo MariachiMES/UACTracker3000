@@ -57,22 +57,26 @@ router.get("/caseload", async (req, res) => {
     });
 
     const uacTable = dbUACdata.map((uacData) => uacData.get({ plain: true }));
-    const cmCaseload = cmDbData.map((cmData) => cmData.get({ plain: true }));
+    const casemanager = cmDbData.map((cmData) => cmData.get({ plain: true }));
+    console.log(
+      casemanager[0].is_team_lead,
+      " FEUJDFLKJDF EIFJLISJ EFLISJEF LSIJF LSIJF LSIEFJ "
+    );
     // console.log(
     //   "HELLO",
     //   cmCaseload,
     //   `the name for the uac is ${cmCaseload[0].UACs[0].uacname}`
     // );
+
     res.render("caseload", {
       uacTable,
-      cmCaseload,
+      casemanager,
       username: req.session.username,
       id: req.session.user_id,
       email: req.session.email,
       caseload: req.body.UACs,
       logged_in: req.session.logged_in,
     });
-
     // console.log(
     //   "this is the UAC info",
     //   uacTable,
@@ -81,6 +85,7 @@ router.get("/caseload", async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
+    res.render("/unauthorized");
   }
 });
 //GET ONE UAC, RENDER TO DASHBOARD
@@ -172,17 +177,25 @@ router.get("/casemanager/:id", async (req, res) => {
     const cmDbData = await CaseManager.findByPk(req.params.id, {
       include: [{ all: true, nested: true }],
     });
+    const allCMs = await CaseManager.findAll({
+      where: { is_team_lead: true },
+      include: [{ all: true, nested: true }],
+    });
+
+    const teamLeads = allCMs.map((teamLeadData) =>
+      teamLeadData.get({ plain: true })
+    );
 
     const uacTable = dbUACdata.map((uacData) =>
       uacData.get({ plain: true, nested: true })
     );
     const casemanager = cmDbData.get({ plain: true, nested: true });
-    console.log(casemanager, casemanager.email); // console.log(
     //   "HELLO",
     //   cmCaseload,
     //   `the name for the uac is ${cmCaseload[0].UACs[0].uacname}`
     // );
     res.render("casemanager", {
+      teamLeads,
       uacTable,
       casemanager,
       username: req.session.username,

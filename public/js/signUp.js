@@ -28,3 +28,18 @@ async function signupFormHandler(event) {
 document
   .querySelector("#new-user")
   .addEventListener("click", signupFormHandler);
+
+const signupModal = document.getElementById("signup-modal");
+const signupBG = document.getElementById("signup-BG");
+const signupBtn = document.getElementById("sign-up-btn");
+
+openSignupModal = function () {
+  signupModal.classList.add("is-active");
+};
+
+closeSignupModal = function () {
+  signupModal.classList.remove("is-active");
+};
+
+signupBtn.addEventListener("click", openSignupModal);
+signupBG.addEventListener("click", closeSignupModal);

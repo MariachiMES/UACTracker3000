@@ -17,6 +17,7 @@ const authCMBG = document.querySelector("#auth-cm-BG");
 
 authCMModalBtn.addEventListener("click", function () {
   authCMModal.classList.add("is-active");
+  authCMModal.classList.add("animation");
 });
 
 authCMBG.addEventListener("click", function () {

@@ -2,8 +2,14 @@ const editRoleModal = document.querySelector("#edit-roles-modal");
 let splitter = [];
 let is_team_lead;
 let casemanagerId = splitter.push(window.location.toString().split("/"));
-console.log(casemanagerId);
-const teamLead = document.getElementById("selected-cm").innerHTML;
+let newThing = window.location.pathname;
+splitter.push(newThing.split(""));
+console.log(splitter);
+splitter[1].splice(0, 13);
+console.log(splitter[1]);
+const lead_id = parseInt(splitter[1], 10);
+console.log(lead_id);
+//edit role fetch request
 async function editRole(event) {
   console.log(cmRole.innerText);
   event.preventDefault();
@@ -14,7 +20,7 @@ async function editRole(event) {
   }
   console.log(is_team_lead);
 
-  const response = await fetch("/api/edit/roles/" + casemanagerId, {
+  const response = await fetch("/api/edit/roles/" + lead_id, {
     method: "PUT",
     body: JSON.stringify({
       is_team_lead,
@@ -26,17 +32,20 @@ async function editRole(event) {
 
   if (response.ok) {
     editRoleModal.classList.remove("is-active");
-    document.location.replace(`/casemanager/${casemanagerId}`);
+    document.location.replace(`/casemanager/${lead_id}`);
   } else {
     alert(response.statusText);
   }
 }
+//end edit role fetch request
+//edit role save button
 document.querySelector("#edit-roles-save").addEventListener("click", editRole);
-
-var dropdown = document.querySelector(".dropdown");
+//dropdown script
+var dropdown = document.querySelector(".dropdown-role");
 var cmRole = document.querySelector("#selected-cm");
 dropdown.addEventListener("click", function (event) {
   event.stopPropagation();
   dropdown.classList.toggle("is-active");
   cmRole.innerHTML = event.target.innerText;
 });
+//end dropdown script

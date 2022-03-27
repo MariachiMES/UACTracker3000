@@ -58,9 +58,9 @@ const editUACID = UACID.split("/")[2];
 async function editTaskHandler(event) {
   console.log("editTaskHandler");
   event.preventDefault();
-  const frp = document.querySelector("#frp").value;
-  const ari = document.querySelector("#ari").value;
-  const por = document.querySelector("#por").value;
+  const frp = document.querySelector("#frp").innerText;
+  const ari = document.querySelector("#ari").innerText;
+  const por = document.querySelector("#por").innerText;
   const poa = document.querySelector("#poa").value;
   const lod = document.querySelector("#lod").value;
   const lopc = document.querySelector("#lopc").value;
