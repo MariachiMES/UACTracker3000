@@ -211,6 +211,7 @@ router.get("/casemanager/:id", async (req, res) => {
     const casemanager = cmDbData.get({ plain: true, nested: true });
 
     res.render("casemanager", {
+      is_team_lead,
       teamLeads,
       uacTable,
       casemanager,
@@ -281,8 +282,8 @@ router.get("/table", async (req, res) => {
     console.log(
       `This user is a team lead: ${logged_in_user.dataValues.is_team_lead}`
     );
-    const me = logged_in_user.dataValues.is_team_lead;
-    if (!me) {
+    const is_team_lead = logged_in_user.dataValues.is_team_lead;
+    if (!is_team_lead) {
       res.redirect("/caseload");
     }
 
@@ -322,11 +323,11 @@ router.get("/table", async (req, res) => {
     const cmDbData = await CaseManager.findAll({
       include: [{ all: true, nested: true }],
     });
-    console.log(me);
     const uacTable = dbUACdata.map((uacData) => uacData.get({ plain: true }));
     const cmSelector = cmDbData.map((cmData) => cmData.get({ plain: true }));
 
     res.render("table", {
+      is_team_lead,
       uacTable,
       cmSelector,
       username: req.session.username,

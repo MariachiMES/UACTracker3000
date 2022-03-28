@@ -1,46 +1,12 @@
 
 
-<section class="hero is-danger is-small ">
-  <div class="hero-head">
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand">
-      </div>
-<div class = "container m-3">
-<strong>Welcome, {{username}}</strong>
-</div>
-<!-- Main container -->
-<nav class="level is-mobile">
-  <!-- Left side -->  
-    <div class="level-item">
-      <div class="field has-addons">
-        <p class="control">
-          <input class="input m-3 is-hidden" type="text" placeholder="Search by A#">
-        </p>
-        <p class="control">
-          <button class="button m-3 is-hidden">
-            Search
-          </button>
-        </p>
-      </div>
-    </div>
-    <a href = "/table"><button class="button is-primary is-modal-button ml-3 mr-3">
-      <strong>See Active Cases</strong></button></a>
-  <div class = "level-item has-text-centered mr-6 ml-6">
-   
-  </div>
-  <br><br><div class = "is-right">
-      <button class="button has-background-danger-dark has-text-weight-bold has-text-black is hidden" id ="logout" name = "logout"> <strong>Log out</strong>
-    </button>
-    </div>
+<section class="hero is-small ">
 
+    <a href = "/table">
+      <strong>See Active Cases</strong></a>
+  <div class = "level-item has-text-centered mr-6 ml-6">
     </section>
-    </nav>
-    </nav>
-    <script>
-      $(document).ready( function () {
-    $('#uac-table').DataTable();
-} );
-    </script>
+
     <div class="table-container is-centered">
       <table class="table is-fullwidth is-hoverable is-narrow is-bordered" id ="uac-table">
         <thead>
