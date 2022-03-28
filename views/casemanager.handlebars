@@ -30,7 +30,12 @@
    
   </ul>
 </nav>
-<nav class="level is-mobile">
+<nav class="level is-mobile hud p-2 mb-3">
+  <style>
+      .hud {
+        background-color: rgb(61, 163, 176);
+      }
+    </style>
   <div class="level-item has-text-centered">
     <div>
       <p class="heading">Team</p>
@@ -39,8 +44,8 @@
   </div>
   <div class="level-item has-text-centered">
     <div>
-      <p class="heading">Email</p>
-      <p class="title">{{casemanager.email}}</p>
+      <p class="heading">Name</p>
+      <p class="title">{{casemanager.username}}</p>
     </div>
   </div>
   <div class="level-item has-text-centered">
@@ -55,8 +60,8 @@
   </div>
   <div class="level-item has-text-centered">
     <div>
-      <p class="heading">Likes</p>
-      <p class="title">789</p>
+      <p class="heading">Email</p>
+      <p class="title">{{casemanager.email}}</p>
     </div>
   </div>
 </nav>

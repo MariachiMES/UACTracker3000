@@ -2,7 +2,7 @@ const router = require("express").Router();
 const { UAC } = require("../../models");
 router.put("/tasks/:task_id", (req, res) => {
   //Calls the update method on the Book model
-  console.log("UPDATE UAC", req.body);
+  console.log("UPDATE UAC", req.body, "this is the frp" + req.body.soup);
   UAC.update(
     {
       // All the fields you can update and the data attached to the request body.
@@ -34,7 +34,7 @@ router.put("/tasks/:task_id", (req, res) => {
   )
     .then((updatedUAC) => {
       res.json(updatedUAC);
-      console.log(updatedUAC);
+      console.log("updatedUAC " + updatedUAC);
     })
     .catch((err) => {
       console.log(err);
