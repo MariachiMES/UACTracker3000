@@ -1,5 +1,4 @@
 async function authCMHandler(event) {
-  const authCMModal = document.querySelector("#auth-cm-modal");
   console.log("authCM.js");
   event.preventDefault();
   const email = document.querySelector("#auth-cm-email").value;
@@ -14,7 +13,6 @@ async function authCMHandler(event) {
   });
 
   if (response.ok) {
-    authCMModal.classList.remove("is-active");
     document.location.replace("/table");
     console.log(
       `This is a new active email: ${email}, here is the response: ${response}`

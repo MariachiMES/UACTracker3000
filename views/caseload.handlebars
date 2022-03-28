@@ -1,5 +1,27 @@
 <section class="is-info is-small ">
-  <nav class="level mb-5">
+  {{#if is_team_lead}}
+  <nav class="breadcrumb mb-6 is-centered" aria-label="breadcrumbs">
+    
+  <ul>
+      <li class="mr-4">
+          <strong>Welcome, {{username}}</strong>
+      </li>
+    <li>
+      <a href="/table" style="text-decoration: none;">
+        <span class="icon is-small">
+          <i class="fa-solid fa-table-list" style="margin-right: 10px"></i>
+        </span>
+        <span><strong>Census</strong></span></a>
+    
+    </li>
+    <li>
+         <a href = "/discharged" style="cursor: pointer;"><h3 class = "ml-3 mr-3"><i class="fa-solid fa-hands-holding-child" style="margin-right: 10px"></i><strong>Go To Discharged</strong></h3></a>
+    </li>
+
+   
+  </ul>
+</nav>
+{{else}}\<nav class="level mb-5"> 
   <p class="level-item has-text-centered">
     <a class="link is-info">Home</a>
   </p>
@@ -16,6 +38,7 @@
     <a class="link is-info">Contact</a>
   </p>
 </nav>
+{{/if}}
 {{!-- <nav class="breadcrumb mb-4 is-centered" aria-label="breadcrumbs">
     
   <ul>

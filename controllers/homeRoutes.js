@@ -13,6 +13,13 @@ router.get("/unauthorized", (req, res) => {
   });
 });
 
+router.get("/error", (req, res) => {
+  res.render("error", {
+    // Pass the logged in flag to the template
+    logged_in: req.session.logged_in,
+  });
+});
+
 //render the caseload to a page
 router.get("/caseload", async (req, res) => {
   try {
@@ -55,20 +62,18 @@ router.get("/caseload", async (req, res) => {
       where: { email: req.session.email },
       include: [{ all: true, nested: true }],
     });
-
     const uacTable = dbUACdata.map((uacData) => uacData.get({ plain: true }));
     const casemanager = cmDbData.map((cmData) => cmData.get({ plain: true }));
-    console.log(
-      casemanager[0].is_team_lead,
-      " FEUJDFLKJDF EIFJLISJ EFLISJEF LSIJF LSIJF LSIEFJ "
-    );
-    // console.log(
-    //   "HELLO",
-    //   cmCaseload,
-    //   `the name for the uac is ${cmCaseload[0].UACs[0].uacname}`
-    // );
 
+    const logged_in_user = await CaseManager.findOne({
+      where: { email: req.session.email },
+      include: [{ all: true, nested: true }],
+    });
+    const is_team_lead = logged_in_user.dataValues.is_team_lead;
+
+    // if (!me) {
     res.render("caseload", {
+      is_team_lead,
       uacTable,
       casemanager,
       username: req.session.username,
@@ -77,15 +82,13 @@ router.get("/caseload", async (req, res) => {
       caseload: req.body.UACs,
       logged_in: req.session.logged_in,
     });
-    // console.log(
-    //   "this is the UAC info",
-    //   uacTable,
-    //   `this is the case manager info with the objects that are weird: ${cmCaseload}`
-    // );
+    // }
+    // {
+    //   res.redirect("/table");
+    // }
   } catch (err) {
     console.log(err);
-    res.status(500).json(err);
-    res.render("/unauthorized");
+    res.redirect("/error");
   }
 });
 //GET ONE UAC, RENDER TO DASHBOARD
@@ -103,7 +106,6 @@ router.get("/dashboard/:id", async (req, res) => {
     const cmCaseload = cmDbData.map((cmData) => cmData.get({ plain: true }));
 
     const uac = singleUACinfo.get({ plain: true });
-    console.log("UAC INFO", uac);
 
     res.render("dashboard", {
       cmCaseload,
@@ -112,7 +114,7 @@ router.get("/dashboard/:id", async (req, res) => {
     });
   } catch (err) {
     console.log(err);
-    res.status(500).json(err);
+    res.redirect("/error");
   }
 });
 
@@ -132,7 +134,7 @@ router.get("/address/:id", async (req, res) => {
     });
   } catch (err) {
     console.log(err);
-    res.status(500).json(err);
+    res.redirect("/error");
   }
 });
 //Single Case Manager Admin View
@@ -140,6 +142,23 @@ router.get("/casemanager/:id", async (req, res) => {
   try {
     if (!req.session.logged_in) {
       res.redirect("/");
+    }
+    const logged_in_user = await CaseManager.findOne(
+      {
+        where: {
+          email: req.session.email,
+        },
+      },
+      {
+        include: [{ all: true, nested: true }],
+      }
+    );
+    console.log(
+      `This user is a team lead: ${logged_in_user.dataValues.is_team_lead}`
+    );
+    const is_team_lead = logged_in_user.dataValues.is_team_lead;
+    if (!is_team_lead) {
+      res.redirect("/caseload");
     }
     const dbUACdata = await UAC.findAll({
       order: [["user_id", "ASC"]],
@@ -173,7 +192,7 @@ router.get("/casemanager/:id", async (req, res) => {
         ],
       },
     });
-    console.log(req.params.id);
+
     const cmDbData = await CaseManager.findByPk(req.params.id, {
       include: [{ all: true, nested: true }],
     });
@@ -190,10 +209,7 @@ router.get("/casemanager/:id", async (req, res) => {
       uacData.get({ plain: true, nested: true })
     );
     const casemanager = cmDbData.get({ plain: true, nested: true });
-    //   "HELLO",
-    //   cmCaseload,
-    //   `the name for the uac is ${cmCaseload[0].UACs[0].uacname}`
-    // );
+
     res.render("casemanager", {
       teamLeads,
       uacTable,
@@ -204,15 +220,9 @@ router.get("/casemanager/:id", async (req, res) => {
       caseload: req.body.UACs,
       logged_in: req.session.logged_in,
     });
-
-    // console.log(
-    //   "this is the UAC info",
-    //   uacTable,
-    //   `this is the case manager info with the objects that are weird: ${cmCaseload}`
-    // );
   } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
+    console.log("this is the error: " + err);
+    res.redirect("/error");
   }
 });
 //LOG USER IN
@@ -258,6 +268,24 @@ router.get("/table", async (req, res) => {
     if (!req.session.logged_in) {
       res.redirect("/");
     }
+    const logged_in_user = await CaseManager.findOne(
+      {
+        where: {
+          email: req.session.email,
+        },
+      },
+      {
+        include: [{ all: true, nested: true }],
+      }
+    );
+    console.log(
+      `This user is a team lead: ${logged_in_user.dataValues.is_team_lead}`
+    );
+    const me = logged_in_user.dataValues.is_team_lead;
+    if (!me) {
+      res.redirect("/caseload");
+    }
+
     const dbUACdata = await UAC.findAll({
       order: [["user_id", "ASC"]],
       include: [{ all: true, nested: true }],
@@ -290,17 +318,14 @@ router.get("/table", async (req, res) => {
         ],
       },
     });
+
     const cmDbData = await CaseManager.findAll({
       include: [{ all: true, nested: true }],
     });
-
+    console.log(me);
     const uacTable = dbUACdata.map((uacData) => uacData.get({ plain: true }));
     const cmSelector = cmDbData.map((cmData) => cmData.get({ plain: true }));
-    // console.log(
-    //   "HELLO",
-    //   cmSelector,
-    //   `the name for the uac is ${cmSelector[0].UACs[0].uacname}`
-    // );
+
     res.render("table", {
       uacTable,
       cmSelector,
@@ -309,15 +334,9 @@ router.get("/table", async (req, res) => {
       email: req.session.email,
       logged_in: req.session.logged_in,
     });
-
-    console.log(
-      "this is the UAC info",
-      uacTable,
-      `this is the case manager info with the objects that are weird: ${cmSelector}`
-    );
   } catch (err) {
     console.log(err);
-    res.status(500).json(err);
+    res.redirect("/error");
   }
 });
 
@@ -347,7 +366,6 @@ router.get("/discharged", async (req, res) => {
 
     const uacTable = dbUACdata.map((uacData) => uacData.get({ plain: true }));
     const cmSelector = cmDbData.map((cmData) => cmData.get({ plain: true }));
-    console.log(cmSelector);
     res.render("discharged", {
       uacTable,
       cmSelector,
@@ -356,11 +374,9 @@ router.get("/discharged", async (req, res) => {
       email: req.session.email,
       logged_in: req.session.logged_in,
     });
-
-    console.log(uacTable, cmSelector);
   } catch (err) {
     console.log(err);
-    res.status(500).json(err);
+    res.redirect("/error");
   }
 });
 

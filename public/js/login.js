@@ -34,5 +34,20 @@ openLoginModal = function () {
 closeLoginModal = function () {
   loginModal.classList.remove("is-active");
 };
+
 loginBtn.addEventListener("click", openLoginModal);
 loginModalBG.addEventListener("click", closeLoginModal);
+
+const menu = document.getElementById("mobile-menu");
+const mobileLoginBtn = document.getElementById("mobile-login-btn");
+
+mobileLoginBtn.addEventListener("click", openLoginModal);
+
+const hamburgerMenu = document.getElementById("hamburger-btn");
+
+openHamburgerMenu = function () {
+  console.log("fired");
+  menu.classList.toggle("menu-active");
+};
+
+hamburgerMenu.addEventListener("click", openHamburgerMenu);

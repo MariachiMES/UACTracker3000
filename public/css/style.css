@@ -1,7 +1,4 @@
 .hero {
-  background-image: url(/assets/images/Reunify-Min.png);
-  background: linear-gradient(rgba(31, 44, 108, 0.65), rgba(31, 44, 108, 0.65)),
-    rgba(0, 0, 0, 0.55) url("/assets/images/P1230954.JPG") no-repeat;
   background-attachment: fixed;
   background-size: cover;
   color: white;

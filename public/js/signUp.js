@@ -43,3 +43,6 @@ closeSignupModal = function () {
 
 signupBtn.addEventListener("click", openSignupModal);
 signupBG.addEventListener("click", closeSignupModal);
+
+const mobileSignupBtn = document.getElementById("mobile-sign-up-btn");
+mobileSignupBtn.addEventListener("click", openSignupModal);
