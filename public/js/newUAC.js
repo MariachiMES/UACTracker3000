@@ -10,7 +10,7 @@ async function newUAChandler(event) {
   const newUACModal = document.querySelector("#new-uac-modal");
   const user_id = document.querySelector("#user-id").innerText;
   const response = await fetch("/api/uac", {
-    method: "post",
+    method: "POST",
     body: JSON.stringify({
       a_number,
       uacname,

@@ -45,7 +45,7 @@
   <div class="level-item has-text-centered">
     <div>
       <p class="heading">Name</p>
-      <p class="title">{{casemanager.username}}</p>
+      <p class="title">{{casemanager.username}}</p><span class="is-hidden" id = "cm-id">{{casemanager.user_id}}</span>
     </div>
   </div>
   <div class="level-item has-text-centered">
@@ -236,7 +236,7 @@
         <div class="modal-background" id = "edit-team-lead-BG"></div>
         <div class="modal-card">
           <header class="modal-card-head">
-            <p class="modal-card-title" >Edit Team Lead<span class = "is-hidden" name="team-lead" id="team-lead">111</span></p>
+            <p class="modal-card-title" >Edit Team Lead<span class = "is-hidden" name="team-lead" id="team-lead"></span></p>
             <button class="delete" id = "edit-team-lead-x" aria-label="close"></button>
           </header>
           <section class="modal-card-body">

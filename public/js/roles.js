@@ -39,27 +39,7 @@ rolesModalBtn.addEventListener("click", openRolesModal);
 rolesX.addEventListener("click", closeRolesModal);
 rolesBG.addEventListener("click", closeRolesModal);
 rolesCancel.addEventListener("click", closeRolesModal);
-
-let getNames = function () {
-  for (var i = 0; i < items.length; i++) {
-    users.push(items[i].innerText);
-  }
-};
-
-let getNumbers = function () {
-  let test = [];
-  for (var i = 0; i < numbers.length; i++) {
-    test.push(numbers[i].id.split("-"));
-    userId.push(numbers[i].id);
-  }
-  let final = [];
-  for (var i = 0; i < test.length; i++) {
-    final.push(test[i][2]);
-  }
-};
-
-getNames();
-getNumbers();
+let casemanager_user_id = document.querySelector("#team-lead").innerText;
 
 var dropdown = document.getElementById("team-lead-dropdown");
 var newTeamLead = document.querySelector("#selected-team-lead");
@@ -67,20 +47,18 @@ dropdown.addEventListener("click", function (event) {
   event.stopPropagation();
   dropdown.classList.toggle("is-active");
   newTeamLead.innerHTML = event.target.innerText;
-  // document.querySelector("#user-id").innerText = event.target.id;
-  let teamLead = document.querySelector("#team-lead");
-  teamLead = event.target.id;
-  console.log(teamLead);
+  casemanager_user_id = event.target.id;
 });
 
-// edit team lead fetch request
+let cmToUpdate = document.getElementById("cm-id").innerText;
+
 async function editTeamLead(event) {
-  let team_lead = document.getElementById("team-lead").innerText;
+  // let casemanager_user_id = document.querySelector("#team-lead").innerText;
   event.preventDefault();
-  const response = await fetch("/api/edit/teamlead/" + casemanagerId, {
+  const response = await fetch("/api/edit/teamlead/" + cmToUpdate, {
     method: "PUT",
     body: JSON.stringify({
-      team_lead,
+      casemanager_user_id,
     }),
     headers: {
       "Content-Type": "application/json",
@@ -88,9 +66,8 @@ async function editTeamLead(event) {
   });
 
   if (response.ok) {
-    alert("saved");
     teamLeadModal.classList.remove("is-active");
-    document.location.replace(`/casemanager/${casemanagerId}`);
+    document.location.replace(`/casemanager/${cmToUpdate}`);
   } else {
     alert(response.statusText);
   }

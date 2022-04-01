@@ -1,6 +1,6 @@
 const sequelize = require("../config/connection");
 const { authCM } = require("../models");
-const authData = require("./authData.json");
+const authData = require("./authCMSeeds.json");
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });

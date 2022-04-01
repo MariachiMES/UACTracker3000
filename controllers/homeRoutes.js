@@ -25,6 +25,7 @@ router.get("/caseload", async (req, res) => {
   try {
     if (!req.session.logged_in) {
       res.redirect("/");
+      return;
     }
     const dbUACdata = await UAC.findAll({
       order: [["user_id", "ASC"]],
@@ -96,6 +97,7 @@ router.get("/dashboard/:id", async (req, res) => {
   try {
     if (!req.session.logged_in) {
       res.redirect("/");
+      return;
     }
     const singleUACinfo = await UAC.findByPk(req.params.id);
     const cmDbData = await CaseManager.findAll({
@@ -123,6 +125,7 @@ router.get("/address/:id", async (req, res) => {
   try {
     if (!req.session.logged_in) {
       res.redirect("/");
+      return;
     }
     const singleAddress = await UAC.findByPk(req.params.id);
     const address = singleAddress.get({ plain: true });
@@ -142,6 +145,7 @@ router.get("/casemanager/:id", async (req, res) => {
   try {
     if (!req.session.logged_in) {
       res.redirect("/");
+      return;
     }
     const logged_in_user = await CaseManager.findOne(
       {
@@ -209,7 +213,7 @@ router.get("/casemanager/:id", async (req, res) => {
       uacData.get({ plain: true, nested: true })
     );
     const casemanager = cmDbData.get({ plain: true, nested: true });
-
+    console.log(casemanager);
     res.render("casemanager", {
       is_team_lead,
       teamLeads,
@@ -268,6 +272,7 @@ router.get("/table", async (req, res) => {
   try {
     if (!req.session.logged_in) {
       res.redirect("/");
+      return;
     }
     const logged_in_user = await CaseManager.findOne(
       {
@@ -346,6 +351,7 @@ router.get("/discharged", async (req, res) => {
   try {
     if (!req.session.logged_in) {
       res.redirect("/");
+      return;
     }
     const dbUACdata = await UAC.findAll({
       include: [{ all: true, nested: true }],

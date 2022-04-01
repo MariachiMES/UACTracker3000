@@ -2,10 +2,16 @@ const router = require("express").Router();
 const { CaseManager } = require("../../models");
 
 router.put("/teamlead/:team_lead_id", (req, res) => {
-  console.log("teamlead.js", req.body);
+  console.log(
+    "teamlead.js",
+    req.body,
+    req.body.casemanager_user_id,
+    req.params,
+    req.params.team_lead_id
+  );
   CaseManager.update(
     {
-      team_lead: req.body.team_lead,
+      casemanager_user_id: req.body.casemanager_user_id,
     },
     {
       where: {
@@ -15,7 +21,7 @@ router.put("/teamlead/:team_lead_id", (req, res) => {
   )
     .then((updatedCasemanager) => {
       res.json(updatedCasemanager);
-      console.log("successfullyupdated");
+      console.log("this is " + updatedCasemanager);
     })
     .catch((err) => {
       console.log(err);

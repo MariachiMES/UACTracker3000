@@ -4,11 +4,14 @@ const authCM = require("./authCM");
 
 CaseManager.hasMany(UAC, {
   foreignKey: "user_id",
-  onDelete: "CASCADE",
 });
 
 UAC.belongsTo(CaseManager, {
   foreignKey: "user_id",
+});
+
+CaseManager.hasMany(CaseManager, {
+  as: "team_member",
 });
 
 module.exports = { CaseManager, UAC, authCM };

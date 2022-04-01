@@ -2,7 +2,12 @@ const router = require("express").Router();
 const { CaseManager } = require("../../models");
 
 router.put("/roles/:role_id", (req, res) => {
-  console.log("roles.js", req.body);
+  console.log(
+    "roles.js",
+    req.body,
+    typeof req.params.role_id,
+    req.params.role_id
+  );
   CaseManager.update(
     {
       is_team_lead: req.body.is_team_lead,
