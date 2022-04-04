@@ -22,6 +22,16 @@
     <span class="is-modal-button ml-3 mr-3" data-target="modal" id ="uacModalBtn" style="cursor: pointer;">
       <a><i class="fa-solid fa-child-reaching" style="margin-right: 10px"></i><strong>Add UAC</strong></a></span>
     </li>
+    <li>
+      <a href="/staff">
+        <span class="icon is-small">
+          <i class="fa-solid fa-list"></i>
+        </span>
+        <span><strong>
+            All Staff
+          </strong></span>
+      </a>
+    </li>
 
     <li>
          <a href = "/discharged" style="cursor: pointer;"><h3 class = "ml-3 mr-3"><i class="fa-solid fa-hands-holding-child" style="margin-right: 10px"></i><strong>Go To Discharged</strong></h3></a>
@@ -277,7 +287,7 @@
                 </div>
                 <div class="dropdown-menu" id="dropdown-menu" role="menu">
                   <div class="dropdown-content" id = "cm-dropdown">
-                    {{#each cmSelector}}
+                    {{#each regularCms}}
                     <div class="dropdown-item" value = {{user_id}} id = {{user_id}}>
                       {{username}}
                     </div> {{/each}}

@@ -13,6 +13,48 @@ router.get("/unauthorized", (req, res) => {
   });
 });
 
+router.get("/staff", async (req, res) => {
+  try {
+    if (!req.session.logged_in) {
+      res.redirect("/");
+      return;
+    }
+
+    const logged_in_user = await CaseManager.findOne({
+      where: {
+        email: req.session.email,
+      },
+    });
+
+    const is_team_lead = logged_in_user.is_team_lead;
+
+    if (!is_team_lead) {
+      res.redirect("/caseload");
+      return;
+    }
+
+    const caseManagers = await CaseManager.findAll({
+      include: [{ all: true, nested: true }],
+    });
+
+    const allCms = caseManagers.map((cmData) =>
+      cmData.get({ plain: true, nested: true })
+    );
+
+    res.render("staff", {
+      allCms,
+      username: req.session.username,
+      id: req.session.user_id,
+      email: req.session.email,
+      caseload: req.body.UACs,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    console.log(`this is the error: ${err}`);
+    res.redirect("error");
+  }
+});
+
 router.get("/error", (req, res) => {
   res.render("error", {
     // Pass the logged in flag to the template
@@ -458,11 +500,19 @@ router.get("/table", async (req, res) => {
     const cmDbData = await CaseManager.findAll({
       include: [{ all: true, nested: true }],
     });
+    const regularCmData = await CaseManager.findAll({
+      where: { is_team_lead: false },
+      include: [{ all: true, nested: true }],
+    });
+    const regularCms = regularCmData.map((regularData) =>
+      regularData.get({ plain: true })
+    );
     const uacTable = dbUACdata.map((uacData) => uacData.get({ plain: true }));
     const cmSelector = cmDbData.map((cmData) => cmData.get({ plain: true }));
-    console.log(uacTable);
+    console.log(regularCms);
 
     res.render("table", {
+      regularCms,
       is_team_lead,
       uacTable,
       cmSelector,
