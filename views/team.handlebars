@@ -1,0 +1,239 @@
+<section class="is-info is-small ">
+<nav class="breadcrumb mb-6 is-centered" aria-label="breadcrumbs">
+    
+  <ul>
+      <li class="mr-4">
+          <strong>Welcome, {{username}}</strong>
+      </li>
+    <li>
+      <a href="/table" style="text-decoration: none;">
+        <span class="icon is-small">
+          <i class="fa-solid fa-table-list" style="margin-right: 10px"></i>
+        </span>
+        <span><strong>Census</strong></span></a>
+    
+    </li>
+    <li>
+           <span class="is-modal-button mr-3" data-target="modal" id ="edit-team-lead-btn" style="cursor: pointer;">
+      <a><i class="fa-solid fa-person-circle-plus" style="margin-right: 10px"></i><strong>Edit Team Lead</strong></a></span>
+     
+    </li>
+    <li>
+    <span class="is-modal-button ml-3 mr-3" data-target="modal" id ="edit-role-btn" style="cursor: pointer;">
+      <a><i class="fa-solid fa-child-reaching" style="margin-right: 10px"></i><strong>Edit Role</strong></a></span>
+    </li>
+
+    <li>
+         <a href = "/discharged" style="cursor: pointer;"><h3 class = "ml-3 mr-3"><i class="fa-solid fa-hands-holding-child" style="margin-right: 10px"></i><strong>Go To Discharged</strong></h3></a>
+    </li>
+
+   
+  </ul>
+</nav>
+<nav class="level is-mobile hud p-2 mb-3">
+  <style>
+      .hud {
+        background-color: rgb(61, 163, 176);
+      }
+    </style>
+  <div class="level-item has-text-centered">
+    <div>
+      <p class="heading">Team</p>
+      <p class="title">{{casemanager.username}}</p>
+    </div>
+  </div>
+ 
+</nav>
+<nav class="level counter p-2">
+    <style>
+      .counter {
+        background-color: rgb(61, 163, 176);
+      }
+    </style>
+  <div class="level-item has-text-centered">
+    <div>
+      <p class="heading">Total</p>
+      <p class = "title">{{casemanager.UACs.totaluacs}}</p>
+    </div>
+  </div>
+  <div class="level-item has-text-centered">
+    <div>
+      <p class="heading">Submitted</p>
+      <p class="title">{{uacTable.[0].totalSubmitted}}</p>
+    </div>
+  </div>
+  <div class="level-item has-text-centered">
+    <div>
+      <p class="heading">Approved</p>
+      <p class="title">{{uacTable.[0].totalApproved}}</p>
+    </div>
+  </div>
+  <div class="level-item has-text-centered">
+    <div>
+      <p class="heading">Remanded</p>
+      <p class="title">{{uacTable.[0].totalRemanded}}</p>
+    </div>
+  </div>
+</nav>
+</section>
+
+<!-- Main container -->
+
+
+        
+       {{#each casemanager.team_member}}
+         <h1 class="title is-4 has-text-centered">{{username}}</h1>
+        <table class = "table is-fullwidth is-hoverable is-narrow is-bordered">
+            <tr>
+                <th>
+
+                </th>
+                <th>
+                    A#
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Submitted
+                </th>
+                <th>
+                    Approved
+                </th>
+                <th>
+                    Remanded
+                </th>
+            </tr>
+      
+        {{#each UACs}}
+        {{#if discharged }}
+        {{else}}
+<tr>
+    <td></td>
+    <td><a href="/dashboard/{{uac_id}}">{{a_number}}</a></td>
+    <td>{{uacname}}</td>
+    <td>{{submitted}}</td>
+    <td>{{approved}}</td>
+    <td>{{remanded}}</td>
+{{/if}}
+{{/each}}
+</tr>
+      
+       
+        </table>
+       
+ {{/each}}
+
+         {{!-- <tbody>
+          <td id = "spacer"></td>
+          <td id="a-number-delete"><a href= "/dashboard/{{uac_id}}">{{a_number}}<button class = "delete is-small is-hidden" id="delete-uac-btn"></button></td></a>
+          <td >{{uacname}}</td>
+
+          {{#if sponsor_assessment}}
+          <td class = "has-background-primary-light">{{format_nice_date sponsor_assessment}}</td>
+          {{else}}
+          <td class = "has-background-danger-light">{{format_nice_date sponsor_assessment}}</td>
+          {{/if}}
+          {{#if frp}}
+          <td class = "has-background-primary-light">{{format_nice_date frp}}</td>
+          {{else}}
+          <td class = "has-background-danger-light">{{format_nice_date frp}}</td>
+          {{/if}}
+          {{#if sponsor_bgc}}
+          <td class = "has-background-primary-light">{{format_nice_date sponsor_bgc}}</td>
+          {{else}}
+          <td class = "has-background-danger-light">{{format_nice_date sponsor_bgc}}</td>
+          {{/if}}
+          {{#if sponsor_fp}}
+          <td class = "has-background-primary-light">{{format_nice_date sponsor_fp}}</td>
+          {{else}}
+          <td class = "has-background-danger-light">{{format_nice_date sponsor_fp}}</td>
+          {{/if}}
+          {{#if hhm_id}}
+          <td class = "has-background-primary-light">{{format_nice_date hhm_id}}</td>
+          {{else}}
+          <td class = "has-background-danger-light">{{format_nice_date hhm_id}}</td>
+          {{/if}}
+          {{#if submitted}}
+          <td class = "has-background-primary-light">{{submitted}}</td>
+          {{else}}
+          <td class = "has-background-danger-light">{{submitted}}</td>
+          {{/if}}
+           {{#if approved}}
+          <td class = "has-background-primary-light">{{approved}}</td>
+          {{else}}
+          <td class = "has-background-danger-light">{{approved}}</td>
+          {{/if}}
+           {{#if remanded}}
+          <td class = "has-background-danger-light">{{remanded}}</td>
+          {{else}}
+          <td class = "has-background-primary-light">{{remanded}}</td>
+          {{/if}}
+          {{#if exception}}
+          <td class = "has-background-primary-light">{{exception}}</td>
+          {{else}}
+          <td class = "has-background-danger-light">{{exception}}</td>
+          {{/if}}
+        </tbody> --}}
+      
+    
+   
+{{!-- Edit Role Modal Start --}}
+{{> editRolesModal}}
+
+      {{!-- Edit Role Modal End --}}
+
+
+      <div class="modal" id = "edit-team-lead-modal">
+        <div class="modal-background" id = "edit-team-lead-BG"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title" >Edit Team Lead<span class = "is-hidden" name="team-lead" id="team-lead"></span></p>
+            <button class="delete" id = "edit-team-lead-x" aria-label="close"></button>
+          </header>
+          <section class="modal-card-body">
+            <table class="table is-fullwidth has-text-centered mb-6">
+              <tr>
+                <th>Select {{casemanager.username}}'s Team Lead</th>
+             
+                <th> <div class="dropdown is-down" id="team-lead-dropdown">
+                <div class="dropdown-trigger">
+                  <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                    <span id="selected-team-lead">Select Team Lead</span>
+                    <span class="icon is-small">
+                      <i class="fas fa-angle-down" aria-hidden="true"></i>
+                    </span>
+                  </button>
+                </div>
+                
+                <div class="dropdown-menu" id="team-lead-dropdown-menu" role="menu">
+                  <div class="dropdown-content" id = "team-lead-role">
+                    
+                  
+                  {{#each teamLeads}}
+                    <div class="dropdown-item" value = {{user_id}} id = {{user_id}}>
+                      {{username}}
+                    </div> {{/each}}
+                  </div>
+                </div>
+              </div></th>
+            </table>
+          </section>
+          <footer class="modal-card-foot">
+            <button class="button is-success" id = "edit-team-lead-save">Save</button>
+            <button class="button" id = "edit-team-lead-cancel">Cancel</button>
+          </footer>
+        </div>
+      </div>
+
+
+
+
+  <script src = "/js/tableview.js"></script>
+  <script src = "/js/logout.js"></script>
+<script src = "/js/authCM.js"></script>
+
+<script src = "/js/editCM.js"></script>
+<script src = "/js/roles.js"></script>
+
+<script src="https://kit.fontawesome.com/cd8c8fb565.js" crossorigin="anonymous"></script>

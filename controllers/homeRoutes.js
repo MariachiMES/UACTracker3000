@@ -105,10 +105,12 @@ router.get("/dashboard/:id", async (req, res) => {
       include: [{ all: true, nested: true }],
     });
 
-    const cmCaseload = cmDbData.map((cmData) => cmData.get({ plain: true }));
+    const cmCaseload = cmDbData.map((cmData) =>
+      cmData.get({ plain: true, nested: true })
+    );
 
-    const uac = singleUACinfo.get({ plain: true });
-
+    const uac = singleUACinfo.get({ plain: true, nested: true });
+    console.log(uac);
     res.render("dashboard", {
       cmCaseload,
       uac,
@@ -140,6 +142,97 @@ router.get("/address/:id", async (req, res) => {
     res.redirect("/error");
   }
 });
+
+//View By Team Lead
+router.get("/team/:id", async (req, res) => {
+  try {
+    if (!req.session.logged_in) {
+      res.redirect("/");
+      return;
+    }
+    const logged_in_user = await CaseManager.findOne(
+      {
+        where: {
+          email: req.session.email,
+        },
+      },
+      {
+        include: [{ all: true, nested: true }],
+      }
+    );
+
+    const is_team_lead = logged_in_user.is_team_lead;
+
+    if (!is_team_lead) {
+      res.redirect("/caseload");
+    }
+
+    const dbUACdata = await UAC.findAll({
+      order: [["user_id", "ASC"]],
+      include: [{ all: true, nested: true }],
+      attributes: {
+        inclue: [
+          [
+            sequelize.literal(
+              "(SELECT COUNT(submitted) FROM uac WHERE uac.submitted LIKE '%/%')"
+            ),
+            "totalSubmitted",
+          ],
+          [
+            sequelize.literal(
+              "(SELECT COUNT(uacname) FROM uac WHERE uac.intake LIKE '%/%' AND uac.discharged NOT LIKE '%/%')"
+            ),
+            "totaluacs",
+          ],
+          [
+            sequelize.literal(
+              "(SELECT COUNT(approved) FROM uac WHERE uac.approved LIKE '%/%')"
+            ),
+            "totalApproved",
+          ],
+          [
+            sequelize.literal(
+              "(SELECT COUNT(remanded) FROM uac WHERE uac.remanded LIKE '%/%')"
+            ),
+            "totalRemanded",
+          ],
+        ],
+      },
+    });
+    const cmDbData = await CaseManager.findByPk(req.params.id, {
+      include: [{ all: true, nested: true }],
+    });
+    const allCMs = await CaseManager.findAll({
+      where: { is_team_lead: true },
+      include: [{ all: true, nested: true }],
+    });
+
+    const teamLeads = allCMs.map((teamLeadData) =>
+      teamLeadData.get({ plain: true, nested: true })
+    );
+
+    const uacTable = dbUACdata.map((uacData) =>
+      uacData.get({ plain: true, nested: true })
+    );
+    const casemanager = cmDbData.get({ plain: true, nested: true });
+    console.log(casemanager);
+    res.render("team", {
+      is_team_lead,
+      teamLeads,
+      uacTable,
+      casemanager,
+      username: req.session.username,
+      id: req.session.user_id,
+      email: req.session.email,
+      caseload: req.body.UACs,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    console.log("this is the error: " + err);
+    res.redirect("/error");
+  }
+});
+
 //Single Case Manager Admin View
 router.get("/casemanager/:id", async (req, res) => {
   try {
@@ -157,9 +250,7 @@ router.get("/casemanager/:id", async (req, res) => {
         include: [{ all: true, nested: true }],
       }
     );
-    console.log(
-      `This user is a team lead: ${logged_in_user.dataValues.is_team_lead}`
-    );
+
     const is_team_lead = logged_in_user.dataValues.is_team_lead;
     if (!is_team_lead) {
       res.redirect("/caseload");
@@ -213,7 +304,6 @@ router.get("/casemanager/:id", async (req, res) => {
       uacData.get({ plain: true, nested: true })
     );
     const casemanager = cmDbData.get({ plain: true, nested: true });
-    console.log(casemanager);
     res.render("casemanager", {
       is_team_lead,
       teamLeads,
@@ -330,6 +420,7 @@ router.get("/table", async (req, res) => {
     });
     const uacTable = dbUACdata.map((uacData) => uacData.get({ plain: true }));
     const cmSelector = cmDbData.map((cmData) => cmData.get({ plain: true }));
+    console.log(uacTable);
 
     res.render("table", {
       is_team_lead,
