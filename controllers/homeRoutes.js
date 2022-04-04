@@ -336,7 +336,21 @@ router.get("/casemanager/:id", async (req, res) => {
     const is_team_lead = logged_in_user.dataValues.is_team_lead;
     if (!is_team_lead) {
       res.redirect("/caseload");
+      return;
     }
+
+    const cmDirect = await CaseManager.findByPk(req.params.id, {
+      include: [{ all: true, plain: true, nested: true }],
+    });
+    console.log(cmDirect);
+
+    const teamLeadStatus = cmDirect.dataValues.is_team_lead;
+    console.log(teamLeadStatus);
+
+    if (teamLeadStatus) {
+      res.redirect("/team/" + req.params.id);
+    }
+
     const dbUACdata = await UAC.findAll({
       order: [["user_id", "ASC"]],
       include: [{ all: true, nested: true }],
