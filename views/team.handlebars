@@ -14,8 +14,8 @@
     
     </li>
     <li>
-           <span class="is-modal-button mr-3" data-target="modal" id ="edit-team-lead-btn" style="cursor: pointer;">
-      <a><i class="fa-solid fa-person-circle-plus" style="margin-right: 10px"></i><strong>Edit Team Lead</strong></a></span>
+           <span class="is-modal-button mr-3" style="cursor: pointer;">
+      <a href="/team"><i class="fa-solid fa-people-group" style="margin-right: 10px"></i><strong>Teams</strong></a></span>
      
     </li>
     <li>
@@ -82,7 +82,7 @@
 
         
        {{#each casemanager.team_member}}
-         <h1 class="title is-4 has-text-centered">{{username}}</h1>
+         <a href = "/casemanager/{{user_id}}"><h1 class="title is-4 has-text-centered lead-name">{{username}}</h1></a>
         <table class = "table is-fullwidth is-hoverable is-narrow is-bordered">
             <tr>
                 <th>
@@ -110,6 +110,12 @@
         {{else}}
 <tr>
     <td></td>
+    <style>
+        .lead-name:hover {
+            color:rgb(61, 163, 176);
+            cursor: pointer;
+        }
+    </style>
     <td><a href="/dashboard/{{uac_id}}">{{a_number}}</a></td>
     <td>{{uacname}}</td>
     <td>{{submitted}}</td>

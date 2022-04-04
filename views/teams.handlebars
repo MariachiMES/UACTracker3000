@@ -1,0 +1,60 @@
+<nav class="breadcrumb mb-6 is-centered" aria-label="breadcrumbs">
+
+  <ul>
+    <li class="mr-4">
+      <strong>Welcome, {{username}}</strong>
+    </li>
+    <li>
+      <a href="/table" style="text-decoration: none;">
+        <span class="icon is-small">
+          <i class="fa-solid fa-table-list" style="margin-right: 10px"></i>
+        </span>
+        <span><strong>Census</strong></span></a>
+
+    </li>
+
+    <li>
+      <a href="/discharged" style="cursor: pointer;"><h3 class="ml-3 mr-3"><i
+            class="fa-solid fa-hands-holding-child"
+            style="margin-right: 10px"
+          ></i><strong>Go To Discharged</strong></h3></a>
+    </li>
+
+  </ul>
+</nav>
+
+{{#each teamLeads}}
+  <a href="team/{{user_id}}">
+    <style>
+      .lead-card:hover{ background-color: rgb(220, 249, 255); }
+    </style>
+    <div class="card lead-card">
+
+      <div class="card-content">
+        <div class="media">
+
+          <div class="media-content">
+            <p class="title is-4">{{username}}</p>
+            <p class="subtitle is-6">{{email}}</p>
+          </div>
+        </div>
+
+        <div class="content">
+
+        </div>
+      </div>
+    </div>
+  </a>
+{{/each}}
+
+<script src="/js/tableview.js"></script>
+<script src="/js/logout.js"></script>
+<script src="/js/authCM.js"></script>
+
+<script src="/js/editCM.js"></script>
+<script src="/js/roles.js"></script>
+
+<script
+  src="https://kit.fontawesome.com/cd8c8fb565.js"
+  crossorigin="anonymous"
+></script>

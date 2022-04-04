@@ -27,6 +27,15 @@ router.get("/caseload", async (req, res) => {
       res.redirect("/");
       return;
     }
+    const logged_in_user = await CaseManager.findOne({
+      where: { email: req.session.email },
+      include: [{ all: true, nested: true }],
+    });
+    const is_team_lead = logged_in_user.dataValues.is_team_lead;
+    if (is_team_lead) {
+      res.redirect("/table");
+      return;
+    }
     const dbUACdata = await UAC.findAll({
       order: [["user_id", "ASC"]],
       include: [{ all: true, nested: true }],
@@ -65,12 +74,6 @@ router.get("/caseload", async (req, res) => {
     });
     const uacTable = dbUACdata.map((uacData) => uacData.get({ plain: true }));
     const casemanager = cmDbData.map((cmData) => cmData.get({ plain: true }));
-
-    const logged_in_user = await CaseManager.findOne({
-      where: { email: req.session.email },
-      include: [{ all: true, nested: true }],
-    });
-    const is_team_lead = logged_in_user.dataValues.is_team_lead;
 
     // if (!me) {
     res.render("caseload", {
@@ -142,7 +145,44 @@ router.get("/address/:id", async (req, res) => {
     res.redirect("/error");
   }
 });
+//View All Team Leads
+router.get("/team", async (req, res) => {
+  try {
+    if (!req.session.logged_in) {
+      res.redirect("/");
+      return;
+    }
+    const logged_in_user = await CaseManager.findOne({
+      where: { email: req.session.email },
+    });
+    const is_team_lead = logged_in_user.is_team_lead;
+    if (!is_team_lead) {
+      res.redirect("/caseload");
+      return;
+    }
+    const allCMs = await CaseManager.findAll({
+      where: { is_team_lead: true },
+      include: [{ all: true, nested: true }],
+    });
 
+    const teamLeads = allCMs.map((teamLeadData) =>
+      teamLeadData.get({ plain: true, nested: true })
+    );
+
+    console.log(teamLeads);
+    res.render("teams", {
+      is_team_lead,
+      teamLeads,
+      username: req.session.username,
+      id: req.session.user_id,
+      email: req.session.email,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    console.log("this is the error: " + err);
+    res.redirect("/error");
+  }
+});
 //View By Team Lead
 router.get("/team/:id", async (req, res) => {
   try {
@@ -215,7 +255,7 @@ router.get("/team/:id", async (req, res) => {
       uacData.get({ plain: true, nested: true })
     );
     const casemanager = cmDbData.get({ plain: true, nested: true });
-    console.log(casemanager);
+    console.log(teamLeads);
     res.render("team", {
       is_team_lead,
       teamLeads,
