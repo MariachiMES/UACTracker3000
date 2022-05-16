@@ -6,11 +6,13 @@
 
 # Reunify
 
+[Video Demonstration](https://youtu.be/7W2PVy5hcic)
+
 # Description
 
 As an emergency influx shelter team lead, I want to be able to track and manage data pertaining to unaccompanied minors and their sponsors, manage user access, leverage 3rd party APIs, and auto-generation functionality to streamline workflow.
 
-- when I register as a new user, I Gain access to a data tracker with both a case manager and team lead view. I will be able to manage my caseload, and edit data and view objects using sequelize.
+- when I register as a new user, I Gain access to a data tracker with both a case manager and team lead view and my homepage contingent upon my role as an employee. I will be able to manage my caseload, and edit data and view objects using a MySQL REST API.
 - As a case manager i would like to be able to automate certain tasks using third party apis such as address verification, and release request auto generation using the data I provide.
 - As a case manager, i would like to have a clear view of my caseload which shows me all the data i've entered as well as pertinent dates that information was entered.
 - As a team lead i want to have an overview of the case manager activity and status on all tasks also availble on the case manager view. - Utilizes Google Maps, Google Earth, Smarty Street APIs.
