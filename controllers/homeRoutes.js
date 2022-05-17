@@ -3,9 +3,13 @@ const { CaseManager, UAC, Sponsor } = require("../models");
 const withAuth = require("../utils/auth");
 const sequelize = require("../config/connection");
 
+//GET new user page
+
 router.get("/new-user", async (req, res) => {
   res.render("signUp");
 });
+
+//GET unauthorized page
 router.get("/unauthorized", (req, res) => {
   res.render("unauthorized", {
     // Pass the logged in flag to the template
@@ -13,6 +17,7 @@ router.get("/unauthorized", (req, res) => {
   });
 });
 
+//GET all staff listing
 router.get("/staff", async (req, res) => {
   try {
     if (!req.session.logged_in) {
@@ -57,12 +62,11 @@ router.get("/staff", async (req, res) => {
 
 router.get("/error", (req, res) => {
   res.render("error", {
-    // Pass the logged in flag to the template
     logged_in: req.session.logged_in,
   });
 });
 
-//render the caseload to a page
+//GET caseload for all case managers
 router.get("/caseload", async (req, res) => {
   try {
     if (!req.session.logged_in) {
@@ -117,7 +121,6 @@ router.get("/caseload", async (req, res) => {
     const uacTable = dbUACdata.map((uacData) => uacData.get({ plain: true }));
     const casemanager = cmDbData.map((cmData) => cmData.get({ plain: true }));
 
-    // if (!me) {
     res.render("caseload", {
       is_team_lead,
       uacTable,
@@ -128,16 +131,14 @@ router.get("/caseload", async (req, res) => {
       caseload: req.body.UACs,
       logged_in: req.session.logged_in,
     });
-    // }
-    // {
-    //   res.redirect("/table");
-    // }
   } catch (err) {
     console.log(err);
     res.redirect("/error");
   }
 });
-//GET ONE UAC, RENDER TO DASHBOARD
+
+//GET one UAC, render to Dashboard
+
 router.get("/dashboard/:id", async (req, res) => {
   try {
     if (!req.session.logged_in) {
@@ -167,7 +168,7 @@ router.get("/dashboard/:id", async (req, res) => {
   }
 });
 
-//Get ONE UAC, RENDER TO ADDRESS VERIFY
+//GET one UAC, render to Address
 router.get("/address/:id", async (req, res) => {
   try {
     if (!req.session.logged_in) {

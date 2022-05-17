@@ -3,7 +3,7 @@ const street = document.querySelector("#smarty-street").value;
 const city = document.querySelector("#smarty-city").value;
 const state = document.querySelector("#smarty-state").value;
 const zip = document.querySelector("#smarty-zip").value;
-console.log(code, street, city, state, zip);
+
 const formatAddress = function () {
   let smartyStreet = street.toLowerCase().split("");
   for (let i = 0; i < smartyStreet.length; i++) {
@@ -34,10 +34,7 @@ const formatZip = function () {
 };
 
 var displayValidation = function () {
-  console.log("page is loaded, display validation fired");
-  console.log();
   if (code === null) {
-    console.log("fuuuuuck");
     document.querySelector("#all-good").classList.add("is-hidden");
 
     document
@@ -58,7 +55,6 @@ var displayValidation = function () {
     return;
   }
   if (code !== [] && code === "AABB") {
-    console.log(`the code is ${code}`);
     document
       .querySelector("#secondary-info-confirm")
       .classList.add("is-hidden");

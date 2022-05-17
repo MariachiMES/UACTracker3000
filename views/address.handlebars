@@ -9,7 +9,7 @@
       ></button>
     </header>
     {{#if address}}
-    <form id = "address-verification" action = "/address/{{address.uac_id}}" method="POST">
+    <form id = "address-verification" method="POST">
     <section class="modal-card-body">
       Address:
       <input
@@ -26,7 +26,7 @@
       <input name = "zip" class="input" id="smarty-zip" value="{{address.sponsor_zip}}" />        </form>
 
       {{else}}
-          <form action = "/address/:id" method="POST">
+          <form method="POST">
     <section class="modal-card-body">
       Address:
       <input
