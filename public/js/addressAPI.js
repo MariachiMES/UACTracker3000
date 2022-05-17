@@ -3,6 +3,7 @@ const street = document.querySelector("#smarty-street").value;
 const city = document.querySelector("#smarty-city").value;
 const state = document.querySelector("#smarty-state").value;
 const zip = document.querySelector("#smarty-zip").value;
+const submitAddress = querySelector("#address-verification");
 
 const formatAddress = function () {
   let smartyStreet = street.toLowerCase().split("");
