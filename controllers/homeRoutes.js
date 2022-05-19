@@ -156,6 +156,7 @@ router.get("/dashboard/:id", async (req, res) => {
     );
 
     const uac = singleUACinfo.get({ plain: true, nested: true });
+    console.log(cmCaseload[0].username);
     console.log(uac);
     res.render("dashboard", {
       cmCaseload,
@@ -542,6 +543,19 @@ router.get("/table", async (req, res) => {
   }
 });
 
+//GET  audit form
+router.get("/audit", (req, res) => {
+  try {
+    if (!req.session.logged_in) {
+      res.redirect("/");
+      return;
+    }
+    res.render("audit");
+  } catch (err) {
+    console.log(err);
+    res.redirect("/error");
+  }
+});
 //renders all to discharged
 router.get("/discharged", async (req, res) => {
   try {
