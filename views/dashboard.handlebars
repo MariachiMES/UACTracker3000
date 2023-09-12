@@ -31,8 +31,19 @@ Begin Layout --}}
       <div class="tile is-parent is-vertical is-3" >
         <article class="tile is-child box p-0 message is-link">
           <div class="message-header">
-    <p>My Caseload</p></div>
-    <div class="container has-text-centered">
+    <p>Generate Docs</p></div>
+    <div class="container has-text-centered" style = "font-size: 12px">
+      <div class=""><a href = "/uacbc/{{uac.uac_id}}" style="text-decoration: none;" target= "_blank" >{{uac.a_number}}_Child_BC</a></div>
+      <div class=""><a href = "/motherbc/{{uac.uac_id}}" style="text-decoration: none;" target= "_blank" >Mother Birth Certificate</a></div>
+      <div class=""><a href = "/fatherbc/{{uac.uac_id}}" style="text-decoration: none;" target= "_blank" >Father Birth Certificate</a></div>
+      <div class=""><a href = "/sponsorbc/{{uac.uac_id}}" style="text-decoration: none;" target= "_blank" >{{uac.a_number}}_SP_{{sponsor_initials uac.sponsor_name}}_BC</a></div>
+      <div class=""><a href = "/poa/{{uac.uac_id}}" style="text-decoration: none;" target= "_blank" >{{uac.a_number}}_SP_{{sponsor_initials uac.sponsor_name}}_Proof_Address</a></div>
+      <div class=""><a href = "/sponsorbg/{{uac.uac_id}}" style="text-decoration: none;" target= "_blank" >{{uac.a_number}}_SP_{{sponsor_initials uac.sponsor_name}}_Public_Records_Check</a></div>
+      <div class=""><a href = "/sponsorid/{{uac.uac_id}}" style="text-decoration: none;" target= "_blank" >{{uac.a_number}}_SP_{{sponsor_initials uac.sponsor_name}}_Passport</a></div>
+      <div class=""><a href = "/fpappt/{{uac.uac_id}}" style="text-decoration: none;" target= "_blank" >{{uac.a_number}}_SP_{{sponsor_initials uac.sponsor_name}}_FP_Appt</a></div>
+      <div class=""><a href = "/fpconfirm/{{uac.uac_id}}" style="text-decoration: none;" target= "_blank" >{{uac.a_number}}_SP_{{sponsor_initials uac.sponsor_name}}_FP_Appt_Confirmation</a></div>
+      <div class=""><a href = "/lopc/{{uac.uac_id}}" style="text-decoration: none;" target= "_blank" >{{uac.a_number}}_SP_{{sponsor_initials uac.sponsor_name}}_LOPC</a></div>
+
     {{#each cmCaseload}}
         {{#each UACs}}
         {{#if discharged }}
@@ -307,6 +318,7 @@ Begin Layout --}}
 {{> editReleaseRequestModal }}
 
 {{> editStatusModal}}
+
 
 {{!-- {{> smartyStreetModal}} --}}
 

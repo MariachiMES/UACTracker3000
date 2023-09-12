@@ -3,7 +3,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {{#if document}}
+    <title>{{uac.a_number}}_Child_BC</title>
+    {{else}}
     <title>Reunify</title>
+    {{/if}}
     <link rel="icon" href="/assets/images/reunify.ico" />
     <link
       rel="stylesheet"
@@ -11,6 +15,8 @@
     />
     <link rel="stylesheet" href="/css/style.css" class="stylesheeet">
   </head>
+  {{#if document}}
+{{else}}
   <body>
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
@@ -26,6 +32,10 @@
   </div>
 {{#if logged_in}}
 {{else}}
+{{#if document}}
+{{document}}
+{{else}}
+{{document}}
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
       <a class="navbar-item">
@@ -37,12 +47,16 @@
       </a>
     </div>
 {{/if}}
- {{#if logged_in}}
+{{/if}}
+
+  {{#if logged_in}}
+ 
     <div class="navbar-end">
       <div class="navbar-item">
+        
         <div class="buttons">
           <a id ="logout" name = "logout" style="margin-left: 20px"><i class="fa-solid fa-right-to-bracket" style="margin-right: 10px"></i><strong>
-            Log Out</strong>
+            Log this Out</strong>
           </a>
           {{else}}
             <div class="navbar-end">
@@ -54,7 +68,9 @@
           <a  id="login-btn" style="margin-left: 20px"><i class="fa-solid fa-right-to-bracket" style="margin-right: 10px"></i><strong>
             Log In</strong>
           </a>
+          
           {{/if}}
+          
         </div>
       </div>
     </div>
@@ -64,6 +80,7 @@
 {{!-- Begin Hero Content --}}
 
   </body>
+  {{/if}}
 </html>
 
           <!-- Conditionally render login or logout links -->
@@ -78,6 +95,8 @@
 
     {{{body}}}
 
+{{#if document}}
+{{else}}
   <footer>
     <div class = "container has-text-centered">© 2021 comal software</div>
 </footer>
@@ -87,5 +106,5 @@
       <script src="/js/logout.js"></script>
     {{/if}} --}}
   </body>
-
+{{/if}}
 </html>
