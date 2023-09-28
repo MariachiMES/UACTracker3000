@@ -1,55 +1,57 @@
 <style>
-    .hero {
-        position: relative;
-    }
-    .image {
-        justify-content: center;
-        height: 100vh;
-        width: auto;
-    }
-    img {
-        transform:scale(2.5);
-        top: 25vh;
+  .hero {
+    position: relative;
+  }
 
-    }
-    .bc-info {
-        position: absolute;
-        text-align: left;
-        z-index: 9999;
-        color: black;
-        top: 100px;
-        padding-top: 100px;
-        transform: translateX(-40%)
-        
+  .image {
+    justify-content: center;
+    height: 100vh;
+    width: auto;
+  }
 
-    }
-    li {
-        margin: 10px;
-    }
-    .document {
-        text-align: center;
-    }
+  img {
+    transform: scale(2.5);
+    top: 25vh;
 
-  </style>
- 
-  
-  <section class="section hero image">
+  }
+
+  .bc-info {
+    position: absolute;
+    text-align: left;
+    z-index: 9999;
+    color: black;
+    top: 100px;
+    padding-top: 100px;
+    transform: translateX(-40%)
+  }
+
+  li {
+    margin: 10px;
+  }
+
+  .document {
+    text-align: center;
+  }
+</style>
+
+
+<section class="section hero image">
   <div class="container">
     <div class="columns is-centered">
       <div class="column is-half">
         <figure>
-        
-           <div class = "bc-info">
-    <ul>
-        <li>NOMBRE: {{uac.sponsor_name}}</li>
-        <li>FECHA DE NACIMIENTO: {{sponsor_age}}</li>
-        <li>PAIZ: {{uac.coo}} </li>
-        <li>NOMBRE DE LA MADRE: Mother's Name</li>
-        <li>NOMBRE DEL PADRE: Father's Name</li>
-    </ul>
-  </div>
-         <Img class = "image" src="../assets/images/BirthCertificateTemplate.jpg"/>
-       
+
+          <div class="bc-info">
+            <ul>
+              <li>NOMBRE: {{uac.sponsor_name}}</li>
+              <li>FECHA DE NACIMIENTO: {{sponsor_age}}</li>
+              <li>PAIZ: {{uac.coo}} </li>
+              <li>NOMBRE DE LA MADRE: Mother's Name</li>
+              <li>NOMBRE DEL PADRE: Father's Name</li>
+            </ul>
+          </div>
+          <Img class="image" src="../assets/images/BirthCertificateTemplate.jpg" />
+
         </figure>
       </div>
     </div>

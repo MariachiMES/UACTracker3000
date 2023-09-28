@@ -1,315 +1,375 @@
 <nav class="level">
   <p class="level-item has-text-centered">
-    <a href="/caseload" id = "caseload">
-    <span><i class="fa-solid fa-briefcase" style="margin-right: 10px"></i>My Caseload/Census</span></a>
-  </a>
+    <a href="/caseload" id="caseload">
+      <span><i class="fa-solid fa-briefcase" style="margin-right: 10px"></i>My Caseload/Census</span></a>
+    </a>
 
   <p class="level-item has-text-centered">
-    <a href= "/address/{{uac.uac_id}}">
+    <a href="/address/{{uac.uac_id}}">
       <i class="fa-solid fa-road" style="margin-right: 10px"></i>Smarty Streets</a>
   </p>
 
-   <div class="has-text-centered">
-      <p class="heading">A#{{uac.a_number}}</p>
-      <p class="title">{{uac.uacname}}</p>
-    </div>
+  <div class="has-text-centered">
+    <p class="heading">A#{{uac.a_number}}</p>
+    <p class="title">{{uac.uacname}}</p>
+  </div>
   <p class="level-item has-text-centered">
-    <a id = "edit-RR">
-      <i class ="fa-solid fa-file-pen"></i>Edit Release Request</a>
+    <a id="edit-RR">
+      <i class="fa-solid fa-file-pen"></i>Edit Release Request</a>
   </p>
   <p class="level-item has-text-centered">
-       <a id = "release-request-btn">
-                  <i class = "fa-solid fa-door-open"></i> Open Release Request</a>
+    <a id="release-request-btn">
+      <i class="fa-solid fa-door-open"></i> Open Release Request</a>
   </p>
-  
+
 </nav>
-{{!-- 
+{{!--
 Begin Layout --}}
 <div class="tile is-ancestor ml-3 mr-3">
   <div class="tile is-vertical">
     <div class="tile">
-      <div class="tile is-parent is-vertical is-3" >
+      <div class="tile is-parent is-vertical is-3">
         <article class="tile is-child box p-0 message is-link">
           <div class="message-header">
-    <p>Generate Docs</p></div>
-    <div class="container has-text-centered" style = "font-size: 12px">
-      <div class=""><a href = "/uacbc/{{uac.uac_id}}" style="text-decoration: none;" target= "_blank" >{{uac.a_number}}_Child_BC</a></div>
-      <div class=""><a href = "/motherbc/{{uac.uac_id}}" style="text-decoration: none;" target= "_blank" >Mother Birth Certificate</a></div>
-      <div class=""><a href = "/fatherbc/{{uac.uac_id}}" style="text-decoration: none;" target= "_blank" >Father Birth Certificate</a></div>
-      <div class=""><a href = "/sponsorbc/{{uac.uac_id}}" style="text-decoration: none;" target= "_blank" >{{uac.a_number}}_SP_{{sponsor_initials uac.sponsor_name}}_BC</a></div>
-      <div class=""><a href = "/poa/{{uac.uac_id}}" style="text-decoration: none;" target= "_blank" >{{uac.a_number}}_SP_{{sponsor_initials uac.sponsor_name}}_Proof_Address</a></div>
-      <div class=""><a href = "/sponsorbg/{{uac.uac_id}}" style="text-decoration: none;" target= "_blank" >{{uac.a_number}}_SP_{{sponsor_initials uac.sponsor_name}}_Public_Records_Check</a></div>
-      <div class=""><a href = "/sponsorid/{{uac.uac_id}}" style="text-decoration: none;" target= "_blank" >{{uac.a_number}}_SP_{{sponsor_initials uac.sponsor_name}}_Passport</a></div>
-      <div class=""><a href = "/fpappt/{{uac.uac_id}}" style="text-decoration: none;" target= "_blank" >{{uac.a_number}}_SP_{{sponsor_initials uac.sponsor_name}}_FP_Appt</a></div>
-      <div class=""><a href = "/fpconfirm/{{uac.uac_id}}" style="text-decoration: none;" target= "_blank" >{{uac.a_number}}_SP_{{sponsor_initials uac.sponsor_name}}_FP_Appt_Confirmation</a></div>
-      <div class=""><a href = "/lopc/{{uac.uac_id}}" style="text-decoration: none;" target= "_blank" >{{uac.a_number}}_SP_{{sponsor_initials uac.sponsor_name}}_LOPC</a></div>
-
-    {{#each cmCaseload}}
-        {{#each UACs}}
-        {{#if discharged }}
-        {{else}}
-        <ul>
-          <li class="mt-2 mb-2 title is-4">
-            <a href = "/dashboard/{{uac_id}}" style="text-decoration: none;">
-        {{a_number}}</a>
-        </li>
-        </ul>
-        {{/if}}
-        {{/each}}
-        {{/each}}
-        </li>
+            <p>Generate Docs</p>
+          </div>
+          <div class="container has-text-centered" style="font-size: 12px">
+            {{#if uac.sponsor_name}}
+            <div class=""><a href="/uacbc/{{uac.uac_id}}" style="text-decoration: none;"
+                target="_blank">{{uac.a_number}}_Child_BC</a></div>
+            <div class=""><a href="/motherbc/{{uac.uac_id}}" style="text-decoration: none;" target="_blank">Mother Birth
+                Certificate</a></div>
+            <div class=""><a href="/fatherbc/{{uac.uac_id}}" style="text-decoration: none;" target="_blank">Father Birth
+                Certificate</a></div>
+            <div class=""><a href="/sponsorbc/{{uac.uac_id}}" style="text-decoration: none;"
+                target="_blank">{{uac.a_number}}_SP_{{sponsor_initials uac.sponsor_name}}_BC</a></div>
+            <div class=""><a href="/poa/{{uac.uac_id}}" style="text-decoration: none;"
+                target="_blank">{{uac.a_number}}_SP_{{sponsor_initials uac.sponsor_name}}_Proof_Address</a></div>
+            <div class=""><a href="/sponsorbg/{{uac.uac_id}}" style="text-decoration: none;"
+                target="_blank">{{uac.a_number}}_SP_{{sponsor_initials uac.sponsor_name}}_Public_Records_Check</a></div>
+            <div class=""><a href="/sponsorid/{{uac.uac_id}}" style="text-decoration: none;"
+                target="_blank">{{uac.a_number}}_SP_{{sponsor_initials uac.sponsor_name}}_Passport</a></div>
+            <div class=""><a href="/fpappt/{{uac.uac_id}}" style="text-decoration: none;"
+                target="_blank">{{uac.a_number}}_SP_{{sponsor_initials uac.sponsor_name}}_FP_Appt</a></div>
+            <div class=""><a href="/fpconfirm/{{uac.uac_id}}" style="text-decoration: none;"
+                target="_blank">{{uac.a_number}}_SP_{{sponsor_initials uac.sponsor_name}}_FP_Appt_Confirmation</a></div>
+            <div class=""><a href="/lopc/{{uac.uac_id}}" style="text-decoration: none;"
+                target="_blank">{{uac.a_number}}_SP_{{sponsor_initials uac.sponsor_name}}_LOPC</a></div>
+            {{else}}
+            {{/if}}
+            {{#each cmCaseload}}
+            {{#each UACs}}
+            {{#if discharged }}
+            {{else}}
+            <ul>
+              <li class="mt-2 mb-2 title is-4">
+                <a href="/dashboard/{{uac_id}}" style="text-decoration: none;">
+                  {{a_number}}</a>
+              </li>
+            </ul>
+            {{/if}}
+            {{/each}}
+            {{/each}}
+            </li>
         </article>
 
       </div>
       <div class="tile is-parent is-vertical">
         <article class="tile is-child box p-0 message is-link">
-<div class="message-header">
-    <p>UAC</p><div class="icon is-right"><i class="fa-solid fa-pen-to-square" id="edit-uac"></i></div></div>
-    <table class="table is-fullwidth has-text-centered" >
-      <thead>
-        <tr>
-          <th class="has-text-right">COO</th>
-          <td class="has-text-left">{{uac.coo}}</td>
-          <th class="has-text-right">DOB</th>
-          <td class="has-text-left">{{uac.dob}}</td>
-        </tr>
-        <tr>
-          <th class="has-text-right">LOS</th>
-          <td class="has-text-left">{{uac.intake}}</td>
-          <th class="has-text-right">Age</th>
-          <td class="has-text-left">{{uac.age}}</td>
-          
-        </tr>
-        <tr>
-          <th class="has-text-right">Category</th>
-          <td class="has-text-left">{{uac.category}}</td>
-          <th class="has-text-right">Gender</th>
-          <td class="has-text-left">{{uac.gender}}</td>
-        </tr>
-        <tr>
-          <th class="has-text-right">SIR</th>
-          <td class="has-text-left">{{uac.sir}}</td>
-          <th class="has-text-right"></th>
-          <td class="has-text-left"></td>
+          <div class="message-header">
+            <p>UAC</p>
+            <div class="icon is-right"><i class="fa-solid fa-pen-to-square" id="edit-uac"></i></div>
+          </div>
+          <table class="table is-fullwidth has-text-centered">
+            <thead>
+              <tr>
+                <th class="has-text-right">COO</th>
+                <td class="has-text-left">{{uac.coo}}</td>
+                <th class="has-text-right">DOB</th>
+                <td class="has-text-left">{{uac.dob}}</td>
+              </tr>
+              <tr>
+                <th class="has-text-right">LOS</th>
+                <td class="has-text-left">{{uac.intake}}</td>
+                <th class="has-text-right">Age</th>
+                <td class="has-text-left">{{uac.age}}</td>
 
-        </tr>
-      </thead>
-    </table>
-        </article>        
-        
-<article class="tile is-child box p-0 message is-link">
-<div class="message-header">
-    <p>Sponsor</p><div class="icon is-right"><i class="fa-solid fa-pen-to-square" id="edit-sponsor"></i></div></div>
-    <table class="table is-fullwidth has-text-centered" >
-      <thead>
-        <tr>
-          <th class="has-text-right">Name</th>
-          <td class="has-text-left">{{uac.sponsor_name}}</td>
-          <th class="has-text-right">Address</th>
-          <td class="has-text-left">{{uac.sponsor_address_1}}</td>
-        </tr>
-        <tr>
-          <th class="has-text-right">City</th>
-          <td class="has-text-left">{{uac.sponsor_city}}</td>
-          <th class="has-text-right">State</th>
-          <td class="has-text-left">{{uac.sponsor_state}}</td>
-         
-        </tr>
-        <tr>
-          <th class="has-text-right">Zip</th>
-          <td class="has-text-left">{{uac.sponsor_zip}}</td>
-          <th class="has-text-right">Gender</th>
-          <td class="has-text-left">{{uac.sponsor_gender}}</td>
-        </tr>
-        <tr>
-          <th class="has-text-right">Age</th>
-          <td class="has-text-left">{{uac.sponsor_age}}</td>
-          <th class="has-text-right">Relationship</th>
-          <td class="has-text-left">{{uac.sponsor_relationship}}</td>
-        </tr>
-      </thead>
-    </table>
-        </article>  
-     <article class="tile is-child box p-0 message is-link">
-<div class="message-header">
-    <p>Exception</p></div>
-    <p>{{uac.exception}}</p>
+              </tr>
+              <tr>
+                <th class="has-text-right">Category</th>
+                <td class="has-text-left">{{uac.category}}</td>
+                <th class="has-text-right">Gender</th>
+                <td class="has-text-left">{{uac.gender}}</td>
+              </tr>
+              <tr>
+                <th class="has-text-right">SIR</th>
+                <td class="has-text-left">{{uac.sir}}</td>
+                <th class="has-text-right"></th>
+                <td class="has-text-left"></td>
+
+              </tr>
+            </thead>
+          </table>
+        </article>
+
+        <article class="tile is-child box p-0 message is-link">
+          <div class="message-header">
+            <p>Sponsor</p>
+            <div class="icon is-right"><i class="fa-solid fa-pen-to-square" id="edit-sponsor"></i></div>
+          </div>
+          <table class="table is-fullwidth has-text-centered">
+            <thead>
+              <tr>
+                <th class="has-text-right">Name</th>
+                <td class="has-text-left">{{uac.sponsor_name}}</td>
+                <th class="has-text-right">Address</th>
+                <td class="has-text-left">{{uac.sponsor_address_1}}</td>
+              </tr>
+              <tr>
+                <th class="has-text-right">City</th>
+                <td class="has-text-left">{{uac.sponsor_city}}</td>
+                <th class="has-text-right">State</th>
+                <td class="has-text-left">{{uac.sponsor_state}}</td>
+
+              </tr>
+              <tr>
+                <th class="has-text-right">Zip</th>
+                <td class="has-text-left">{{uac.sponsor_zip}}</td>
+                <th class="has-text-right">Gender</th>
+                <td class="has-text-left">{{uac.sponsor_gender}}</td>
+              </tr>
+              <tr>
+                <th class="has-text-right">Age</th>
+                <td class="has-text-left">{{uac.sponsor_age}}</td>
+                <th class="has-text-right">Relationship</th>
+                <td class="has-text-left">{{uac.sponsor_relationship}}</td>
+              </tr>
+            </thead>
+          </table>
         </article>
         <article class="tile is-child box p-0 message is-link">
-<div class="message-header" id = "edit-status">
-    <p>Case Status</p><div class="icon is-right"><i class="fa-solid fa-pen-to-square" id="edit-sponsor"></i></div></div>
-    <a href ="mailto:Lopc.callcenter@catholiccharitiesny.org?subject=LOPC PACKET REQUEST&body=Good afternoon, %0DMy name is {{cmCaseload.[0].username}}, the assiend case manager for this case, I would like to request for the sponsor to receive an LOPC packet.  There are no locations near the sponsor's address that are taking appointments currently.  The attachment includes sponsor's necessary information., Respecfully, 
-    
-    %0DI am requesting an LOPC packet to be sent for the case below: 
-    %0D
-    %0DUAC: {{uac.uacname}}
-%0D
-    %0DA#: {{uac.a_number}}
-%0D
-    %0DDOB:{{uac.dob}}
-%0D
-    %0DCOO: {{uac.coo}}
-%0D
-    %0DSponsor:  {{uac.sponsor_name}}
-    %0D
-    %0DDOB: 
-    %0D
+          <div class="message-header">
+            <p>Exception</p>
+          </div>
+          <p>{{uac.exception}}</p>
+        </article>
+        <article class="tile is-child box p-0 message is-link">
+          <div class="message-header" id="edit-status">
+            <p>Case Status</p>
+            <div class="icon is-right"><i class="fa-solid fa-pen-to-square" id="edit-sponsor"></i></div>
+          </div>
+          <a href="mailto:projectmanagementcasemanagement@deployedservices.com?
+          subject=LOPC&cc=gbnccasemanagersupervisors@deployedservices.com;
+          martin.gonzalez@deployedservices.com;&body=Good afternoon, %0DMy name is {{cmCaseload.[0].username}}, the
+                            assigned case manager for this case, I would like to request for the sponsor to receive an
+                            LOPC packet. There are no locations near the sponsor's address that are taking appointments
+                            currently. The attachment includes sponsor's necessary information., Respecfully,
 
-    %0DCOO: {{uac.coo}}
-%0D
-    %0DRelationship: {{uac.sponsor_relationship}}
-%0D
-    %0DAddress: {{uac.sponsor_addres1}} {{uac.sponsor_city}}, {{uac.sponsor_state}} {{uac.sponsor_zip}}
-%0D
-    %0DPhone: 
-%0D
-    %0DCase Manager: {{cmCaseload.[0].username}}
-%0D
-    %0DShelter: FT BLISS EIS
-%0D
-    %0DEmail: {{cmCaseload.[0].eail}}
-%0D
-    %0DPhone:
-%0D
-    %0D%0DThank You`
-    ">
-       LOPC PACKET REQUEST </a> </article>
+                            %0DI am requesting an LOPC packet to be sent for the case below:
+                            %0D
+                            %0DUAC: {{uac.uacname}}
+                            %0D
+                            %0DA#: {{uac.a_number}}
+                            %0D
+                            %0DDOB:{{uac.dob}}
+                            %0D
+                            %0DCOO: {{uac.coo}}
+                            %0D
+                            %0DSponsor: {{uac.sponsor_name}}
+                            %0D
+                            %0DDOB:
+                            %0D
+
+                            %0DCOO: {{uac.coo}}
+                            %0D
+                            %0DRelationship: {{uac.sponsor_relationship}}
+                            %0D
+                            %0DAddress: {{uac.sponsor_addres1}} {{uac.sponsor_city}}, {{uac.sponsor_state}}
+                            {{uac.sponsor_zip}}
+                            %0D
+                            %0DPhone:
+                            %0D
+                            %0DCase Manager: {{cmCaseload.[0].username}}
+                            %0D
+                            %0DShelter: FT BLISS EIS
+                            %0D
+                            %0DEmail: {{cmCaseload.[0].eail}}
+                            %0D
+                            %0DPhone:
+                            %0D
+                            %0D%0DThank You`
+                            ">
+            LOPC PACKET REQUEST
+          </a>
+        </article>
       </div>
-      
+
     </div>
 
   </div>
   {{!-- Start Taskbar --}}
   <div class="tile is-parent is-3">
- <article class="tile is-child box p-0 message is-link">
-          <div class="message-header">
-    <p>Taskbar</p> <div class="icon is-right"><i class="fa-solid fa-pen-to-square" id="edit-tasks"></i></div></div>
-     <table class="table is-fullwidth has-text-centered" >
-      <thead>
-        <tr>
-          <th class="has-text-right">Sponsor Assessment</th>
-          <td class="has-text-left" id = "sa-container">{{format_nice_date uac.sponsor_assessment}}</td>
-        </tr>
-        <tr>
-          <th class="has-text-right">FRP</th>
-          <td class="has-text-left" id = "frp-container"><span id = "display-frp">{{format_nice_date uac.frp}}</span> </td>
-        </tr>
-        <tr>
-          <th class="has-text-right">ARI</th>
-          <td class="has-text-left" id = "ari-container"><span id ="display-ari">{{format_nice_date uac.ari}}</span></td>
-        </tr>
-        <tr>
-          <th class="has-text-right">Proof of Relationship</th>
-          <td class="has-text-left" id = "por-container"><span id = "display-por">{{format_nice_date uac.por}} </span></td>
-        </tr>
-        <tr>
-          <th class="has-text-right">Proof of Address</th>
-          <td class="has-text-left" id = "poa-container">{{format_nice_date uac.poa}}</td>
-        </tr>
-        <tr>
-          <th class="has-text-right">Letter of Designation</th>
-          <td class="has-text-left" id = "lod-container">{{format_nice_date uac.lod}}</td>
-        </tr>
-        <tr>
-          <th class="has-text-right">LOPC</th>
-          <td class="has-text-left" id = "lopc-container">{{format_nice_date uac.lopc}}</td>
-        </tr>
-        <tr>          
+    <article class="tile is-child box p-0 message is-link">
+      <div class="message-header">
+        <p>Taskbar</p>
+        <div class="icon is-right"><i class="fa-solid fa-pen-to-square" id="edit-tasks"></i></div>
+      </div>
+      <table class="table is-fullwidth has-text-centered">
+        <thead>
           <tr>
-          <th class="has-text-right">Sponsor Background Check</th>
-          <td class="has-text-left" id = "sponsor_bgc-container">{{format_nice_date uac.sponsor_bgc}}</td>
-        </tr>
-        <tr>
-          <th class="has-text-right">Sponsor ID Received</th>
-          <td class="has-text-left" id ="sponsor_id-container"><span id = "sponsor-id">{{format_nice_date uac.sponsor_id}}</span></td>
-        </tr>
-        <tr>
-          <th class="has-text-right">Fingerprints Taken</th>
-          <td class="has-text-left" id ="sponsor_fp-container"><span id = "sponsor-fp">{{format_nice_date uac.sponsor_fp}}</span></td>
-        </tr>
-        <tr>
-          <th class="has-text-right">HHM ID's Received</th>
-          <td class="has-text-left" id ="hhm_id-container"><span id = "hhm-id">{{format_nice_date uac.hhm_id}}</span></td>
-        </tr>
-        <tr>
-          <th class="has-text-right">Household Member Background Checks</th>
-          <td class="has-text-left" id ="hhm_checks-container"><span id = "hhm-checks">{{format_nice_date uac.hhm_checks}}</span></td>
-        </tr>
-        <tr>
-          <th class="has-text-right">Sex-Offender Checks</th>
-          <td class="has-text-left" id ="sex_offender_check-container"><span id = "sex-offender-check">{{format_nice_date uac.sex_offender_check}}</span></td>
-        </tr>
-        <tr>
-          <th class="has-text-right">Contacted COO Caregiver</th>
-          <td class="has-text-left" id = "coo_caregiver_date-container">{{format_nice_date uac.coo_caregiver_date}}</td>
-        </tr>
-        <tr>
-          <th class="has-text-right">CA/N Checks Requested</th>
-          <td class="has-text-left" id = "can_check_requested_date-container">{{format_nice_date uac.can_check_requested_date}}</td>
-        </tr>
-        <tr>
-          <th class="has-text-right">Prior Sponsorship</th>
-          <td class="has-text-left" id ="prior_sponsorship_date-container">{{format_nice_date uac.prior_sponsorship_date}}</td>
-        </tr>
-        <tr>
-          <th class="has-text-right">Previous Address</th>
-          <td class="has-text-left" id ="previous_address_date-container">{{format_nice_date uac.previous_address_date}}</td>
-        </tr>
-        <tr>
-          <th class="has-text-right">Criminal History</th>
-          <td class="has-text-left" id ="criminal_history_date-container">{{format_nice_date uac.criminal_history_date}}</td>
-        </tr>
-      </thead>
-    </table>   
+            <th class="has-text-right">Sponsor Assessment</th>
+            <td class="has-text-left" id="sa-container">{{format_nice_date uac.sponsor_assessment}}</td>
+          </tr>
+          <tr>
+            <th class="has-text-right">FRP</th>
+            <td class="has-text-left" id="frp-container"><span id="display-frp">{{format_nice_date uac.frp}}</span>
+            </td>
+          </tr>
+          <tr>
+            <th class="has-text-right">ARI</th>
+            <td class="has-text-left" id="ari-container"><span id="display-ari">{{format_nice_date uac.ari}}</span></td>
+          </tr>
+          <tr>
+            <th class="has-text-right">Proof of Relationship</th>
+            <td class="has-text-left" id="por-container"><span id="display-por">{{format_nice_date uac.por}} </span>
+            </td>
+          </tr>
+          <tr>
+            <th class="has-text-right">Proof of Address</th>
+            <td class="has-text-left" id="poa-container">{{format_nice_date uac.poa}}</td>
+          </tr>
+          <tr>
+            <th class="has-text-right">Letter of Designation</th>
+            <td class="has-text-left" id="lod-container">{{format_nice_date uac.lod}}</td>
+          </tr>
+          <tr>
+            <th class="has-text-right">LOPC</th>
+            <td class="has-text-left" id="lopc-container">{{format_nice_date uac.lopc}}</td>
+          </tr>
+          <tr>
+          <tr>
+            <th class="has-text-right">Sponsor Background Check</th>
+            <td class="has-text-left" id="sponsor_bgc-container">{{format_nice_date uac.sponsor_bgc}}</td>
+          </tr>
+          <tr>
+            <th class="has-text-right">Sponsor ID Received</th>
+            <td class="has-text-left" id="sponsor_id-container"><span id="sponsor-id">{{format_nice_date
+                uac.sponsor_id}}</span></td>
+          </tr>
+          <tr>
+            <th class="has-text-right">Fingerprints Taken</th>
+            <td class="has-text-left" id="sponsor_fp-container"><span id="sponsor-fp">{{format_nice_date
+                uac.sponsor_fp}}</span></td>
+          </tr>
+          <tr>
+            <th class="has-text-right">HHM ID's Received</th>
+            <td class="has-text-left" id="hhm_id-container"><span id="hhm-id">{{format_nice_date uac.hhm_id}}</span>
+            </td>
+          </tr>
+          <tr>
+            <th class="has-text-right">Household Member Background Checks</th>
+            <td class="has-text-left" id="hhm_checks-container"><span id="hhm-checks">{{format_nice_date
+                uac.hhm_checks}}</span></td>
+          </tr>
+          <tr>
+            <th class="has-text-right">Sex-Offender Checks</th>
+            <td class="has-text-left" id="sex_offender_check-container"><span id="sex-offender-check">{{format_nice_date
+                uac.sex_offender_check}}</span></td>
+          </tr>
+          <tr>
+            <th class="has-text-right">Contacted COO Caregiver</th>
+            <td class="has-text-left" id="coo_caregiver_date-container">{{format_nice_date uac.coo_caregiver_date}}</td>
+          </tr>
+          <tr>
+            <th class="has-text-right">CA/N Checks Requested</th>
+            <td class="has-text-left" id="can_check_requested_date-container">{{format_nice_date
+              uac.can_check_requested_date}}</td>
+          </tr>
+          <tr>
+            <th class="has-text-right">Prior Sponsorship</th>
+            <td class="has-text-left" id="prior_sponsorship_date-container">{{format_nice_date
+              uac.prior_sponsorship_date}}</td>
+          </tr>
+          <tr>
+            <th class="has-text-right">Previous Address</th>
+            <td class="has-text-left" id="previous_address_date-container">{{format_nice_date
+              uac.previous_address_date}}</td>
+          </tr>
+          <tr>
+            <th class="has-text-right">Criminal History</th>
+            <td class="has-text-left" id="criminal_history_date-container">{{format_nice_date
+              uac.criminal_history_date}}</td>
+          </tr>
+        </thead>
+      </table>
     </article>
   </div>
   {{!-- End Taskbar --}}
 </div>
 {{!-- End Layout --}}
-  
+
 
 {{> editUACmodal}}
 
 {{> editSponsorModal}}
 
 {{!-- EDIT TASKS MODAL --}}
-        <div class="modal" id="edit-tasks-modal">
-      <div class="modal-background" id="edit-tasks-BG"></div>
-      <div class="modal-card">
-        <header class="modal-card-head">
-          <p class="modal-card-title">Edit Tasks</p>
-          <button class="delete" id="edit-tasks-close-x" aria-label="close"></button>
-        </header>
-        <section class="modal-card-body">
-          Sponsor Assessment: <input class="input" name="sponsor_assessment" type="text" placeholder="Date Received" id="sponsor_assessment" value={{format_nice_date uac.sponsor_assessment}}>
-          FRP: <input class="input" name="frp" type="text" placeholder="Date Received" id="frp" value={{format_nice_date uac.frp}}>
-          ARI: <input class="input" name="ari" type="text" placeholder="Date Received" id="ari" value={{format_nice_date uac.ari}}>
-          POR: <input class="input" name="por" type="text" placeholder="Date Received" id="por" value={{format_nice_date uac.por}}>
-          POA: <input class="input" name="poa" type="text" placeholder="Date Received" id="poa" value={{format_nice_date uac.poa}}>
-          LOD: <input class="input" name="lod" type="text" placeholder="Date Received" id="lod" value={{format_nice_date uac.lod}}>
-          LOPC: <input class="input" name="lopc" type="text" placeholder="Date Received" id="lopc" value={{format_nice_date uac.lopc}}>
-          Sponsor Background Check: <input class="input" name="sponsor_bgc" type="text" placeholder="Date Completed" id="sponsor_bgc" value = {{format_nice_date uac.sponsor_bgc}}>
-          Sponsor ID: <input class="input" name="sponsor_id" type="text" placeholder="Date Received" id="sponsor_id" value = {{format_nice_date uac.sponsor_id}}>
-          Sponsor FP: <input class="input" name="sponsor_fp" type="text" placeholder="Date Fingerprinted" id="sponsor_fp" value = {{format_nice_date uac.sponsor_fp}}>
-          HHM ID: <input class="input" name="hhm_id" type="text" placeholder="Date Received" id="hhm_id" value = {{format_nice_date uac.hhm_id}}>
-          HHM Background Check: <input class="input" name="hhm_checks" type="text" placeholder="Date Received" id="hhm_checks" value={{format_nice_date uac.hhm_checks}}>
-          Sex-Offender Check: <input class="input" name="sex_offender_check" type="text" placeholder="Date Checked" id="sex_offender_check" value = {{format_nice_date uac.sex_offender_check}}>
-          Caregiver In Home Country: <input class="input" name="coo_caregiver_date" type="text" placeholder="Date Call Made" id="coo_caregiver_date" value = {{format_nice_date uac.coo_caregiver_date}}>
-          Prior Sponsorship: <input class="input" name="prior_sponsorship_date" type="text" placeholder="Date Received" id="prior_sponsorship_date" value = {{format_nice_date uac.prior_sponsorship_date}}>
-          Previous Address: <input class="input" name="previous_address_date" type="text" placeholder="Date Received" id="previous_address_date" value = {{format_nice_date uac.previous_address_date}}>
-          Criminal History: <input class="input" name="criminal_history_date" type="text" placeholder="Date Received" id="criminal_history_date" value = {{format_nice_date uac.criminal_history_date}}>
-          CA/N Check Requested: <input class="input" name="can_check_requested_date" type="text" placeholder="Date Requested" id="can_check_requested_date" value = {{format_nice_date uac.can_check_requested_date}}>
+<div class="modal" id="edit-tasks-modal">
+  <div class="modal-background" id="edit-tasks-BG"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Edit Tasks</p>
+      <button class="delete" id="edit-tasks-close-x" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+      Sponsor Assessment: <input class="input" name="sponsor_assessment" type="text" placeholder="Date Received"
+        id="sponsor_assessment" value={{format_nice_date uac.sponsor_assessment}}>
+      FRP: <input class="input" name="frp" type="text" placeholder="Date Received" id="frp" value={{format_nice_date
+        uac.frp}}>
+      ARI: <input class="input" name="ari" type="text" placeholder="Date Received" id="ari" value={{format_nice_date
+        uac.ari}}>
+      POR: <input class="input" name="por" type="text" placeholder="Date Received" id="por" value={{format_nice_date
+        uac.por}}>
+      POA: <input class="input" name="poa" type="text" placeholder="Date Received" id="poa" value={{format_nice_date
+        uac.poa}}>
+      LOD: <input class="input" name="lod" type="text" placeholder="Date Received" id="lod" value={{format_nice_date
+        uac.lod}}>
+      LOPC: <input class="input" name="lopc" type="text" placeholder="Date Received" id="lopc" value={{format_nice_date
+        uac.lopc}}>
+      Sponsor Background Check: <input class="input" name="sponsor_bgc" type="text" placeholder="Date Completed"
+        id="sponsor_bgc" value={{format_nice_date uac.sponsor_bgc}}>
+      Sponsor ID: <input class="input" name="sponsor_id" type="text" placeholder="Date Received" id="sponsor_id"
+        value={{format_nice_date uac.sponsor_id}}>
+      Sponsor FP: <input class="input" name="sponsor_fp" type="text" placeholder="Date Fingerprinted" id="sponsor_fp"
+        value={{format_nice_date uac.sponsor_fp}}>
+      HHM ID: <input class="input" name="hhm_id" type="text" placeholder="Date Received" id="hhm_id"
+        value={{format_nice_date uac.hhm_id}}>
+      HHM Background Check: <input class="input" name="hhm_checks" type="text" placeholder="Date Received"
+        id="hhm_checks" value={{format_nice_date uac.hhm_checks}}>
+      Sex-Offender Check: <input class="input" name="sex_offender_check" type="text" placeholder="Date Checked"
+        id="sex_offender_check" value={{format_nice_date uac.sex_offender_check}}>
+      Caregiver In Home Country: <input class="input" name="coo_caregiver_date" type="text" placeholder="Date Call Made"
+        id="coo_caregiver_date" value={{format_nice_date uac.coo_caregiver_date}}>
+      Prior Sponsorship: <input class="input" name="prior_sponsorship_date" type="text" placeholder="Date Received"
+        id="prior_sponsorship_date" value={{format_nice_date uac.prior_sponsorship_date}}>
+      Previous Address: <input class="input" name="previous_address_date" type="text" placeholder="Date Received"
+        id="previous_address_date" value={{format_nice_date uac.previous_address_date}}>
+      Criminal History: <input class="input" name="criminal_history_date" type="text" placeholder="Date Received"
+        id="criminal_history_date" value={{format_nice_date uac.criminal_history_date}}>
+      CA/N Check Requested: <input class="input" name="can_check_requested_date" type="text"
+        placeholder="Date Requested" id="can_check_requested_date" value={{format_nice_date
+        uac.can_check_requested_date}}>
 
-        </section>
-        <footer class="modal-card-foot">
-          <button class="button is-success" id="save-task-info">
-            Save Changes
-          </button>
-          <button class="button" id="cancel-edit-task-modal">Cancel</button>
-        </footer>
-      </div>
-    </div>
-    {{!-- END EDIT TASKS MODAL --}}
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-success" id="save-task-info">
+        Save Changes
+      </button>
+      <button class="button" id="cancel-edit-task-modal">Cancel</button>
+    </footer>
+  </div>
+</div>
+{{!-- END EDIT TASKS MODAL --}}
 
 
 {{> editTasksModal}}
@@ -322,15 +382,16 @@ Begin Layout --}}
 
 {{!-- {{> smartyStreetModal}} --}}
 
-  </body>
-  <script src="../js/casemanagerview.js"></script>
-  <script src = "/js/editUAC.js"></script>
-  <script src="/js/login.js"></script>
-  <script src="/js/logout.js"></script>
-  <script src="/js/signup.js"></script>
+</body>
+<script src="../js/casemanagerview.js"></script>
+<script src="/js/editUAC.js"></script>
+<script src="/js/login.js"></script>
+<script src="/js/logout.js"></script>
+<script src="/js/signup.js"></script>
 <script src="https://kit.fontawesome.com/cd8c8fb565.js" crossorigin="anonymous"></script>
 {{!-- END EDIT STATUS MODAL --}}
 
-  {{!-- <script src = "../controllers/api/userRoutes.js"></script> --}}
-</html>
+{{!--
+<script src="../controllers/api/userRoutes.js"></script> --}}
 
+</html>

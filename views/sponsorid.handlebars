@@ -1,159 +1,158 @@
-<div class="passport-container"><div class = "passport">
-  <div class="passport-top">
-    <aside class="id-number">
-      A323983
-    </aside>
-  </div>
-  
-  <div class="passport-bottom">
-    <div class="passport-header">
-&#8212;&#8212;&#8212;INTERNATIONAL PASSPORT &#8212;&#8212;&#8212;
-    <hr>
-    </div>
-    <div class="passport-body">
-      <aside class="picture">
-        <img id = "contact" src = "../assets/images/idpic.png"/>
+<div class="passport-container">
+  <div class="passport">
+    <div class="passport-top">
+      <aside class="id-number">
+        A323983
       </aside>
-      <div class="demographics-middle">
-        <div class="left"><ul>
-          <li>Name:</li>
-          <li>DOB:</li>
-          <li>Country:</li>
-          <li>Issued:</li>
-          <li>Expires:</li>
-          
-        </ul>
-        </div>
-        <div class="right">
-          <ul>
-            <li>{{uac.sponsor_name}}</li>
-            <li>SPONSOR DOB</li>
-            <li>{{uac.coo}}</li>
-            <li>ISSUE DATE</li>
-            <li>EXP DATE</li>
-          </ul>
-        </div>
-             </div>
     </div>
-    
-    
-    <div class="passport-footer">
-      &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; A323983 &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+
+    <div class="passport-bottom">
+      <div class="passport-header">
+        &#8212;&#8212;&#8212;INTERNATIONAL PASSPORT &#8212;&#8212;&#8212;
+        <hr>
+      </div>
+      <div class="passport-body">
+        <aside class="picture">
+          <img id="contact" src="../assets/images/idpic.png" />
+        </aside>
+        <div class="demographics-middle">
+          <div class="left">
+            <ul>
+              <li>Name:</li>
+              <li>DOB:</li>
+              <li>Country:</li>
+              <li>Issued:</li>
+              <li>Expires:</li>
+
+            </ul>
+          </div>
+          <div class="right">
+            <ul>
+              <li id="id-name"></li>
+              <li id='id-dob'></li>
+              <li id=" 'id-coo"></li>
+              <li>ISSUE DATE</li>
+              <li>EXP DATE</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="passport-footer">
+        &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; A323983 &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+      </div>
     </div>
   </div>
+  <style>
+    * {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .passport-container {
+      padding: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+    }
+
+    .passport {
+      background-color: lightblue;
+      border-radius: 15px;
+      height: 500px;
+      width: 400px display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr;
+      border: 1px solid grey;
+      color: black;
+      margin: 0;
+      padding: 0;
+      left: -100px;
+      transform: scale(1.3)
+    }
+
+    .passport-top {
+      height: 250px;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      transform: rotate(180deg);
+      grid-template-columns: 1fr 3fr;
+      color: red;
+    }
+
+    .id-number {
+      text-align: center;
+      width: auto;
+      font-size: 40px;
+      opacity: .6;
+    }
+
+    .passport-bottom {
+      height: 250px;
+      display: grid;
+      grid-template-rows: .5fr 5fr .5fr;
+
+    }
+
+    .passport-header {
+      height: 20px;
+      text-align: center;
+      border-top: 1px solid black
+    }
+
+    .passport-body {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+
+    }
+
+    .picture {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    img {
+      height: 100px;
+    }
+
+    .demographics-middle {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      text-decoration: none;
+
+    }
+
+    .left {
+      text-align: right;
+    }
+
+    .right: {
+      text-align: left;
+      border: 1px dashed white;
+    }
+
+    ul {
+      list-style-type: none;
+    }
+
+    li {
+      margin: 10px;
+
+    }
+
+    .demographics-right {}
+
+    #contact {
+      max-height: 200px;
+      width: auto;
+    }
+
+    .passport-footer {
+      height: 20px;
+      text-align: center;
+
+    }
+  </style>
 </div>
-<style>
-
-
-*{
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-    
-.passport-container {
-    padding: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-}
-
-.passport {
-  background-color: lightblue;
-  border-radius: 15px;
-  height: 500px;
-  width: 400px
-  display: grid; 
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr;
-  border: 1px solid grey;
-  color: black;
-  margin:0;
-  padding:0;
-  left: -100px;
-  transform: scale(1.3)
-  
-}
-
-.passport-top {
-    height: 250px;
-    writing-mode: vertical-rl;
-  text-orientation: mixed;
-  transform: rotate(180deg);
-  grid-template-columns: 1fr 3fr;
-  color: red;
-}
-
-.id-number{
-  text-align: center;
-  width: auto;
-  font-size: 40px;
-  opacity: .6;
-}
-
-.passport-bottom{
-    height: 250px;
-  display: grid;
-  grid-template-rows: .5fr 5fr .5fr;
-  
-}
-
-.passport-header {
-    height: 20px;
-  text-align: center;
-  border-top: 1px solid black 
-  
-}
-
-.passport-body {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  
-}
-
-.picture {
-  display: flex;
-  justify-content: center;
-  align-items: center;  
-}
-
-img {
-    height: 100px;
-}
-
-.demographics-middle {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  text-decoration: none;
-  
-}
-.left {
-  text-align: right;
-}
-.right: {
-  text-align: left;
-  border: 1px dashed white;
-}
-ul {
-  list-style-type: none;
-}
-
-li {
-  margin: 10px;
-  
-}
-
-.demographics-right {
-
-}
-
-#contact {
-  max-height: 200px;
-  width: auto;
-}
-
-.passport-footer {
-    height: 20px;
-  text-align: center;
-  
-}
-</style>  </div>

@@ -1,156 +1,118 @@
+<header class="modal-card-head">
+  <script src="https://kit.fontawesome.com/cd8c8fb565.js" crossorigin="anonymous"></script>
+  <p class="modal-card-title">Smarty Streets Verification</p>
+  <button class="delete" id="smarty-streets-close-x" aria-label="close"></button>
+</header>
+{{#if address}}
+<form id="address-verification" method="POST">
+  <section class="modal-card-body">
+    Address:
+    <input name="address" class="input" id="smarty-street" value="{{address.sponsor_address_1}}" />
+    City:
+    <input name="city" class="input" id="smarty-city" value="{{address.sponsor_city}}" />
+    State:
+    <input name="state" class="input" id="smarty-state" value="{{address.sponsor_state}}" />
+    Zip:
+    <input name="zip" class="input" id="smarty-zip" value="{{address.sponsor_zip}}" />
+</form>
 
-    <header class="modal-card-head">
-      <script src="https://kit.fontawesome.com/cd8c8fb565.js" crossorigin="anonymous"></script>
-      <p class="modal-card-title">Smarty Streets Verification</p>
-      <button
-        class="delete"
-        id="smarty-streets-close-x"
-        aria-label="close"
-      ></button>
-    </header>
-    {{#if address}}
-    <form id = "address-verification" method="POST">
-    <section class="modal-card-body">
-      Address:
-      <input
-      name="address"
-        class="input"
-        id="smarty-street"
-        value="{{address.sponsor_address_1}}"
-      />
-      City:
-      <input name ="city" class="input" id="smarty-city" value="{{address.sponsor_city}}"/>
-      State:
-      <input name="state" class="input" id="smarty-state" value="{{address.sponsor_state}}" />
-      Zip:
-      <input name = "zip" class="input" id="smarty-zip" value="{{address.sponsor_zip}}" />        </form>
+{{else}}
+<form method="POST">
+  <section class="modal-card-body">
+    Address:
+    <input name="address" class="input" id="smarty-street" value="{{street}}" />
+    City:
+    <input name="city" class="input" id="smarty-city" value="{{city}}" />
+    State:
+    <input name="state" class="input" id="smarty-state" value="{{state}}" />
+    Zip:
+    <input name="zip" class="input" id="smarty-zip" value="{{zip}}" />
+</form>
 
-      {{else}}
-          <form method="POST">
-    <section class="modal-card-body">
-      Address:
-      <input
-      name="address"
-        class="input"
-        id="smarty-street"
-        value="{{street}}"
-      />
-      City:
-      <input name ="city" class="input" id="smarty-city" value="{{city}}"/>
-      State:
-      <input name="state" class="input" id="smarty-state" value="{{state}}" />
-      Zip:
-      <input name = "zip" class="input" id="smarty-zip" value="{{zip}}" />        </form>
+{{/if}}
 
-      {{/if}}
+<br /><br />
+<button class="button has-background-primary" id="view-results">View
+  Results</button>
+<button class="button has-background-info is-hidden" id="google-maps">Google Maps</button>
+<button class="button has-background-info is-hidden" id="google-earth">Google Earth</button>
+<br />
+<a class="subtitle is-7" href="https://www.smartystreets.com/products/us-address-verification"
+  target="_blank">SmartyStreets</a>
+<br /><br />
+<h2 class="title is-3 has-text-centered is-hidden" id="found">Found
+  <span id="no-of-results">{{results}}</span>
+  valid address.
+</h2>
 
-      <br /><br />
-      <button class="button has-background-primary" id="view-results">View
-        Results</button>
-      <button
-        class="button has-background-info is-hidden"
-        id="google-maps"
-      >Google Maps</button>
-      <button
-        class="button has-background-info is-hidden"
-        id="google-earth"
-      >Google Earth</button>
-      <br />
-      <a
-        class="subtitle is-7"
-        href="https://www.smartystreets.com/products/us-address-verification"
-        target="_blank"
-      >SmartyStreets</a>
-      <br /><br />
-      <h2 class="title is-3 has-text-centered is-hidden" id="found">Found
-        <span id="no-of-results">{{results}}</span>
-        valid address.</h2>
+<table class="table is-fullwidth">
+  <tr>
+    <td class="title is-3" id="address-1-result">{{street}}</td>
+  </tr>
+  <tr>
+    <td class="subtitle is-7 has-text-right">Delivery line 1</td>
+  </tr>
+  <tr>
+    <td class="title is-3" id="city-result">{{city}}, {{state}}, {{zip}}</td>
+  </tr>
+  <tr>
+    <td class="subtitle is-7 has-text-right">
+      City, State, Zipcode, +4Code</td>
+  </tr>
+  <tr>
+    <td class="title is-3" id="latitude-result">{{lat}}</td>
+  </tr>
+  <tr>
+    <td class="subtitle is-7 has-text-right">Latitude</td>
+  </tr>
+  <tr>
+    <td class="title is-3" id="longitude-result">{{lon}}</td>
+  </tr>
+  <tr>
+    <td class="subtitle is-7 has-text-right">Longitude</td>
+  </tr>
+  <tr>
+    <td class="title is-3" id="precision-result">{{type}}</td>
+  </tr>
+  <tr>
+    <td class="subtitle is-7 has-text-right">Precision</td>
+  </tr>
+</table>
+<h1 class="is-hidden" id="address-code">{{code}}</h1>
+<h3 class="title is-4 has-text-centered is-hidden" id="all-good"><span style="color: lightgreen"><i
+      class="fas fa-check"></i><span class="ml-3" style="color: black">Matched street and city and
+      state</span></span><br />
+  <span style="color: lightgreen"><i class="fas fa-check"></i><span class="ml-3" style="color:black">Confirmed entire
+      address</span>
+  </span>
+</h3>
+<h3 class="title is-4 has-text-centered is-hidden" id="not-good"><span style="color: red"><i
+      class="fas fa-ban"></i><span class="ml-3" style="color: black">Address Not Found</span></span><br />
+  <span style="color: red"><i class="fas fa-ban"></i><span class="ml-3" style="color:black">Not Valid Address/Missing
+      Secondary Info</span>
+  </span>
+</h3>
+<h3 class="title is-4 has-text-centered is-hidden" id="secondary-info"><span style="color: lightgreen"><i
+      class="fas fa-check"></i><span class="ml-3" style="color: black">Matched street and city and
+      state</span></span><br />
+  <span style="color: rgb(255, 255, 0)"><i class="fas fa-exclamation-triangle"></i><span class="ml-3"
+      style="color:black">Missing Secondary Address
+      Information</span>
+  </span>
+</h3>
+<h3 class="title is-4 has-text-centered is-hidden" id="secondary-info-confirm"><span style="color: lightgreen"><i
+      class="fas fa-check"></i><span class="ml-3" style="color: black">Matched street and city and
+      state</span></span><br />
+  <span style="color: rgb(255, 255, 0)"><i class="fas fa-exclamation-triangle"></i><span class="ml-3"
+      style="color:black">Secondary address info
+      cannot be confirmed</span>
+  </span>
+</h3>
+</section>
+<footer class="modal-card-foot">
+  <a href="/table">
+    <button class="button" id="smarty-streets-cancel">Go To Table</button></a>
 
-      <table class="table is-fullwidth">
-        <tr>
-          <td class="title is-3" id="address-1-result">{{street}}</td>
-        </tr>
-        <tr>
-          <td class="subtitle is-7 has-text-right">Delivery line 1</td>
-        </tr>
-        <tr>
-          <td class="title is-3" id="city-result">{{city}}, {{state}}, {{zip}}</td>
-        </tr>
-        <tr>
-          <td class="subtitle is-7 has-text-right">
-            City, State, Zipcode, +4Code</td>
-        </tr>
-        <tr>
-          <td class="title is-3" id="latitude-result">{{lat}}</td>
-        </tr>
-        <tr>
-          <td class="subtitle is-7 has-text-right">Latitude</td>
-        </tr>
-        <tr>
-          <td class="title is-3" id="longitude-result">{{lon}}</td>
-        </tr>
-        <tr>
-          <td class="subtitle is-7 has-text-right">Longitude</td>
-        </tr>
-        <tr>
-          <td class="title is-3" id="precision-result">{{type}}</td>
-        </tr>
-        <tr>
-          <td class="subtitle is-7 has-text-right">Precision</td>
-        </tr>
-      </table>
-      <h1 class ="is-hidden" id = "address-code">{{code}}</h1>
-      <h3 class="title is-4 has-text-centered is-hidden" id="all-good"><span
-          style="color: lightgreen"
-        ><i class="fas fa-check"></i><span
-            class="ml-3"
-            style="color: black"
-          >Matched street and city and state</span></span><br />
-        <span style="color: lightgreen"><i class="fas fa-check"></i><span
-            class="ml-3"
-            style="color:black"
-          >Confirmed entire address</span>
-        </span></h3>
-      <h3 class="title is-4 has-text-centered is-hidden" id="not-good"><span
-          style="color: red"
-        ><i class="fas fa-ban"></i><span
-            class="ml-3"
-            style="color: black"
-          >Address Not Found</span></span><br />
-        <span style="color: red"><i class="fas fa-ban"></i><span
-            class="ml-3"
-            style="color:black"
-          >Not Valid Address/Missing Secondary Info</span>
-        </span></h3>
-      <h3
-        class="title is-4 has-text-centered is-hidden"
-        id="secondary-info"
-      ><span style="color: lightgreen"><i class="fas fa-check"></i><span
-            class="ml-3"
-            style="color: black"
-          >Matched street and city and state</span></span><br />
-        <span style="color: rgb(255, 255, 0)"><i
-            class="fas fa-exclamation-triangle"
-          ></i><span class="ml-3" style="color:black">Missing Secondary Address
-            Information</span>
-        </span></h3>
-      <h3
-        class="title is-4 has-text-centered is-hidden"
-        id="secondary-info-confirm"
-      ><span style="color: lightgreen"><i class="fas fa-check"></i><span
-            class="ml-3"
-            style="color: black"
-          >Matched street and city and state</span></span><br />
-        <span style="color: rgb(255, 255, 0)"><i
-            class="fas fa-exclamation-triangle"
-          ></i><span class="ml-3" style="color:black">Secondary address info
-            cannot be confirmed</span>
-        </span></h3>
-    </section>
-    <footer class="modal-card-foot">
-      <a href = "/table">
-      <button class="button" id="smarty-streets-cancel">Go To Table</button></a>
-
-    </footer>
-  </div>
-<script src ="/js/addressAPI.js"></script>
+</footer>
+</div>
+<script src="/js/addressAPI.js"></script>

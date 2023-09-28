@@ -1,53 +1,53 @@
+<div class="background-check">
+  <section class="hero criminal-hero">
+    <div class="hero-body">
+      <p class="title">
+        National Background Check
+      </p>
+      <p class="subtitle" id="bg-check-date">
 
-
-<div class = "background-check">
-    <section class="hero criminal-hero">
-  <div class="hero-body">
-    <p class="title">
-      National Background Check 
-    </p>
-    <p class="subtitle" id="bg-check-date">
-      
-    </p>
-  </div>
-</section><div class="table-container">
-  <table class="table">
-    <thead>
+      </p>
+    </div>
+  </section>
+  <div class="table-container">
+    <table class="table">
+      <thead>
         <tr>
-            <th>Name</th>
-            <th>DOB</th>
-            <th>Gender</th>
-            <th>Felony Matches</th>
-            <th>Misdemeanor Matches</th>
+          <th>Name</th>
+          <th>DOB</th>
+          <th>Gender</th>
+          <th>Felony Matches</th>
+          <th>Misdemeanor Matches</th>
         </tr>
-    </thead>
-    <tbody>
-            <tr>
-        <td>{{uac.sponsor_name}}</td>
-        <td>{{uac.dob}}</td>
-        <td>Male</td>
-        <td>0</td>
-        <td>0</td>
-    </tr>
-    </tbody>
-  </table>
-</div>
-<p class = "subtitle">RESULTS CLEAR</p>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{uac.sponsor_name}}</td>
+          <td>{{uac.dob}}</td>
+          <td>Male</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="subtitle">RESULTS CLEAR</p>
 </div>
 <style>
-    .background-check {
-        display: flex;
-        flex-direction: column;
+  .background-check {
+    display: flex;
+    flex-direction: column;
 
-    }
-    .criminal-hero {
-        margin-bottom: 20px;
-        box-shadow: none;
-    }
+  }
+
+  .criminal-hero {
+    margin-bottom: 20px;
+    box-shadow: none;
+  }
 </style>
 <script>
-    const dateEl = document.getElementById("bg-check-date")
-    const today = new Date().toLocaleDateString()
-    console.log(today)
-    dateEl.innerHTML = today
+  const dateEl = document.getElementById("bg-check-date")
+  const today = new Date().toLocaleDateString()
+  console.log(today)
+  dateEl.innerHTML = today
 </script>

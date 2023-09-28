@@ -14,37 +14,39 @@
     </li>
 
     <li>
-      <a href="/discharged" style="cursor: pointer;"><h3 class="ml-3 mr-3"><i
-            class="fa-solid fa-hands-holding-child"
-            style="margin-right: 10px"
-          ></i><strong>Go To Discharged</strong></h3></a>
+      <a href="/discharged" style="cursor: pointer;">
+        <h3 class="ml-3 mr-3"><i class="fa-solid fa-hands-holding-child" style="margin-right: 10px"></i><strong>Go To
+            Discharged</strong></h3>
+      </a>
     </li>
 
   </ul>
 </nav>
 
 {{#each allCms}}
-  <a href="casemanager/{{user_id}}">
-    <style>
-      .lead-card:hover{ background-color: rgb(220, 249, 255); }
-    </style>
-    <div class="card lead-card">
+<a href="casemanager/{{user_id}}">
+  <style>
+    .lead-card:hover {
+      background-color: rgb(220, 249, 255);
+    }
+  </style>
+  <div class="card lead-card">
 
-      <div class="card-content">
-        <div class="media">
+    <div class="card-content">
+      <div class="media">
 
-          <div class="media-content">
-            <p class="title is-4">{{username}}</p>
-            <p class="subtitle is-6">{{email}}</p>
-          </div>
-        </div>
-
-        <div class="content">
-
+        <div class="media-content">
+          <p class="title is-4">{{username}}</p>
+          <p class="subtitle is-6">{{email}}</p>
         </div>
       </div>
+
+      <div class="content">
+
+      </div>
     </div>
-  </a>
+  </div>
+</a>
 {{/each}}
 
 <script src="/js/tableview.js"></script>
@@ -54,7 +56,4 @@
 <script src="/js/editCM.js"></script>
 <script src="/js/roles.js"></script>
 
-<script
-  src="https://kit.fontawesome.com/cd8c8fb565.js"
-  crossorigin="anonymous"
-></script>
+<script src="https://kit.fontawesome.com/cd8c8fb565.js" crossorigin="anonymous"></script>

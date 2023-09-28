@@ -24,4 +24,9 @@ module.exports = {
       .map((item) => item.charAt(0))
       .join('');
   },
+  is_cat_2: (category) => {
+    category.toUppercase();
+    const cat = category == '2B' ? true : false;
+    return cat;
+  },
 };

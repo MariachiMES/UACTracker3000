@@ -1,5 +1,5 @@
-const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../config/connection");
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../config/connection');
 
 class UAC extends Model {}
 
@@ -128,11 +128,41 @@ UAC.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
+
     sponsor_age: {
       type: DataTypes.INTEGER,
       allowNull: true,
       defaultValue: 0,
     },
+    // sponsor_ph: {
+    //   type: DataTypes.STRING,
+    //   allowNull: true,
+    // },
+    // sponsor_email: {
+    //   type: DataTypes.STRING,
+    //   allowNull: true,
+    // },
+    // sponsor_coo: {
+    //   type: DataTypes.STRING,
+    //   allowNull: true,
+    // },
+    // uac_mothers_name: {
+    //   type: DataTypes.STRING,
+    //   allowNull: true,
+    // },
+    // mothers_dob: {
+    //   type: DataTypes.STRING,
+    //   allowNull: true,
+    // },
+    // uac_fathers_name: {
+    //   type: DataTypes.STRING,
+    //   allowNull: true,
+    // },
+    // fathers_dob: {
+    //   type: DataTypes.STRING,
+    //   allowNull: true,
+    // },
+
     sponsor_address_1: {
       type: DataTypes.STRING,
       allowNull: true,
@@ -150,9 +180,8 @@ UAC.init(
       allowNull: true,
     },
     sponsor_zip: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: true,
-      defaultValue: 00000,
     },
     sponsor_relationship: {
       type: DataTypes.STRING,
@@ -193,7 +222,7 @@ UAC.init(
     can_check_required: {
       type: DataTypes.STRING,
       allowNull: true,
-      defaultValue: "CA/N Check not required",
+      defaultValue: 'CA/N Check not required',
     },
     can_check_received: {
       type: DataTypes.STRING,
@@ -262,7 +291,7 @@ UAC.init(
     discharged: {
       type: DataTypes.STRING,
       allownull: true,
-      defaultValue: "",
+      defaultValue: '',
     },
     exception: {
       type: DataTypes.STRING,
@@ -274,7 +303,7 @@ UAC.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "UAC",
+    modelName: 'UAC',
   }
 );
 

@@ -1,25 +1,25 @@
 <section class="section">
-  <img id ="fieldprint-logo" style = "height: 100px" src="../assets/images/fieldprint.png"/>
+  <img id="fieldprint-logo" style="height: 100px" src="../assets/images/fieldprint.png" />
   <h2 class="subtitle">
-    This message is to confirm that <span id = "fp-appt-sponsor">{{uac.sponsor_name}}</span> has a fingerprint appointment 
+    This message is to confirm that <span id="fp-appt-sponsor">{{uac.sponsor_name}}</span> has a fingerprint appointment
     on <span id="fp-appt-date"></span> at <span id="fp-appt-time"></span>
   </h2>
 </section>
 
 <script>
-    const sponsorName = document.getElementById("fp-appt-sponsor")
-    const fpAppt = document.getElementById("fp-appt-date")
-    const fpTime = document.getElementById('fp-appt-time')
+  const sponsorName = document.getElementById("fp-appt-sponsor")
+  const fpAppt = document.getElementById("fp-appt-date")
+  const fpTime = document.getElementById('fp-appt-time')
 
-    const today = new Date().toLocaleDateString()
-    fpAppt.innerHTML = today
+  const today = new Date().toLocaleDateString()
+  fpAppt.innerHTML = today
 
-    const apptTime = new Date().getHours() + 3
-    const adjustedTime = apptTime > 12 ? apptTime -12 : appTime
-    const amOrPm = apptTime > 11 ? 'pm' : 'am'
-    console.log(adjustedTime + amOrPm)
+  const apptTime = new Date().getHours() + 3
+  const adjustedTime = apptTime > 12 ? apptTime - 12 : apptTime
+  const amOrPm = apptTime > 11 ? 'pm' : 'am'
+  console.log(adjustedTime + amOrPm)
 
-    fpTime.innerHTML = `${adjustedTime}${amOrPm}`
-    
+  fpTime.innerHTML = `${adjustedTime}${amOrPm}`
+  console.log(adjustedTime, amOrPm)
+
 </script>
-

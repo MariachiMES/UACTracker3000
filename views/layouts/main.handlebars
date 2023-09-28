@@ -1,110 +1,118 @@
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    {{#if document}}
-    <title>{{uac.a_number}}_Child_BC</title>
-    {{else}}
-    <title>Reunify</title>
-    {{/if}}
-    <link rel="icon" href="/assets/images/reunify.ico" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
-    />
-    <link rel="stylesheet" href="/css/style.css" class="stylesheeet">
-  </head>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   {{#if document}}
-{{else}}
-  <body>
-<nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a class="navbar-item" href="/">
-      <img src="/assets/images/Reunify-Min.png" >
-    </a>
-
-    <a role="button" id="hamburger-btn" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-{{#if logged_in}}
-{{else}}
-{{#if document}}
-{{document}}
-{{else}}
-{{document}}
-  <div id="navbarBasicExample" class="navbar-menu">
-    <div class="navbar-start">
-      <a class="navbar-item">
-        Pricing
-      </a>
-
-      <a class="navbar-item">
-       Tour
-      </a>
-    </div>
-{{/if}}
-{{/if}}
-
-  {{#if logged_in}}
- 
-    <div class="navbar-end">
-      <div class="navbar-item">
-        
-        <div class="buttons">
-          <a id ="logout" name = "logout" style="margin-left: 20px"><i class="fa-solid fa-right-to-bracket" style="margin-right: 10px"></i><strong>
-            Log this Out</strong>
-          </a>
-          {{else}}
-            <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="buttons">
-          <a id = "sign-up-btn">
-            <strong><i class="fa-solid fa-user-plus" style="margin-right: 10px"></i>Sign up</strong>
-          </a>
-          <a  id="login-btn" style="margin-left: 20px"><i class="fa-solid fa-right-to-bracket" style="margin-right: 10px"></i><strong>
-            Log In</strong>
-          </a>
-          
-          {{/if}}
-          
-        </div>
-      </div>
-    </div>
-    
-  </div>
-</nav>
-{{!-- Begin Hero Content --}}
-
-  </body>
+  <title>{{uac.a_number}}</title>
+  {{else}}
+  <title>Reunify</title>
   {{/if}}
+
+
+
+  <link rel="icon" href="/assets/images/reunify.ico" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" />
+  <link rel="stylesheet" href="/css/style.css" class="stylesheeet">
+</head>
+{{#if document}}
+{{else}}
+
+<body>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        <img src="/assets/images/Reunify-Min.png">
+      </a>
+
+      <a role="button" id="hamburger-btn" class="navbar-burger" aria-label="menu" aria-expanded="false"
+        data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    {{#if logged_in}}
+    {{else}}
+    {{#if document}}
+    {{document}}
+    {{else}}
+    {{document}}
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item">
+          Pricing
+        </a>
+
+        <a class="navbar-item">
+          Tour
+        </a>
+      </div>
+      {{/if}}
+      {{/if}}
+
+      {{#if logged_in}}
+
+      <div class="navbar-end">
+        <div class="navbar-item">
+
+          <div class="buttons">
+            <a id="logout" name="logout" style="margin-left: 20px"><i class="fa-solid fa-right-to-bracket"
+                style="margin-right: 10px"></i><strong>
+                Log this Out</strong>
+            </a>
+            {{else}}
+            <div class="navbar-end">
+              <div class="navbar-item">
+                <div class="buttons">
+                  <a id="sign-up-btn">
+                    <strong><i class="fa-solid fa-user-plus" style="margin-right: 10px"></i>Sign up</strong>
+                  </a>
+                  <a id="login-btn" style="margin-left: 20px"><i class="fa-solid fa-right-to-bracket"
+                      style="margin-right: 10px"></i><strong>
+                      Log In</strong>
+                  </a>
+
+                  {{/if}}
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+  </nav>
+  {{!-- Begin Hero Content --}}
+
+</body>
+{{/if}}
+
 </html>
 
-          <!-- Conditionally render login or logout links -->
-  {{!-- {{#if logged_in}}
-  <a href="/cmtracker">profile</a>
-    |<button class="no-button" id="logout">logout</button>
-  {{else}}
-  <div class="field">
+<!-- Conditionally render login or logout links -->
+{{!-- {{#if logged_in}}
+<a href="/cmtracker">profile</a>
+|<button class="no-button" id="logout">logout</button>
+{{else}}
+<div class="field">
   <div class="container field has-addons">
-</div></div>
-  {{/if}} --}}
+  </div>
+</div>
+{{/if}} --}}
 
-    {{{body}}}
+{{{body}}}
 
 {{#if document}}
 {{else}}
-  <footer>
-    <div class = "container has-text-centered">© 2021 comal software</div>
+<footer>
+  <div class="container has-text-centered">© 2021 comal software</div>
 </footer>
-    </div>
-    <!-- Render script for logged in users only -->
-    {{!-- {{#if logged_in}}
-      <script src="/js/logout.js"></script>
-    {{/if}} --}}
-  </body>
+</div>
+<!-- Render script for logged in users only -->
+{{!-- {{#if logged_in}}
+<script src="/js/logout.js"></script>
+{{/if}} --}}
+</body>
 {{/if}}
+
 </html>

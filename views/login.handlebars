@@ -1,20 +1,20 @@
+<aside class="menu has-text-right" id="mobile-menu">
+  <style>
+    .menu {
+      width: 100%;
+      transform: translateY(-271px);
+      position: absolute;
+      background-color: white;
+      z-index: 100;
+      transition: all 0.5s ease-in;
 
-    <aside class="menu has-text-right" id="mobile-menu">
-      <style>
-        .menu{
-          width: 100%;
-        transform: translateY(-271px);
-        position: absolute;
-        background-color: white;
-        z-index: 100;
-        transition: all 0.5s ease-in;
-        
-        }
-        .menu-active {
-          transform:translateY(0px);
-          transition: all 0.5s ease-in;
-        }
-      </style>
+    }
+
+    .menu-active {
+      transform: translateY(0px);
+      transition: all 0.5s ease-in;
+    }
+  </style>
   <p class="menu-label">
     General
   </p>
@@ -26,60 +26,65 @@
     Administration
   </p>
   <ul class="menu-list">
-    <li><a id = "mobile-sign-up-btn">
-            <strong><i class="fa-solid fa-user-plus" style="margin-right: 10px"></i>Sign up</strong>
-          </a></li>
-    <li> <a  id="mobile-login-btn" style="margin-left: 20px"><i class="fa-solid fa-right-to-bracket" style="margin-right: 10px"></i><strong>
-            Log In</strong>
-          </a></li>
+    <li><a id="mobile-sign-up-btn">
+        <strong><i class="fa-solid fa-user-plus" style="margin-right: 10px"></i>Sign up</strong>
+      </a></li>
+    <li> <a id="mobile-login-btn" style="margin-left: 20px"><i class="fa-solid fa-right-to-bracket"
+          style="margin-right: 10px"></i><strong>
+          Log In</strong>
+      </a></li>
   </ul>
 </aside>
 <section class="hero is-large">
   <style>
     .hero {
-        background: linear-gradient(rgba(31, 44, 108, 0.65), rgba(31, 44, 108, 0.65)),
-    rgba(0, 0, 0, 0.55) url(/assets/images/P1230954.JPG) center / cover;
+      background: linear-gradient(rgba(31, 44, 108, 0.65), rgba(31, 44, 108, 0.65)),
+        rgba(0, 0, 0, 0.55) url(/assets/images/P1230954.JPG) center / cover;
     }
+
     @media (max-width: 768px) {
       .hero {
         height: 100%;
-          background: linear-gradient(rgba(31, 44, 108, 0.65), rgba(31, 44, 108, 0.65)),
-    rgba(0, 0, 0, 0.55) url(/assets/images/P1230927.JPG) center / cover;
-          }
-      #body-image{
+        background: linear-gradient(rgba(31, 44, 108, 0.65), rgba(31, 44, 108, 0.65)),
+          rgba(0, 0, 0, 0.55) url(/assets/images/P1230927.JPG) center / cover;
+      }
+
+      #body-image {
         align-items: center;
         justify-content: center;
         display: flex;
-        }
+      }
     }
   </style>
-        <!-- Begin Hero Content-->
-        <div class="hero-body" id="body-image">
-         <style>
-           @media (max-width: 768px){
-           #logo{
-             transform: translateY(50%);
-           }
-           }
-         </style>
-          <div class="container has-text-centered" id = "logo">
-            <h1 class="subtitle" style="color: white"></h1>
-            <img src="/assets/images/Reunify-White.png" >
-            <h1 class="subtitle profession" style="color: white">Supplemental workflow platform for ORR EIS case management.</h1>
-          </div>
-        </div>
-        <!-- End Hero Content-->
-      </section>
-  
-  
+  <!-- Begin Hero Content-->
+  <div class="hero-body" id="body-image">
+    <style>
+      @media (max-width: 768px) {
+        #logo {
+          transform: translateY(50%);
+        }
+      }
+    </style>
+    <div class="container has-text-centered" id="logo">
+      <h1 class="subtitle" style="color: white"></h1>
+      <img src="/assets/images/Reunify-White.png">
+      <h1 class="subtitle profession" style="color: white">Supplemental workflow platform for ORR EIS case management.
+      </h1>
+    </div>
+  </div>
+  <!-- End Hero Content-->
+</section>
+
+
 {{#if logged_in}}
 {{else}}
 
 {{> loginModal}}
 {{> signupModal}}
-  </div>
-  </div>
+</div>
+</div>
 </div>
 
 <script src="https://kit.fontawesome.com/cd8c8fb565.js" crossorigin="anonymous"></script>
-{{/if}}<script src="./js/login.js"></script>
+{{/if}}
+<script src="./js/login.js"></script>

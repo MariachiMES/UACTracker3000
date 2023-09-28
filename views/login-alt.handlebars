@@ -1,42 +1,43 @@
-<form action = "/login" method = "POST">
+<form action="/login" method="POST">
   <section class="section">
     <div class="container">
       <h1 class="title">UAC Tracker</h1>
 
       <p class="subtitle is-centered">
-         <strong>Login</strong></p>
+        <strong>Login</strong>
+      </p>
     </div>
   </section>
-    <div class = "input-group">
-      <div class="container field has-addons">
-        <p class="control has-icons-left has-icons-right">
-          <input class="input is-medium" id="user-email" name = "email" type="email" placeholder="Email"/>
-          <span class="icon is-small is-left">
-          <i class="fas fa-envelope"></i>
-          </span>
-          </span>
-        </p>
-      </div>
-
-      <div class="container field has-addons">
-        <p class="control has-icons-left has-icons-right">
-        <input class="input is-medium" id="user-password" name = "password" type="password" placeholder="Password"/>
+  <div class="input-group">
+    <div class="container field has-addons">
+      <p class="control has-icons-left has-icons-right">
+        <input class="input is-medium" id="user-email" name="email" type="email" placeholder="Email" />
         <span class="icon is-small is-left">
-        <i class="fas fa-lock"></i>
+          <i class="fas fa-envelope"></i>
         </span>
-        </p>
-      </div>
+        </span>
+      </p>
     </div>
+
+    <div class="container field has-addons">
+      <p class="control has-icons-left has-icons-right">
+        <input class="input is-medium" id="user-password" name="password" type="password" placeholder="Password" />
+        <span class="icon is-small is-left">
+          <i class="fas fa-lock"></i>
+        </span>
+      </p>
+    </div>
+  </div>
   <div class="container field is-grouped">
 </form>
-    <p class="control">
-      <button class="button mt-6" id="login">Login</button>
-    </p>
+<p class="control">
+  <button class="button mt-6" id="login">Login</button>
+</p>
 
-      <a href="/new-user">
-        <button class="button is-link mt-6" id="new-user">New User</button>
-    </a>
-    </p>
-  </div>
+<a href="/new-user">
+  <button class="button is-link mt-6" id="new-user">New User</button>
+</a>
+</p>
+</div>
 <script src="./js/login.js"></script>
 <script src="https://kit.fontawesome.com/cd8c8fb565.js" crossorigin="anonymous"></script>

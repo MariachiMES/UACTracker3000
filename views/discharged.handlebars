@@ -1,275 +1,258 @@
-
-
 <section class="hero is-small ">
 
-    <a href = "/table">
-      <strong>See Active Cases</strong></a>
-  <div class = "level-item has-text-centered mr-6 ml-6">
+  <a href="/table">
+    <strong>See Active Cases</strong></a>
+  <div class="level-item has-text-centered mr-6 ml-6">
+</section>
+
+<div class="table-container is-centered">
+  <table class="table is-fullwidth is-hoverable is-narrow is-bordered" id="uac-table">
+    <thead>
+      <tr>
+        <th>
+          <abbrr title="delete"><strong></strong></abbrr>
+        </th>
+        <th>
+          <abbrr title="Alien number"><strong>A#</strong></abbrr>
+        </th>
+        <th>
+          <abbr title="UAC"><strong>UAC</strong></abbr>
+        </th>
+        <th><strong>Case Manager</strong></th>
+        <th>
+          <abbr title="email"> <strong>Email</strong></abbr>
+        </th>
+        <th>
+          <abbr title="Sponsor Assessment"><strong>Sponsor Assessment</strong></abbr>
+        </th>
+        <th>
+          <abbr title="Family reunification packet"><strong>FRP</strong></abbr>
+        </th>
+        <th>
+          <abbr title="Sponsor background check"><strong>Sponsor BGC</strong></abbr>
+        </th>
+        <th>
+          <abbr title="Sponsor finger prints"><strong>Sponsor FP</strong></abbr>
+        </th>
+        <th>
+          <abbr title="Household member IDs"><strong>HHM IDs</strong></abbr>
+        </th>
+        <th>
+          <abbr title="dat submitted"><strong>Submitted</strong></abbr>
+        </th>
+        <th>
+          <abbr title="date approved"><strong>Approved</strong></abbr>
+        </th>
+        <th>
+          <abbr title="Remanded"><strong>Remanded</strong></abbr>
+        </th>
+        <th>
+          <abbr title="Exception entered"><strong>Exception</strong></abbr>
+        </th>
+      </tr>
+    </thead>
+    {{#each uacTable}}
+    {{#if discharged }}
+    <tbody>
+      <td id="spacer"></td>
+      <td id="a-number-delete"><a href="dashboard/{{uac_id}}">{{a_number}}<button class="delete is-small is-hidden"
+            id="delete-uac-btn"></button></td></a>
+      <td>{{uacname}}</td>
+      <td><a href="caseload/{{casemanager.user_id}}">{{casemanager.username}} </a></td>
+      <td><a href="mailto:{{casemanager.email}}" subject="whatever" message="dude, seriously!">{{casemanager.email}}</a>
+      </td>
+      {{#if sponsor_assessment}}
+      <td class="has-background-primary-light">{{format_nice_date sponsor_assessment}}</td>
+      {{else}}
+      <td class="has-background-danger-light">{{format_nice_date sponsor_assessment}}</td>
+      {{/if}}
+      {{#if frp}}
+      <td class="has-background-primary-light">{{format_nice_date frp}}</td>
+      {{else}}
+      <td class="has-background-danger-light">{{format_nice_date frp}}</td>
+      {{/if}}
+      {{#if sponsor_bgc}}
+      <td class="has-background-primary-light">{{format_nice_date sponsor_bgc}}</td>
+      {{else}}
+      <td class="has-background-danger-light">{{format_nice_date sponsor_bgc}}</td>
+      {{/if}}
+      {{#if sponsor_fp}}
+      <td class="has-background-primary-light">{{format_nice_date sponsor_fp}}</td>
+      {{else}}
+      <td class="has-background-danger-light">{{format_nice_date sponsor_fp}}</td>
+      {{/if}}
+      {{#if hhm_id}}
+      <td class="has-background-primary-light">{{format_nice_date hhm_id}}</td>
+      {{else}}
+      <td class="has-background-danger-light">{{format_nice_date hhm_id}}</td>
+      {{/if}}
+      {{#if submitted}}
+      <td class="has-background-primary-light">{{submitted}}</td>
+      {{else}}
+      <td class="has-background-danger-light">{{submitted}}</td>
+      {{/if}}
+      {{#if approved}}
+      <td class="has-background-primary-light">{{approved}}</td>
+      {{else}}
+      <td class="has-background-danger-light">{{approved}}</td>
+      {{/if}}
+      {{#if remanded}}
+      <td class="has-background-danger-light">{{remanded}}</td>
+      {{else}}
+      <td class="has-background-primary-light">{{remanded}}</td>
+      {{/if}}
+      {{#if exception}}
+      <td class="has-background-primary-light">{{exception}}</td>
+      {{else}}
+      <td class="has-background-danger-light">{{exception}}</td>
+      {{/if}}
+    </tbody>{{else}}{{/if}}{{/each}}
+
+    <tfoot>
+      <tr>
+        <th>
+          <abbrr title="delete"><strong></strong></abbrr>
+        </th>
+        <th>
+          <abbrr title="Alien number"><strong>A#</strong></abbrr>
+        </th>
+        <th>
+          <abbr title="UAC"><strong>UAC</strong></abbr>
+        </th>
+        <th><strong>Case Manager</strong></th>
+        <th>
+          <abbr title="email"> <strong>Email</strong></abbr>
+        </th>
+        <th>
+          <abbr title="Sponsor Assessment"><strong>Sponsor Assessment</strong></abbr>
+        </th>
+        <th>
+          <abbr title="Family reunification packet"><strong>FRP</strong></abbr>
+        </th>
+        <th>
+          <abbr title="Sponsor background check"><strong>Sponsor BGC</strong></abbr>
+        </th>
+        <th>
+          <abbr title="Sponsor finger prints"><strong>Sponsor FP</strong></abbr>
+        </th>
+        <th>
+          <abbr title="Household member IDs"><strong>HHM IDs</strong></abbr>
+        </th>
+        <th>
+          <abbr title="dat submitted"><strong>Submitted</strong></abbr>
+        </th>
+        <th>
+          <abbr title="date approved"><strong>Approved</strong></abbr>
+        </th>
+        <th>
+          <abbr title="Remanded"><strong>Remanded</strong></abbr>
+        </th>
+        <th>
+          <abbr title="Exception entered"><strong>Exception</strong></abbr>
+        </th>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+
+{{!-- ADD NEW UAC MODAL START --}}
+<div class="modal" id="new-uac-modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Add New UAC</p>
+      <button class="delete" id="close-x" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+      <!-- Content ... -->
+      <span>A#</span>
+      <input class="input" name="a-number" type="text" placeholder="A#" id="a-number">
+      <span>Full Name</span>
+      <input class="input" name="uac-name" type="text" placeholder="UAC Name" id="uac-name">
+      <span>DOB</span>
+      <input class="input" name="dob" type="text" placeholder="DOB" id="dob">
+      <span>Country of Origin</span>
+      <input class="input" name="coo" type="text" placeholder="Country of Origin" id="coo">
+      <span>Date Admitted</span>
+      <input class="input" name="date-admitted" type="text" placeholder="Date Admitted" id="date-admitted">
+      <span>Gender</span>
+      <input class="input" name="gender" type="text" placeholder="Gender" id="gender">
+      Case Manager User ID: <span id="user-id"></span><br>
+      <div class="dropdown is-up">
+        <div class="dropdown-trigger">
+          <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+            <span id="selected-cm">Assign Case Manager</span>
+            <span class="icon is-small">
+              <i class="fas fa-angle-down" aria-hidden="true"></i>
+            </span>
+          </button>
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu" role="menu">
+          <div class="dropdown-content" id="cm-dropdown">
+            {{#each cmSelector}}
+            <div class="dropdown-item" value={{user_id}} id={{user_id}}>
+              {{username}}
+            </div> {{/each}}
+            {{!-- <a class="dropdown-item">
+              Other dropdown item
+            </a>
+            <a href="#" class="dropdown-item is-active">
+              Active dropdown item
+            </a>
+            <a href="#" class="dropdown-item">
+              Other dropdown item
+            </a>
+            <hr class="dropdown-divider">
+            <a href="#" class="dropdown-item">
+              With a divider
+            </a> --}}
+          </div>
+        </div>
+      </div>
+
+
     </section>
+    <footer class="modal-card-foot">
+      <button class="button is-success" id="save-new-uac">Save changes</button>
+      <button class="button" id="cancel-modal">Cancel</button>
+    </footer>
+  </div>
+</div>
+{{!-- ADD NEW UAC MODAL END --}}
 
-    <div class="table-container is-centered">
-      <table class="table is-fullwidth is-hoverable is-narrow is-bordered" id ="uac-table">
-        <thead>
-          <tr>
-            <th>
-              <abbrr title="delete"><strong></strong></abbrr>
-            </th>
-            <th>
-              <abbrr title="Alien number"><strong>A#</strong></abbrr>
-            </th>
-            <th>
-              <abbr title="UAC"><strong>UAC</strong></abbr>
-            </th>
-            <th><strong>Case Manager</strong></th>
-            <th>
-              <abbr title = "email"> <strong>Email</strong></abbr>
-            </th>
-            <th>
-              <abbr title="Sponsor Assessment"
-                ><strong>Sponsor Assessment</strong></abbr
-              >
-            </th>
-            <th>
-              <abbr title="Family reunification packet"
-                ><strong>FRP</strong></abbr
-              >
-            </th>
-            <th>
-              <abbr title="Sponsor background check"
-                ><strong>Sponsor BGC</strong></abbr
-              >
-            </th>
-            <th>
-              <abbr title="Sponsor finger prints"
-                ><strong>Sponsor FP</strong></abbr
-              >
-            </th>
-            <th>
-              <abbr title="Household member IDs"><strong>HHM IDs</strong></abbr>
-            </th>
-            <th>
-              <abbr title="dat submitted"><strong>Submitted</strong></abbr>
-            </th>
-            <th>
-              <abbr title="date approved"><strong>Approved</strong></abbr>
-            </th>
-            <th>
-              <abbr title="Remanded"><strong>Remanded</strong></abbr>
-            </th>
-            <th>
-              <abbr title="Exception entered"><strong>Exception</strong></abbr>
-            </th>
-          </tr>
-        </thead>
-        {{#each uacTable}}
-        {{#if discharged }}
-        <tbody>
-          <td id = "spacer"></td>
-          <td id="a-number-delete"><a href= "dashboard/{{uac_id}}">{{a_number}}<button class = "delete is-small is-hidden" id="delete-uac-btn"></button></td></a>
-          <td >{{uacname}}</td>
-          <td><a href = "caseload/{{casemanager.user_id}}">{{casemanager.username}} </a></td>
-          <td><a href = "mailto:{{casemanager.email}}" subject = "whatever" message = "dude, seriously!">{{casemanager.email}}</a></td>
-          {{#if sponsor_assessment}}
-          <td class = "has-background-primary-light">{{format_nice_date sponsor_assessment}}</td>
-          {{else}}
-          <td class = "has-background-danger-light">{{format_nice_date sponsor_assessment}}</td>
-          {{/if}}
-          {{#if frp}}
-          <td class = "has-background-primary-light">{{format_nice_date frp}}</td>
-          {{else}}
-          <td class = "has-background-danger-light">{{format_nice_date frp}}</td>
-          {{/if}}
-          {{#if sponsor_bgc}}
-          <td class = "has-background-primary-light">{{format_nice_date sponsor_bgc}}</td>
-          {{else}}
-          <td class = "has-background-danger-light">{{format_nice_date sponsor_bgc}}</td>
-          {{/if}}
-          {{#if sponsor_fp}}
-          <td class = "has-background-primary-light">{{format_nice_date sponsor_fp}}</td>
-          {{else}}
-          <td class = "has-background-danger-light">{{format_nice_date sponsor_fp}}</td>
-          {{/if}}
-          {{#if hhm_id}}
-          <td class = "has-background-primary-light">{{format_nice_date hhm_id}}</td>
-          {{else}}
-          <td class = "has-background-danger-light">{{format_nice_date hhm_id}}</td>
-          {{/if}}
-          {{#if submitted}}
-          <td class = "has-background-primary-light">{{submitted}}</td>
-          {{else}}
-          <td class = "has-background-danger-light">{{submitted}}</td>
-          {{/if}}
-           {{#if approved}}
-          <td class = "has-background-primary-light">{{approved}}</td>
-          {{else}}
-          <td class = "has-background-danger-light">{{approved}}</td>
-          {{/if}}
-           {{#if remanded}}
-          <td class = "has-background-danger-light">{{remanded}}</td>
-          {{else}}
-          <td class = "has-background-primary-light">{{remanded}}</td>
-          {{/if}}
-          {{#if exception}}
-          <td class = "has-background-primary-light">{{exception}}</td>
-          {{else}}
-          <td class = "has-background-danger-light">{{exception}}</td>
-          {{/if}}
-        </tbody>{{else}}{{/if}}{{/each}}
-    
-        <tfoot>
-         <tr>
-            <th>
-              <abbrr title="delete"><strong></strong></abbrr>
-            </th>
-            <th>
-              <abbrr title="Alien number"><strong>A#</strong></abbrr>
-            </th>
-            <th>
-              <abbr title="UAC"><strong>UAC</strong></abbr>
-            </th>
-            <th><strong>Case Manager</strong></th>
-            <th>
-              <abbr title = "email"> <strong>Email</strong></abbr>
-            </th>
-            <th>
-              <abbr title="Sponsor Assessment"
-                ><strong>Sponsor Assessment</strong></abbr
-              >
-            </th>
-            <th>
-              <abbr title="Family reunification packet"
-                ><strong>FRP</strong></abbr
-              >
-            </th>
-            <th>
-              <abbr title="Sponsor background check"
-                ><strong>Sponsor BGC</strong></abbr
-              >
-            </th>
-            <th>
-              <abbr title="Sponsor finger prints"
-                ><strong>Sponsor FP</strong></abbr
-              >
-            </th>
-            <th>
-              <abbr title="Household member IDs"><strong>HHM IDs</strong></abbr>
-            </th>
-            <th>
-              <abbr title="dat submitted"><strong>Submitted</strong></abbr>
-            </th>
-            <th>
-              <abbr title="date approved"><strong>Approved</strong></abbr>
-            </th>
-            <th>
-              <abbr title="Remanded"><strong>Remanded</strong></abbr>
-            </th>
-            <th>
-              <abbr title="Exception entered"><strong>Exception</strong></abbr>
-            </th>
-          </tr>
-        </tfoot>
-      </table>
-    </div>
-
-    {{!-- ADD NEW UAC MODAL START --}}
-    <div class="modal" id = "new-uac-modal">
-        <div class="modal-background"></div>
-        <div class="modal-card">
-          <header class="modal-card-head">
-            <p class="modal-card-title">Add New UAC</p>
-            <button class="delete" id = "close-x" aria-label="close"></button>
-          </header>
-          <section class="modal-card-body">
-            <!-- Content ... -->
-            <span>A#</span>
-            <input class="input" name ="a-number" type="text" placeholder="A#" id="a-number">
-            <span>Full Name</span>
-            <input class="input" name = "uac-name" type="text" placeholder="UAC Name" id="uac-name">
-            <span>DOB</span>
-            <input class="input" name = "dob" type="text" placeholder="DOB" id="dob">
-            <span>Country of Origin</span>
-            <input class="input" name = "coo" type="text" placeholder="Country of Origin" id="coo">
-            <span>Date Admitted</span>
-            <input class="input" name = "date-admitted" type="text" placeholder="Date Admitted" id="date-admitted">
-            <span>Gender</span>
-            <input class="input" name = "gender" type="text" placeholder="Gender" id="gender">
-            Case Manager User ID: <span id = "user-id"></span><br>
-            <div class="dropdown is-up">
-                <div class="dropdown-trigger">
-                  <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-                    <span id="selected-cm">Assign Case Manager</span>
-                    <span class="icon is-small">
-                      <i class="fas fa-angle-down" aria-hidden="true"></i>
-                    </span>
-                  </button>
-                </div>
-                <div class="dropdown-menu" id="dropdown-menu" role="menu">
-                  <div class="dropdown-content" id = "cm-dropdown">
-                    {{#each cmSelector}}
-                    <div class="dropdown-item" value = {{user_id}} id = {{user_id}}>
-                      {{username}}
-                    </div> {{/each}}
-                    {{!-- <a class="dropdown-item">
-                      Other dropdown item
-                    </a>
-                    <a href="#" class="dropdown-item is-active">
-                      Active dropdown item
-                    </a>
-                    <a href="#" class="dropdown-item">
-                      Other dropdown item
-                    </a>
-                    <hr class="dropdown-divider">
-                    <a href="#" class="dropdown-item">
-                      With a divider
-                    </a> --}}
-                  </div>
-                </div>
-              </div>
+{{!-- ADD NEW CASE MANAGER MODAL START --}}
+<div class="modal" id="cm-modal">
+  <div class="modal-background" id="cm-BG"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Add New Case Manager</p>
+      <button class="delete" id="cm-close-x" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+      <!-- Content ... -->
+      Name:
+      <input class="input" name="cm-name" type="text" placeholder="Name">
+      Email:
+      <input class="input" name="cm-email" type="text" placeholder="E-Mail">
+      Role:
+      <input class="input" name="cm-role" type="text" placeholder="i.e. Case Manager/Team Lead/Admin">
 
 
-          </section>
-          <footer class="modal-card-foot">
-            <button class="button is-success" id = "save-new-uac">Save changes</button>
-            <button class="button" id = "cancel-modal">Cancel</button>
-          </footer>
-        </div>
-      </div>
-          {{!-- ADD NEW UAC MODAL END --}}
-
- {{!-- ADD NEW CASE MANAGER MODAL START --}}
-      <div class="modal" id = "cm-modal">
-        <div class="modal-background" id = "cm-BG"></div>
-        <div class="modal-card">
-          <header class="modal-card-head">
-            <p class="modal-card-title" >Add New Case Manager</p>
-            <button class="delete" id = "cm-close-x" aria-label="close"></button>
-          </header>
-          <section class="modal-card-body">
-            <!-- Content ... -->
-            Name:
-            <input class="input" name ="cm-name" type="text" placeholder="Name">
-            Email:
-            <input class="input" name = "cm-email" type="text" placeholder="E-Mail">
-            Role:
-            <input class="input" name = "cm-role" type="text" placeholder="i.e. Case Manager/Team Lead/Admin">
-
-
-          </section>
-          <footer class="modal-card-foot">
-            <button class="button is-success" id = "save-new-uac">Add New Case Manager</button>
-            <button class="button" id = "cancel-cm-modal">Cancel</button>
-          </footer>
-        </div>
-      </div>
- {{!-- ADD NEW CASE MANAGER MODAL END --}}
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-success" id="save-new-uac">Add New Case Manager</button>
+      <button class="button" id="cancel-cm-modal">Cancel</button>
+    </footer>
+  </div>
+</div>
+{{!-- ADD NEW CASE MANAGER MODAL END --}}
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src = "./js/tableview.js"></script>
-  <script src = "./js/logout.js"></script>
+<script src="./js/tableview.js"></script>
+<script src="./js/logout.js"></script>
 
 
-<script src = "./js/newUAC.js"></script>
+<script src="./js/newUAC.js"></script>
 
 <script src="https://kit.fontawesome.com/cd8c8fb565.js" crossorigin="anonymous"></script>
-

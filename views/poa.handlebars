@@ -1,66 +1,70 @@
 <style>
-    *{
-  font-family: sans-serif;
-}
-.utility-bill {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-}
+  * {
+    font-family: sans-serif;
+  }
 
-.utility-bill {
-  border: 1px solid black;
-}
+  .utility-bill {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+  }
 
-.utility-header {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  border: 1px solid black;
-  height: 100px;
-}
+  .utility-bill {
+    border: 1px solid black;
+  }
 
-.utility-body {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  
-}
-.body-left {
-  display: flex;
-  justify-content: center;
-  padding: 20px;
-}
-.body-right{
-  display: flex;
-  justify-content: center;
-  padding: 20px;
-}
+  .utility-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 1px solid black;
+    height: 100px;
+  }
 
-h4 {
-  font-weight: 100;
-}
+  .utility-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 
-ul {
-  list-style: none;
-  margin: 5px;
-}
-li {
-  margin: 5px;
-}
+  }
 
-#logo {
-  font-size: 32px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: 900;
-}
+  .body-left {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
 
-.header-right{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
+  .body-right {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  h4 {
+    font-weight: 100;
+  }
+
+  ul {
+    list-style: none;
+    margin: 5px;
+  }
+
+  li {
+    margin: 5px;
+  }
+
+  #logo {
+    font-size: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 900;
+  }
+
+  .header-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
 </style>
 
 <div class="utility-bill-container">
@@ -78,24 +82,37 @@ li {
     <div class="utility-body">
       <div class="body-left">
         <ul>
-          <li><h2>Name</h2></li>
-          <li><h4>{{uac.sponsor_name}}</h4></li>
-          <li><h2>Address</h2></li>
-          <li><h4>{{uac.sponsor_address_1}}</h4></li>
-          <li><h4>{{uac.sponsor_city}} {{uac.sponsor_state}}, {{uac.sponsor_zip}}</h4></li>
-          
+          <li>
+            <h2>Name</h2>
+          </li>
+          <li>
+            <h4>{{uac.sponsor_name}}</h4>
+          </li>
+          <li>
+            <h2>Address</h2>
+          </li>
+          <li>
+            <h4>{{uac.sponsor_address_1}}</h4>
+          </li>
+          <li>
+            <h4>{{uac.sponsor_city}} {{uac.sponsor_state}}, {{uac.sponsor_zip}}</h4>
+          </li>
+
         </ul>
       </div>
       <div class="body-right">
-          <ul>
-          <li><h2>Amount</h2></li>
-          <li><h4>$132.00</h4></li>
-          
+        <ul>
+          <li>
+            <h2>Amount</h2>
+          </li>
+          <li>
+            <h4>$132.00</h4>
+          </li>
+
       </div>
     </div>
     <div class="utility-footer">
-      
+
     </div>
   </div>
 </div>
-
