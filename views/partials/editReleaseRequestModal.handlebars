@@ -1,225 +1,241 @@
 {{! RELEASE REQUEST MODAL START }}
-<div class="modal" id="release-request-modal">
-  <div class="modal-background" id="release-request-BG"></div>
+<div class='modal' id='release-request-modal'>
+	<div class='modal-background' id='release-request-BG'></div>
 
-  <div class="modal-content">
-    <header class="modal-card-head">
+	<div class='modal-content'>
+		<header class='modal-card-head'>
 
-      <p class="modal-card-title">Release Request</p>
-      <button class="delete" aria-label="close" id="release-request-x"></button>
+			<p class='modal-card-title'>Release Request</p>
+			<button class='delete' aria-label='close' id='release-request-x'></button>
 
-    </header>
-    <div class="box">
-      <div class="content" id="full-release-request">
-        <strong>Release Request</strong><br />
+		</header>
+		<div class='box'>
+			<div class='content' id='full-release-request'>
+				<strong>Release Request</strong><br />
 
+				<small>
+					The case is being submitted under FG 11: Temporary Waivers of
+					Background check, NSO, SSO requirements for CAT 2 Adult Household
+					members and adult caregivers dated 5/26/21. Policy Guide section
+					2.5.1- Adult household members of any sponsor category 2 does not
+					require fingerprint background checks. Per program, there are no
+					disqualifying safety concerns. Child has been screened and determined
+					not to be especially vulnerable. This case does not meet TVPRA Home
+					Study requirements, and as per assessments conducted, there were no
+					concerns identified in respect to abuse, neglect, and or safety.
+				</small>
+				<small><strong>SPONSOR/UAC RELATIONSHIP:</strong><br /><br />
 
-        <small>
-          The case is being submitted under FG 11: Temporary Waivers of Background check, NSO, SSO requirements for CAT
-          2
-          Adult Household members and adult caregivers dated 5/26/21. Policy Guide section 2.5.1- Adult household
-          members
-          of any sponsor category 2 does not require fingerprint background checks. Per program, there are no
-          disqualifying safety concerns. Child has been screened and determined not to be especially vulnerable. This
-          case
-          does not meet TVPRA Home Study requirements, and as per assessments conducted, there were no concerns
-          identified
-          in respect to abuse, neglect, and or safety.
-        </small>
-        <small></small>
-        <small>{{uac.uacname}} {{uac.a_number}}</small><br />
-        <small><strong>SPONSOR/UAC RELATIONSHIP:</strong><br /><br />
+					{{uac.sponsor_name}}, Age
+					{{uac.sponsor_age}}, category
+					{{uac.category}},
+					{{uac.sponsor_relationship}}
+					requests sponsorship of
+					{{uac.uacname}}
+					(A#
+					{{uac.a_number}}),
+					{{uac.gender}}, age
+					{{uac.age}}.
+					{{uac.sponsor_name}}
+					currently resides in
+					{{uac.sponsor_city}},
+					{{uac.sponsor_state}}
+					USA.
 
-          {{uac.sponsor_name}}, Age
-          {{uac.sponsor_age}}, category
-          {{uac.category}},
-          {{uac.sponsor_relationship}}
-          requests sponsorship of
-          {{uac.uacname}}
-          (A#
-          {{uac.a_number}}),
-          {{uac.gender}}, age
-          {{uac.age}}.
-          {{uac.sponsor_name}}
-          currently resides in
-          {{uac.sponsor_city}}, {{uac.sponsor_state}}
-          USA.
+					<br /><br />
+					*********INSERT HOME COUNTRY NARRATIVE HERE************
+					<br />
+					All birth certificates needed to prove the sponsor-UAC relationship
+					were received on
+					{{format_nice_date uac.por}}
+					Sponsor is confirmed to be the UAC’s
+					{{uac.sponsor_relationship}}. Birth certificates received are:
+					{{uac.list_of_bcs}}
+					<br />
 
-          <br /><br />
-          <br />
-          Birth Certificates: All birth certificates needed to prove the
-          sponsor-UAC relationship were received on
-          {{format_nice_date uac.por}}
-          Sponsor is confirmed to be the UAC’s
-          {{uac.sponsor_relationship}}. Birth certificates received are:
-          {{uac.list_of_bcs}}
-          <br />
+					<strong>
+						FRP and Supporting Documents:</strong>
+					<br />
+					{{uac.coo_narrative}}
+					<br />
+					The Case Manager received and reviewed
+					{{uac.sponsor_name}}'s family reunification packet, which includes:
+					<br /><br />
 
-          <strong>
-            FRP and Supporting Documents:</strong>
-          <br />
-          {{uac.coo_narrative}}
-          <br />
-          The Case Manager received and reviewed
-          {{uac.sponsor_name}}'s family reunification packet, which includes:
-          <br /><br />
+					--Sponsor ID:
+					{{uac.sponsor_id_type}}
+					<br />
+					{{#if uac.hhm_id_list}}
+						--Household Member ID:
+						{{uac.hhm_id_list}}
+					{{else}}
+					{{/if}}
+					<br />
+					--Proof of ability to provide housing, food, education:
+					<br />
+					The sponsor adequately demonstrated that they are able to support the
+					minor financially. The sponsor lives in a ***** SIZE OF HOME ******.
+					Sponsor stated she stays with her partner in master bedroom, and they
+					share the bathroom there. Additionally, sponsor stated house has all
+					working utilities and a fully functional kitchen.
+					<br />
+					--Proof of Address:
+					{{uac.poa_document}}
+					received on
+					{{format_nice_date uac.poa}}
+					<br />
+					Verified through Smarty Streets on
+					{{format_nice_date uac.poa}}
+					Verified through Google Maps and Google Earth on
+					{{format_nice_date uac.poa}}.
+					<br />
+					--Letter of Designation: Received on
+					{{format_nice_date uac.lod}}
+					<br />
+					--LOPC Packet: Sent on
+					{{format_nice_date uac.lopc}}
+					<br />
+					--Sponsor Handbook: Sponsor confirmed reading Sponsor Handbook on
+					{{format_nice_date uac.frp}}.
+					<br />
+					Criminal:
+					<br />
+					--As of
+					{{format_nice_date uac.sponsor_bgc}}, for
+					{{uac.sponsor_name}}:
+					<br />
+					--Public Records Check: Clear<br />
+					--Sex offender Check: Clear
+					<br />
+					{{#if uac.sponsor_fp}}
+						--Fingerprint Check: Fingerprints taken:
+						{{format_nice_date uac.sponsor_fp}}
+					{{else}}
+						--Fingerprints not required for this sponsor.
+					{{/if}}
+					<br /><br />
+					Results Required Prior to Release:
+					{{uac.fp_required}}
+					{{#if uac.fp_results}}
+						Results Status: Clear
+					{{else}}
+						Received Results:
+						{{uac.fp_results}}
+						The FFS informed this case manager that the sponsor has criminal
+						record information that does allow for the UAC to be safely released
+						to the sponsor.
+					{{/if}}<br /><br />
+					--As of 10/3/2023, for ACG/HHM Josue Martinez:
+					<br />
+					Waived per Field Guidance #11.
 
-          --Sponsor ID:
-          {{uac.sponsor_id_type}}
-          <br />
-          {{#if uac.hhm_id_list}}
-          --Household Member ID:
-          {{uac.hhm_id_list}}
-          {{else}}
-          {{/if}}
-          <br />
-          --Proof of ability to provide housing, food, education:
-          <br />
-          The sponsor adequately demonstrated that they are able to support the
-          minor financially.
-          <br />
-          --Proof of Address:
-          {{uac.poa_document}}
-          received on
-          {{format_nice_date uac.poa}}
-          <br />
-          Verified through Smarty Streets on
-          {{format_nice_date uac.poa}}
-          Verified through Google Maps and Google Earth on
-          {{format_nice_date uac.poa}}.
-          <br />
-          --Letter of Designation: Received on
-          {{format_nice_date uac.lod}}
-          <br />
-          --LOPC Packet: Sent on
-          {{format_nice_date uac.lopc}}
-          <br />
-          --Sponsor Handbook: Sponsor confirmed reading Sponsor Handbook on
-          {{format_nice_date uac.frp}}. Criminal:
-          <br />
-          --As of
-          {{format_nice_date uac.sponsor_bgc}}, for
-          {{uac.sponsor_name}}:
-          <br />
-          --Public Records Check: Clear<br />
-          --Sex offender Check: Clear
-          <br />
-          {{#if uac.sponsor_fp}}
-          --Fingerprint Check: Fingerprints taken:
-          {{format_nice_date uac.sponsor_fp}}
-          {{else}}
-          --Fingerprints not required for this sponsor.
-          {{/if}}
-          <br /><br />
-          Results Required Prior to Release:
-          {{uac.fp_required}}
-          {{#if uac.fp_results}}
-          Results Status: Clear
-          {{else}}
-          Received Results:
-          {{uac.fp_results}}
-          The FFS informed this case manager that the sponsor has criminal
-          record information that does allow for the UAC to be safely released
-          to the sponsor.
-          {{/if}}<br /><br />
-          {{#if uac.can_check_requested}}
-          --CA/N Check: Requested
-          {{uac.can_check_requested}}. Results Required Prior to Release: Yes
-          Results Status:
-          {{uac.can_check_results}}
-          {{else}}
-          --CA/N check not required for anyone in the household.
-          {{/if}}
-          {{#if uac.hhm_id_list}}
-          <br />
-          {{else}}
-          {{/if}}
-          --Self-Disclosure: This Case Manager asked the sponsor if they have
-          any criminal history on
-          {{format_nice_date uac.criminal_history_date}}
-          Sponsor responded:
-          {{uac.self_disclosure}}.
-          {{#if uac.criminal_history}}
-          {{uac.criminal_history}}
-          {{else}}
-          <br />
-          {{/if}}
-          <br />
+					{{#if uac.can_check_requested}}
+						--CA/N Check: Requested
+						{{uac.can_check_requested}}. Results Required Prior to Release: Yes
+						Results Status:
+						{{uac.can_check_results}}
+					{{else}}
+						--CA/N check not required for anyone in the household.
+					{{/if}}
+					{{#if uac.hhm_id_list}}
+						<br />
+					{{else}}
+					{{/if}}
+					--Self-Disclosure: This Case Manager asked the sponsor if they have
+					any criminal history on
+					{{format_nice_date uac.criminal_history_date}}
+					Sponsor responded:
+					{{uac.self_disclosure}}.
+					{{#if uac.criminal_history}}
+						{{uac.criminal_history}}
+					{{else}}
+						<br />
+					{{/if}}
+					<br />
 
-          <br />
-          Birth Certificates: All birth certificates needed to prove the
-          sponsor-UAC relationship were received on
-          {{format_nice_date uac.por}}
-          Sponsor is confirmed to be the UAC’s
-          {{uac.sponsor_relationship}}. Birth certificates received are:
-          {{uac.list_of_bcs}}
-          <br />
-          <br />
-          Child: {{uac.uacname}} DOB: {{uac.age}} Father: XXXXXX DOB: XXXXXX Mother: XXXXXXX<br />
-          Sponsor: {{uac.sponsor_name}} DOB: {{uac.sponsor_age}} Father: XXXXXXX DOB: XXXXXXX Mother: XXXXX <br />
-          <br />
+					<br />
+					All birth certificates needed to prove the sponsor-UAC relationship
+					were received on
+					{{format_nice_date uac.por}}
+					Sponsor is confirmed to be the UAC’s
+					{{uac.sponsor_relationship}}. Birth certificates received are:
+					{{uac.list_of_bcs}}
+					<br />
+					<br />
+					Child:
+					{{uac.uacname}}
+					DOB: XXXXXXX Father: XXXXXX DOB: XXXXXX Mother: XXXXXXX DOB: XXXXXXXX<br
+					/>
+					Sponsor:
+					{{uac.sponsor_name}}
+					DOB: XXXXXXX Father: XXXXXXX DOB: XXXXXXX Mother: XXXXXXXX DOB: XXXXXX
+					<br />
+					<br />
 
+					PRIOR SPONSORSHIP: Verified on
+					{{format_nice_date uac.prior_sponsorship_date}}
+					that the sponsor
+					{{uac.prior_sponsorship}}
+					previously sponsor or attempt to sponsor a child.
+					<br /><br />
+					PRIOR ADDRESS: Verified on
+					{{format_nice_date uac.previous_address_date}}
+					that the sponsor’s address
+					{{uac.previous_address}}
+					used in a previous case.
+					<br /><br />
 
+					{{#if uac.sir}}
+						<br />
+						The child has
+						{{uac.sir}}
+						CLE.
+						<br />
 
-          PRIOR SPONSORSHIP: Verified on
-          {{format_nice_date uac.prior_sponsorship_date}}
-          that the sponsor
-          {{uac.prior_sponsorship}}
-          previously sponsor or attempt to sponsor a child.
-          <br /><br />
-          PRIOR ADDRESS: Verified on
-          {{format_nice_date uac.previous_address_date}}
-          that the sponsor’s address
-          {{uac.previous_address}}
-          used in a previous case.
-          <br /><br />
+					{{else}}
+						<br />
+						The child has no CLE's.
+						<br />
+					{{/if}}
 
-          {{#if uac.sir}}
-          <br />
-          The child has {{uac.sir}} CLE.
-          <br />
+					<strong>CONTACT WITH PRIMARY CAREGIVER IN COO:</strong><br /><br />
+					Spoke with
+					{{uac.coo_caregiver}}
+					who was the primary caregiver in home country on
+					{{format_nice_date uac.coo_caregiver_date}}.
+					{{uac.coo_caregiver}}
+					was able to verify information provided by the UAC and the sponsor.
+					<br /><br />
+					<strong>SPONSOR RESOURCES:</strong>
+					<br /><br />
+					The following emergency contact information was provided to the
+					sponsor: 911, ORR Parent and Sponsor Hotline, information regarding
+					health care and vaccinations, Department of Family and Protective
+					Services ({{uac.sponsor_state}}), and National Human Trafficking
+					Resource Center.<br /><br />
 
-          {{else}}
-          <br />
-          The child has no CLE's.
-          <br />
-          {{/if}}
+					<br />
+					As of *******MEDICALLY CLEAR******** The child is medically clear for
+					travel.
+					<br />
+					<strong>
 
-          <strong>CONTACT WITH PRIMARY CAREGIVER IN COO:</strong><br /><br />
-          Spoke with
-          {{uac.coo_caregiver}}
-          who was the primary caregiver in home country on
-          {{format_nice_date uac.coo_caregiver_date}}.
-          {{uac.coo_caregiver}}
-          was able to verify information provided by the UAC and the sponsor.
-          <br /><br />
-          <strong>SPONSOR RESOURCES:</strong>
-          <br /><br />
-          The following emergency contact information was provided to the
-          sponsor: 911, ORR Parent and Sponsor Hotline, information regarding
-          health care and vaccinations, Department of Family and Protective
-          Services (in state of residence), and National Human Trafficking
-          Resource Center.<br /><br />
-
-          <br />
-          As of *******MEDICALLY CLEAR******** The child is medically clear for travel.
-          <br />
-          <strong>
-
-
-            Release Recommendation:
-          </strong>{{uac.release_recommendation}}
-          {{#if uac.home_study_prs}}
-          <br />
-          <br />
-          <strong>Home Study/PRS:</strong>
-          {{uac.home_study_prs}}
-          {{else}}
-          <br />
-          {{/if}}</small>
-      </div>
-    </div>
-  </div>
+						Release Recommendation:
+					</strong>Case manager completed all assessments; no concerns were
+					identified. Case manager recommends straight release to the sponsor
+					who demonstrates the ability to provide a safe, secure and stable
+					environment for the child.
+					{{#if uac.home_study_prs}}
+						<br />
+						<br />
+						<strong>Home Study/PRS:</strong>
+						{{uac.home_study_prs}}
+					{{else}}
+						<br />
+					{{/if}}</small>
+			</div>
+		</div>
+	</div>
 
 </div>
 

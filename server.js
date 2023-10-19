@@ -15,15 +15,15 @@ const app = express();
 const PORT = process.env.PORT || 5001;
 
 const sess = {
-  secret: 'superDave',
-  cookie: {
-    maxAge: 1000 * 60 * 60 * 3,
-  },
-  resave: false,
-  saveUninitialized: true,
-  store: new SequelizeStore({
-    db: sequelize,
-  }),
+	secret: 'superDave',
+	cookie: {
+		maxAge: 1000 * 60 * 60 * 3,
+	},
+	resave: false,
+	saveUninitialized: true,
+	store: new SequelizeStore({
+		db: sequelize,
+	}),
 };
 
 app.use(session(sess));
@@ -45,5 +45,5 @@ app.use(routes);
 app.use('/', smartyStreets);
 
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log(`Now listening on port ${PORT}`));
+	app.listen(PORT, () => console.log(`Now listening on port ${PORT}`));
 });
