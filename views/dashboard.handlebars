@@ -158,49 +158,25 @@ Begin Layout --}}
             <p>Case Status</p>
             <div class="icon is-right"><i class="fa-solid fa-pen-to-square" id="edit-sponsor"></i></div>
           </div>
-          <a href="mailto:projectmanagementcasemanagement@deployedservices.com?
-          subject=LOPC&cc=gbnccasemanagersupervisors@deployedservices.com;
-          martin.gonzalez@deployedservices.com;&body=Good afternoon, %0DMy name is {{cmCaseload.[0].username}}, the
-                            assigned case manager for this case, I would like to request for the sponsor to receive an
-                            LOPC packet. There are no locations near the sponsor's address that are taking appointments
-                            currently. The attachment includes sponsor's necessary information., Respecfully,
-
-                            %0DI am requesting an LOPC packet to be sent for the case below:
-                            %0D
-                            %0DUAC: {{uac.uacname}}
-                            %0D
-                            %0DA#: {{uac.a_number}}
-                            %0D
-                            %0DDOB:{{uac.dob}}
-                            %0D
-                            %0DCOO: {{uac.coo}}
-                            %0D
-                            %0DSponsor: {{uac.sponsor_name}}
-                            %0D
-                            %0DDOB:
-                            %0D
-
-                            %0DCOO: {{uac.coo}}
-                            %0D
-                            %0DRelationship: {{uac.sponsor_relationship}}
-                            %0D
-                            %0DAddress: {{uac.sponsor_addres1}} {{uac.sponsor_city}}, {{uac.sponsor_state}}
-                            {{uac.sponsor_zip}}
-                            %0D
-                            %0DPhone:
-                            %0D
-                            %0DCase Manager: {{cmCaseload.[0].username}}
-                            %0D
-                            %0DShelter: FT BLISS EIS
-                            %0D
-                            %0DEmail: {{cmCaseload.[0].eail}}
-                            %0D
-                            %0DPhone:
-                            %0D
-                            %0D%0DThank You`
-                            ">
-            LOPC PACKET REQUEST
+          <a href="mailto:someone@somewhere.com?subject=Case Submission Notice&cc=Martin Gonzalez <martin.gonzalez@deployedservices.com>; 
+          GBNC Case Manager Supervisors <gbnccasemanagersupervisors@deployedservices.com>; 
+          GBNC Lead Clinicians <gbncLeadClinicians@deployedservices.com>; 
+          Miranda Lopez <Miranda.Lopez@deployedservices.com>; 
+          GBNC Life Services Team <GBNCLifeServicesTeam@deployedservices.com>; 
+          GBNC Youth Service Manager <gbncYouthServiceManager@deployedservices.com>; 
+          Lirio Gonzalez <lirio.gonzalez@deployedservices.com>; 
+          Jesus Ibarra <Jesus.Ibarra2@deployedservices.com>; 
+          GBNC Case Aide <GBNCCaseAide@deployedservices.com>; 
+          Aide Hernandez-Montiel <Aide.Hernandez@deployedservices.com>;
+          &body=Greetings, %0DPlease be advised, the case for {{initials uac.uacname}} {{last_four uac.a_number}} will be submitted within the next 24-48 hours. Let me know if you have any questions.">
+            Case Submission Notice
           </a>
+          <br/>
+           <a href="mailto:ProjectManagementCaseManagement <ProjectManagementCaseManagement@deployedservices.com>?subject=for SR CAT {{uac.category}} {{initials uac.uacname}}AXXX-XX{{last_four_subject uac.a_number}}, Greensboro Piedmont Academy ICF&cc=GBNC Case Manager Supervisors <gbnccasemanagersupervisors@deployedservices.com>; Martin Gonzalez <martin.gonzalez@deployedservices.com>; Miranda Lopez <Miranda.Lopez@deployedservices.com>; GBNC Lead Clinicians <gbncLeadClinicians@deployedservices.com>; Robert Ruiz <robert.ruiz@deployedservices.com>; Behavioral Health Project Management <BehavioralHealthProjectManagement@deployedservices.com>; Luis Sandoval <Luis.Sandoval@deployedservices.com>; Cierra Sawyer <Cierra.Sawyer@deployedservices.com>; Alcides Hernandez <Alcides.Hernandez@deployedservices.com>; Aide Hernandez-Montiel <Aide.Hernandez@deployedservices.com>; Edgar Martinez <Edgar.Martinez@deployedservices.com>&body=Greetings, %0D Please be advised that a release request for {{initials uac.uacname}} {{last_four uac.a_number}} has been updated in the UC Portal. This is a Category {{uac.category}} case. Care Provider is recommending straight release to child's {{uac.sponsor_relationship}} who resides in {{uac.sponsor_city}}, {{uac.sponsor_state}}. %0D %0D All assessments were completed, and no concerns were identified. %0D %0D Please note that UC is medically cleared for discharge as of DATEDATEDATE
+">
+            Submit Case
+          </a>
+          
         </article>
       </div>
 
