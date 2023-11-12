@@ -1,59 +1,23 @@
-<style>
-  .hero {
-    position: relative;
-  }
-
-  .image {
-    justify-content: center;
-    height: 100vh;
-    width: auto;
-  }
-
-  img {
-    transform: scale(2.5);
-    top: 25vh;
-
-  }
-
-  .bc-info {
-    position: absolute;
-    text-align: left;
-    z-index: 9999;
-    color: black;
-    top: 100px;
-    padding-top: 100px;
-    transform: translateX(-40%)
-  }
-
-  li {
-    margin: 10px;
-  }
-
-  .document {
-    text-align: center;
-  }
-</style>
-
-
-<section class="section hero image">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-half">
-        <figure>
-
-          <div class="bc-info">
-            <ul>
-              <li>NOMBRE: MOTHERS NAME</li>
-              <li>FECHA DE NACIMIENTO: MOTHER'S DOB</li>
-              <li>PAIZ: {{uac.coo}} </li>
-              <li>NOMBRE DE LA MADRE: Mother's Name</li>
-              <li>NOMBRE DEL PADRE: Father's Name</li>
-            </ul>
-          </div>
-          <Img class="image" src="../assets/images/BirthCertificateTemplate.jpg" />
-
-        </figure>
-      </div>
-    </div>
-  </div>
-</section>
+<div class='bc document'><h1 class='bc-title'>Mother's Birth Certificate</h1><div
+		class='bc-header'
+	><h2>Registro Nacional de las Personas</h2>
+		<h4>Republica de {{uac.coo}}</h4>
+		<h3>Registro Civil de las Personas</h3>
+		<h3>Certificado de Nacimiento</h3></div><div class='bc-info'>
+		<h3>
+			El infrascrito Rigistrador Civil de las Personas del Rigistro Nacional de
+			las Personas del Municipio de
+			{{uac.coo}}, Departamento de
+			{{uac.coo}},
+		</h3>
+		<h3>CERTIFICA</h3>
+		<h3>
+			que con fecha 11/11/2023 en la partida AAA, folio BB del libro ZZZ del
+			Registro Civil del Municipio de
+			{{uac.coo}}, Departamento de
+			{{uac.coo}}, quedo inscrito el nacimiento de:
+		</h3></div><div class='inscrito'><strong>Datos del Inscrito</strong><h3
+		>MOTHER'S NAME</h3><h3>mothers DOB</h3><h4>
+			{{uac.coo}}</h4><hr /></div><div class='inscrito'><strong>Datos de la
+			Madre</strong><h3>MOTHERS NAME</h3><hr /><strong>Datos del Padre</strong><h3
+		>FATHERS NAME</h3><hr /></div><div class='inscrito'></div><h4></h4></div>

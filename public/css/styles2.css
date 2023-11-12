@@ -1,0 +1,316 @@
+body > form {
+    margin: 30px;
+}
+
+.script {
+    background-color: white;
+    top: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    display: none;
+}
+#table-to-excel {
+    color: limegreen;
+    border-color: rgb(10, 197, 10);
+}
+.hide {
+    display: none;
+}
+.script-body {
+    position: relative;
+}
+
+.active {
+    display: block;
+}
+
+.header-info {
+    margin: 1rem;
+    margin-bottom: 3rem;
+}
+#script-head {
+    padding: 1rem;
+    justify-content: flex-end;
+    width: 100vw;
+    position: fixed;
+    z-index: 999;
+}
+.close-script {
+    position: sticky;
+    z-index: 998;
+}
+#script-script {
+    margin-top: 100px;
+    margin-left: 40px;
+}
+.warning {
+    position: absolute;
+    font-size: 100px;
+    font-weight: 900;
+    color: rgba(255, 0, 0, 0.4);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bc {
+    text-align: center;
+    border: 1px solid black;
+    margin: 1rem;
+    padding: 1rem;
+    height: 100%;
+}
+/* .bc::after {
+    content: 'FOR MOCK PURPOSES ONLY';
+    font-size: 100px;
+    font-weight: 900;
+    color: rgba(190, 2, 2, 0.5);
+    text-align: center;
+} */
+h1,
+h2,
+h3,
+h4 {
+    font-weight: 100;
+    margin: 1rem;
+}
+
+.datos {
+    text-align: left;
+}
+
+@media print {
+    .document {
+        page-break-before: always;
+    }
+}
+
+@media print {
+    .no-print {
+        display: none;
+        font-size: 12px;
+    }
+    .print {
+        display: block;
+    }
+}
+
+.demographics-header {
+    font-size: 12px;
+    display: block;
+    border-bottom: 1px solid black;
+    width: 90vw;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 1rem;
+}
+
+.demographics-header li {
+    margin: 0;
+}
+
+li {
+    margin: 0;
+    font-weight: 100;
+}
+
+.sponsor-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border: 1px solid black;
+    padding: 1rem;
+    font-size: 12px;
+    margin: 1rem;
+    text-align: center;
+
+    /* grid-template-areas:
+        'sponsorname occupation acgname'
+        'sponsordob schedule acgdob'
+        'sponsorrelationship salary acgrelationship'
+        'face2face floorplan reltosponsor'
+        'sponsorphone blank acgphone'
+        'sponsoraddress blank acgaddress'
+        'blank additionalinfo blank'; */
+}
+
+.sponsor-cell {
+    text-align: center;
+    border-bottom: 1px solid black;
+}
+
+.sponsorh5 {
+    font-weight: 600;
+    font-size: 14px;
+    margin: 0;
+}
+.bc-title {
+    font-size: 34px;
+}
+
+.bc-header h2 {
+    font-size: 24px;
+}
+.bc-header h3 {
+    font-size: 20px;
+}
+.bc-header h4 {
+    font-size: 16px;
+}
+.bc-info h2 {
+    font-size: 24px;
+}
+
+.bc-info h3 {
+    font-size: 20px;
+}
+.bc-info h4 {
+    font-size: 16px;
+}
+
+.inscrito h3 {
+    font-size: 20px;
+}
+.inscrito h4 {
+    font-size: 16px;
+}
+
+.sponsor-id-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
+
+.sponsor-id {
+    border: 1px solid black;
+    border-radius: 15px;
+    background-color: skyblue;
+    height: 40vh;
+    width: 60vw;
+}
+.sponsor-id h3 {
+    font-size: 20px;
+}
+
+.id-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 1rem;
+    background-color: rgb(170, 170, 218);
+    border-radius: 20px;
+    padding: 1rem;
+}
+
+.id-body ul {
+    list-style: none;
+}
+
+.id-body-left {
+}
+.contact-card {
+}
+
+.contact-card img {
+    height: 100px;
+}
+
+.id-body-middle {
+    display: flex;
+    margin-top: 1rem;
+}
+
+.id-body-right {
+    background-color: pink;
+}
+
+.image-div {
+}
+
+.poa-header {
+    margin: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 2rem;
+}
+
+.poa-left h1 {
+    font-size: 35px;
+}
+
+.poa-right {
+}
+
+.poa-right h3 {
+    font-size: 25px;
+}
+.poa-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 2rem;
+}
+.poa-body h3 {
+    font-size: 25px;
+}
+.poa-body ul {
+    list-style: none;
+}
+
+.new-check {
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-around;
+    margin: 1rem;
+}
+
+.public-records-check {
+    text-align: center;
+    margin: 1rem;
+}
+.new-check h3 {
+    font-size: 20px;
+}
+.new-check ul {
+    display: flex;
+    list-style: none;
+}
+
+.letter-of-designation {
+    text-align: center;
+}
+
+.letter-of-designation h2 {
+    font-size: 25px;
+}
+
+.letter-of-designation h3 {
+    font-size: 20px;
+}
+.child-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.child-left li {
+    margin: 12px;
+    line-height: 1;
+}
+
+.child-right li {
+    line-height: 1;
+}
+
+.child-middle li {
+    line-height: 1;
+}
+
+tr:hover {
+    cursor: pointer;
+}
